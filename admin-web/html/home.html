@@ -9,7 +9,7 @@
     <script type="text/javascript" src="firebaseui/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="firebaseui/firebaseui.css" />
     <link type="text/css" rel="stylesheet" href="w3css/w3.css" />
-    <link type="text/css" rel="stylesheet" href="fontawesome/fontawesome.css" />
+    <script type="text/javascript" src="fontawesome/fontawesome-all.js"></script>
     <script type="text/javascript" src="cryptojs/sha512.js"></script>
     <script type="text/javascript" src="config.js"></script>
     <script type="text/javascript" src="home.js"></script>
@@ -28,7 +28,7 @@
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-quarter">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('addUserModal').style.display='block'">
-                    <i class="fa fa-user-plus fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-user-plus fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>ADD USER</h5>
                     </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="w3-quarter">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('modConIDModal').style.display='block'">
-                    <i class="fa fa-pencil-square-o fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="far fa-edit fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>MODIFY CONSTITUTION ID</h5>
                     </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="w3-quarter">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('pwdModal').style.display='block'">
-                    <i class="fa fa-unlock fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-lock-open fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>CHANGE PASSWORD</h5>
                     </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="w3-quarter">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('rmUserModal').style.display='block'">
-                    <i class="fa fa-user-times fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-user-times fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>REMOVE USER</h5>
                     </div>
@@ -62,7 +62,7 @@
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-third">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
-                    <i class="fa fa-plus fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-plus fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>ADD CANDIDATE</h5>
                     </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="w3-third">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
-                    <i class="fa fa-pencil fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-pencil-alt fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>MODIFY CANDIDATE</h5>
                     </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="w3-third">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
-                    <i class="fa fa-trash-o fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-trash fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>REMOVE CANDIDATE</h5>
                     </div>
@@ -88,7 +88,7 @@
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-half">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
-                    <i class="fa fa-hourglass-start fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-hourglass-start fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>START ELECTION</h5>
                     </div>
@@ -96,7 +96,7 @@
             </div>
             <div class="w3-half">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
-                    <i class="fa fa-hourglass-start fa-flip-vertical fa-3x" aria-hidden="true" style="color:#2196F3"></i>
+                    <i class="fas fa-hourglass-end fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>STOP ELECTION</h5>
                     </div>
@@ -109,7 +109,7 @@
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
                 <span onclick="document.getElementById('addUserModal').style.display='none';resetAddUserForm()" class="w3-button w3-display-topright">
-                    <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                    <i class="fas fa-2x fa-times" aria-hidden="true"></i>
                 </span>
                 <h3>ADD USER</h3>
             </header>
@@ -118,28 +118,28 @@
                     <p>
                         <input class="w3-input w3-text-blue" type="text" id="adduser" placeholder="User ID">
                         <label class="w3-text-red" id="adduser-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
                     <p>
                         <input class="w3-input w3-text-blue" type="password" id="addpwd" placeholder="Password">
                         <label class="w3-text-red" id="addpwd-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
                     <p>
                         <input class="w3-input w3-text-blue" type="password" id="addpwd2" placeholder="Reconfirm Password">
                         <label class="w3-text-red" id="addpwd2-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
                     <p>
                         <input class="w3-input w3-text-blue" type="text" id="addconid" placeholder="Constitution ID">
                         <label class="w3-text-red" id="addconid-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
@@ -155,7 +155,7 @@
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
                 <span onclick="document.getElementById('modConIDModal').style.display='none';resetmodconidForm()" class="w3-button w3-display-topright">
-                    <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                    <i class="fas fa-2x fa-times" aria-hidden="true"></i>
                 </span>
                 <h3>MODIFY CONSTITUTION ID</h3>
             </header>
@@ -164,14 +164,14 @@
                     <p>
                         <input class="w3-input w3-text-blue" type="text" id="modconiduser" placeholder="User ID">
                         <label class="w3-text-red" id="modconiduser-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
                     <p>
                         <input class="w3-input w3-text-blue" type="password" id="modconidpwd" placeholder="Password">
                         <label class="w3-text-red" id="modconidpwd-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
@@ -183,7 +183,7 @@
                     <p>
                         <input class="w3-input w3-text-blue" type="text" id="modconid" placeholder="Constitution ID">
                         <label class="w3-text-red" id="modconid-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
@@ -199,7 +199,7 @@
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
                 <span onclick="document.getElementById('pwdModal').style.display='none';resetpwdusr()" class="w3-button w3-display-topright">
-                    <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                    <i class="fas fa-2x fa-times" aria-hidden="true"></i>
                 </span>
                 <h3>CHANGE PASSWORD</h3>
             </header>
@@ -208,21 +208,21 @@
                     <p>
                         <input class="w3-input w3-text-blue" type="text" id="pwduser" placeholder="User ID">
                         <label class="w3-text-red" id="pwduser-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
                     <p>
                         <input class="w3-input w3-text-blue" type="password" id="pwdpwd" placeholder="Password">
                         <label class="w3-text-red" id="pwdpwd-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
                     <p>
                         <input class="w3-input w3-text-blue" type="password" id="pwdpwd2" placeholder="Reconfirm Password">
                         <label class="w3-text-red" id="pwdpwd2-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
@@ -238,7 +238,7 @@
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
                 <span onclick="document.getElementById('rmUserModal').style.display='none';resetrmusr()" class="w3-button w3-display-topright">
-                    <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+                    <i class="fas fa-2x fa-times" aria-hidden="true"></i>
                 </span>
                 <h3>REMOVE USER</h3>
             </header>
@@ -247,7 +247,7 @@
                     <p>
                         <input class="w3-input w3-text-blue" type="text" id="rmuser" placeholder="User ID">
                         <label class="w3-text-red" id="rmuser-label" style="visibility: hidden">
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
                         </label>
                     </p>
