@@ -21,32 +21,8 @@ function server() {
         res.sendFile(path.join(__dirname + '/../admin-web/w3css/w3.css'));
     });
     
-    app.get('/fontawesome/fontawesome.css', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome.css'));
-    });
-    
-    app.get('/fontawesome/fontawesome.eot', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome.eot'));
-    });
-    
-    app.get('/fontawesome/fontawesome.otf', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome.otf'));
-    });
-    
-    app.get('/fontawesome/fontawesome.svg', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome.svg'));
-    });
-    
-    app.get('/fontawesome/fontawesome.tff', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome.tff'));
-    });
-    
-    app.get('/fontawesome/fontawesome.woff', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome.woff'));
-    });
-    
-    app.get('/fontawesome/fontawesome.woff2', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome.woff2'));
+    app.get('/fontawesome/fontawesome-all.js', function(req,res) {
+        res.sendFile(path.join(__dirname + '/../admin-web/fontawesome/fontawesome-all.js'));
     });
     
     app.get('/cryptojs/sha512.js', function(req,res) {
