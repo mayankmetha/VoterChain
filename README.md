@@ -2,10 +2,8 @@
 blockchain based evoting system
 
 ## Commands
-### npm run main 
-run project
-### npm run admin
-run admin script
+### npm start [options]
+start program
 
 ## Config
 add firebase config to js/config.js
