@@ -1,0 +1,34 @@
+{
+  "name": "blockvoter",
+  "version": "0.0.0",
+  "description": "blockchain based evoting system",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mayankmetha/blockVoter.git"
+  },
+  "keywords": [
+    "blockchain",
+    "evoting"
+  ],
+  "authors": [
+    "mayank metha d",
+    "aditya s m",
+    "aashish s madan",
+    "mohammed maaz"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mayankmetha/blockVoter/issues"
+  },
+  "homepage": "https://github.com/mayankmetha/blockVoter#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.2",
+    "opn": "^5.1.0",
+    "ws": "^3.3.2"
+  }
+}
