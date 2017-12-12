@@ -38,6 +38,15 @@ body {
     animation-duration: 0.5s;
     animation-timing-function: ease-in;
     animation-fill-mode: both;
+    -moz-animation-name: fadeInBody;
+    -moz-animation-delay: 0.0s;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-timing-function: ease-in;
+    -webkit-animation-name: fadeInBody;
+    -webkit-animation-delay: 0.0s;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-fill-mode: both;
 
 }
 
@@ -57,6 +66,15 @@ body {
     animation-duration: 0.5s;
     animation-timing-function: ease-in;
     animation-fill-mode: both;
+    -moz-animation-name: fadeIn;
+    -moz-animation-delay: 0.75s;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-timing-function: ease-in;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-delay: 0.75s;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-fill-mode: both;
 }
 
 .title {
