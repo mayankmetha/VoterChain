@@ -4,7 +4,7 @@ var opn = require('opn');
 
 var app = express();
 
-function server() {
+function server(browser) {
     app.get('/firebase/firebase.js', function(req,res) {
         res.sendFile(path.join(__dirname + '/../admin-web/firebase/firebase.js'));
     });
@@ -50,8 +50,16 @@ function server() {
     });
     
     app.listen(5000, function() {
-        console.log('opening http://localhost:5000');
-        opn('http://localhost:5000');
+        if(browser === "chrome") {
+            console.log('opening http://localhost:5000 in google chrome');
+            opn('http://localhost:5000',{app: "google-chrome"});
+        } else if(browser === "firefox") {
+            console.log('opening http://localhost:5000 in firefox');
+            opn('http://localhost:5000',{app: "firefox"});
+        } else {
+            console.log('opening http://localhost:5000 in default browser');
+            opn('http://localhost:5000');
+        }
     });
 }
 
