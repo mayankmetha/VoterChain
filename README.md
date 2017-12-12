@@ -1,4 +1,4 @@
-# blockVoter
+# VoterChain
 blockchain based evoting system
 
 ## Commands
