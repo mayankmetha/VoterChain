@@ -1,17 +1,20 @@
 var blockchain = require('./js/blockchain');
 var admin = require('./js/admin');
+var client = require('./js/client');
 var express = require('express');
 var bodyParser = require('body-parser');
 
 if (process.argv[2] === "admin") {
     admin.server(process.argv[3]);
+} else if (process.argv[2] === "client") {
+    client.server(process.argv[3]);
 } else {
     var app = express();
     app.use(bodyParser.json());
     app.get('/blocks', (req, res) => res.send(JSON.stringify(blockchain.getChain())));
     app.post('/mineBlock', (req, res) => {
         var newBlock = blockchain.genBlocks(req.body.uid, req.body.eleid, req.body.conid, req.body.parid);
-        if(blockchain.addBlock(newBlock)) {
+        if (blockchain.addBlock(newBlock)) {
             blockchain.broadcast(blockchain.responseLatestMsg());
             console.log('block added: ' + JSON.stringify(newBlock));
         } else {
