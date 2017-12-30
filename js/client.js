@@ -5,22 +5,19 @@ var express = require('express');
 var opn = require('opn');
 var path = require('path');
 var CryptoJS = require('crypto-js');
+var bodyParser = require('body-parser');
+var firebaseConfig = require('./config');
 
 var app = express();
-var db;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 var isAnonymous;
 var uidAnonymous;
 var user;
 
-var config = {
-    apiKey: "AIzaSyA-Kk2mYGuZEFfjJpFJ8H2RU4A31gAMJOg",
-    authDomain: "voterchain.firebaseapp.com",
-    databaseURL: "https://voterchain.firebaseio.com",
-    projectId: "voterchain",
-    storageBucket: "",
-    messagingSenderId: "182275896456"
-};
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig.config);
+
+var db = firebase.database();
 
 function anonymouslySignIn() {
     firebase.auth().signInAnonymously().catch(function (error) {
@@ -34,23 +31,12 @@ function auth() {
         if (user) {
             isAnonymous = user.isAnonymous;
             uidAnonymous = user.uid;
-            db = firebase.database();
         } else {
             isAnonymous = null;
             uid = null;
             db = null;
         }
     });
-}
-
-function validateUserLogin(user,password) {
-    if(user !== null) {
-        //db.ref('users/' + user).on('value', function (snapshot) {
-        //    if(password === snapshot.val().pwd) 
-        //        return true;
-        //});
-    }
-    return false;
 }
 
 function server(browser) {
@@ -67,11 +53,18 @@ function server(browser) {
     app.get('/arrow.png', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/arrow.png'));
     });
-    app.post('/login.js', function (req,res) {
-        user = req.query.user;
-        var password = CryptoJS.SHA512(req.query.password).toString();
-        if(validateUserLogin(user, password)) {
-            res.send('login success');
+    app.get('/cryptojs/sha512.js', function(req,res) {
+        res.sendFile(path.join(__dirname + '/../admin-web/cryptojs/sha512.js'));
+    });
+    app.post('/login', function (req, res) {
+        user = req.body.user;
+        var password = req.body.password;
+        if(uidAnonymous !== null) {
+            db.ref('users/' + user).on('value', function (snapshot) {
+                if(password === snapshot.val().pwd)  {
+                    res.send("success");
+                }
+            });
         }
     });
     app.listen(5000, function () {
@@ -92,3 +85,5 @@ function server(browser) {
 module.exports = {
     server: server
 }
+
+//TODO: post browser exit cleanup

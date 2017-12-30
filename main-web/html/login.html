@@ -6,23 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoterChain</title>
     <link type="text/css" rel="stylesheet" href="login.css" />
+    <script type="text/javascript" src="cryptojs/sha512.js"></script>
 </head>
 
-<body>
+<body onload="document.getElementById('login').reset();">
     <div class="login-card">
             <div class="title">
                     <h1>VoterChain</h1>
                 </div>
-        <form class="login" method="post" action="login.js">
+        <form class="login" id="login" method="post">
             <p>
-                
-                <input type="text" name="user" id="login" placeholder="Username" required="true" autocomplete="false" maxlength="40" />
+                <input type="text" name="user" id="user" placeholder="Username" required="true" autocomplete="false" maxlength="40" />
             </p>
             <p>
                 <input type="password" name="password" id="password" placeholder="Password" required="true" autocomplete="false" maxlength="40" />
             </p>
             <p class="login-submit">
-                <button type="submit" class="login-button">Login</button>
+                <button type="submit" class="login-button" onclick="document.getElementById('password').value=CryptoJS.SHA512(document.getElementById('password').value).toString();document.getElementById('login').submit();">Login</button>
             </p>
         </form>
     </div>
