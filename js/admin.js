@@ -13,9 +13,9 @@ var options = {
     key: key,
     cert: cert
 };
-https.createServer(options,app).listen(443);
 
 function server() {
+    https.createServer(options,app).listen(443);
     app.use(forceSsl);
     app.get('/firebase/firebase.js', function(req,res) {
         res.sendFile(path.join(__dirname + '/../admin-web/firebase/firebase.js'));
