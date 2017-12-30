@@ -5,9 +5,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 if (process.argv[2] === "admin") {
-    admin.server(process.argv[3]);
+    admin.server();
 } else if (process.argv[2] === "client") {
-    client.server(process.argv[3]);
+    client.server();
 } else {
     var app = express();
     app.use(bodyParser.json());
