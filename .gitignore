@@ -1,4 +1,6 @@
 package-lock.json
 node_modules
 config.js
-ssl
+*.csr
+*.crt
+*.key
