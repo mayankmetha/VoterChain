@@ -54,7 +54,7 @@ function server() {
         res.sendFile(path.join(__dirname + '/../main-web/assets/arrow.png'));
     });
     app.get('/cryptojs/sha512.js', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../main-web/cryptojs/sha512.js'));
+        res.sendFile(path.join(__dirname + '/../main-web/js/cryptojs/sha512.js'));
     });
     app.post('/login', function (req, res) {
         user = req.body.user;
@@ -68,7 +68,7 @@ function server() {
         }
     });
     app.listen(5000, function () {
-        console.log('Opening VoterChain');
+        console.log('Opening VoterChain...\nEnter Ctrl+C to Exit...');
         opn('http://localhost:5000/login');
         anonymouslySignIn();
     });
