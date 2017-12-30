@@ -54,7 +54,7 @@ function server() {
         res.sendFile(path.join(__dirname + '/../main-web/assets/arrow.png'));
     });
     app.get('/cryptojs/sha512.js', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../admin-web/cryptojs/sha512.js'));
+        res.sendFile(path.join(__dirname + '/../main-web/cryptojs/sha512.js'));
     });
     app.post('/login', function (req, res) {
         user = req.body.user;
