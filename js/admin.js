@@ -13,6 +13,7 @@ var options = {
     key: key,
     cert: cert
 };
+https.createServer(options,app).listen(443);
 
 function server() {
     app.use(forceSsl);
@@ -61,12 +62,23 @@ function server() {
     });
     
     app.listen(80, function() {
-        console.log('opening VoterChain Admin');
+        console.log('Opening VoterChain Admin...\nHit Ctrl+C to exit...');
         opn('http://localhost');
     });
-    https.createServer(options,app).listen(443);
+}
+
+function cleanUp() {
+    process.on('SIGINT', () => {
+        console.log('\nExiting...');
+        process.exit(0);
+    });
+    process.on('SIGTERM', () => {
+        console.log('\nExiting...');
+        process.exit(0);
+    });
 }
 
 module.exports = {
-    server: server
+    server: server,
+    cleanUp: cleanUp
 };

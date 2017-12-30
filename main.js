@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 
 if (process.argv[2] === "admin") {
     admin.server();
+    admin.cleanUp();
 } else if (process.argv[2] === "client") {
     client.server();
 } else {
