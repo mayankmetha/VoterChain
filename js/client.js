@@ -39,7 +39,7 @@ function auth() {
     });
 }
 
-function server(browser) {
+function server() {
     //login
     app.get('/login', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/login.html'));
@@ -69,13 +69,23 @@ function server(browser) {
     });
     app.listen(5000, function () {
         console.log('Opening VoterChain');
-        opn('http://localhost:5000');
-        //anonymouslySignIn();
+        opn('http://localhost:5000/login');
+        anonymouslySignIn();
+    });
+}
+
+function cleanUp() {
+    process.on('SIGINT', () => {
+        console.log('\nExiting...');
+        process.exit(0);
+    });
+    process.on('SIGTERM', () => {
+        console.log('\nExiting...');
+        process.exit(0);
     });
 }
 
 module.exports = {
-    server: server
-}
-
-//TODO: post browser exit cleanup
+    server: server,
+    cleanUp: cleanUp
+};

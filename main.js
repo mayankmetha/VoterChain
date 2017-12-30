@@ -9,6 +9,7 @@ if (process.argv[2] === "admin") {
     admin.cleanUp();
 } else if (process.argv[2] === "client") {
     client.server();
+    client.cleanUp();
 } else {
     var app = express();
     app.use(bodyParser.json());
