@@ -1,10 +1,21 @@
 var express = require('express');
 var path = require('path');
 var opn = require('opn');
+var fs = require('fs');
+var https = require('https');
+var forceSsl = require('express-force-ssl');
 
 var app = express();
 
-function server(browser) {
+var key = fs.readFileSync(path.join(__dirname+'/../ssl/private.key'));
+var cert = fs.readFileSync(path.join(__dirname+'/../ssl/private.crt'));
+var options = {
+    key: key,
+    cert: cert
+};
+
+function server() {
+    app.use(forceSsl);
     app.get('/firebase/firebase.js', function(req,res) {
         res.sendFile(path.join(__dirname + '/../admin-web/firebase/firebase.js'));
     });
@@ -49,18 +60,11 @@ function server(browser) {
         res.sendFile(path.join(__dirname + '/../admin-web/js/home.js'));
     });
     
-    app.listen(5000, function() {
-        if(browser === "chrome") {
-            console.log('opening http://localhost:5000 in google chrome');
-            opn('http://localhost:5000',{app: "google-chrome"});
-        } else if(browser === "firefox") {
-            console.log('opening http://localhost:5000 in firefox');
-            opn('http://localhost:5000',{app: "firefox"});
-        } else {
-            console.log('opening http://localhost:5000 in default browser');
-            opn('http://localhost:5000');
-        }
+    app.listen(80, function() {
+        console.log('opening VoterChain Admin');
+        opn('http://localhost');
     });
+    https.createServer(options,app).listen(443);
 }
 
 module.exports = {
