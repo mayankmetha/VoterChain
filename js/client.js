@@ -12,8 +12,6 @@ var forceSsl = require('express-force-ssl');
 var firebaseConfig = require('./config');
 
 var app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 var key = fs.readFileSync(path.join(__dirname+'/../ssl/private.key'));
 var cert = fs.readFileSync(path.join(__dirname+'/../ssl/private.crt'));
 var options = {
@@ -43,11 +41,14 @@ function auth() {
 
 function server(browser) {
     https.createServer(options,app).listen(443);
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: true}));
     app.use(forceSsl);
     //firebaseAuthCleanUp
     app.get('/firebaseAuthOut', function (req, res) {
         firebase.auth().currentUser.delete().then(function() {
             res.send("Now you can close the browser!");
+            process.exit(0);
         });
     });
     //firebaseAuthLogin
@@ -86,18 +87,18 @@ function server(browser) {
         }
     });
     app.listen(80, function () {
-        console.log('Opening VoterChain...\nEnter Ctrl+C to Exit...');
+        console.log('Opening VoterChain...\nGoto http://localhost/firebaseAuthOut to Exit...');
         open("http://localhost/firebaseAuthIn",browser);
     });
 }
 
 function cleanUp() {
     process.on('SIGINT', () => {
-        console.log('\nExiting...');
+        console.log('Exiting due to SIGINT signal...');
         process.exit(0);
     });
-    process.on('SIGTERM', () => {
-        console.log('\nExiting...');
+    process.on('exit', () => {
+        console.log('Exited...');
         process.exit(0);
     });
 }

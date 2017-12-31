@@ -60,20 +60,25 @@ function server(browser) {
     app.get('/home.js' , function(req,res) {
         res.sendFile(path.join(__dirname + '/../admin-web/js/home.js'));
     });
+
+    app.get('/exit', function (req, res) {
+        res.send("Now you can close the browser!");
+        process.exit(0);
+    });
     
     app.listen(80, function() {
-        console.log('Opening VoterChain Admin...\nHit Ctrl+C to exit...');
+        console.log('Opening VoterChain Admin...\nGoto http://localhost/exit to exit...');
         open("http://localhost",browser);    
     });
 }
 
 function cleanUp() {
     process.on('SIGINT', () => {
-        console.log('\nExiting...');
+        console.log('Exiting due to SIGINT signal...');
         process.exit(0);
     });
-    process.on('SIGTERM', () => {
-        console.log('\nExiting...');
+    process.on('exit', () => {
+        console.log('Exited...');
         process.exit(0);
     });
 }

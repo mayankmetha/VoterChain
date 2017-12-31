@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "blockchain based evoting system",
   "scripts": {
-    "start": "node main.js"
+    "start": "sudo node main.js"
   },
   "repository": {
     "type": "git",
