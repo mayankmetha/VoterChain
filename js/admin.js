@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var opn = require('opn');
+var open = require('open');
 var fs = require('fs');
 var https = require('https');
 var forceSsl = require('express-force-ssl');
@@ -14,7 +14,7 @@ var options = {
     cert: cert
 };
 
-function server() {
+function server(browser) {
     https.createServer(options,app).listen(443);
     app.use(forceSsl);
     app.get('/firebase/firebase.js', function(req,res) {
@@ -63,7 +63,7 @@ function server() {
     
     app.listen(80, function() {
         console.log('Opening VoterChain Admin...\nHit Ctrl+C to exit...');
-        opn('http://localhost');
+        open("http://localhost",browser);    
     });
 }
 

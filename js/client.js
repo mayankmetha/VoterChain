@@ -2,7 +2,7 @@ var firebase = require('firebase');
 require('firebase/database');
 require('firebase/auth');
 var express = require('express');
-var opn = require('opn');
+var open = require('open');
 var path = require('path');
 var CryptoJS = require('crypto-js');
 var bodyParser = require('body-parser');
@@ -41,7 +41,7 @@ function auth() {
     });
 }
 
-function server() {
+function server(browser) {
     https.createServer(options,app).listen(443);
     app.use(forceSsl);
     //firebaseAuthCleanUp
@@ -87,7 +87,7 @@ function server() {
     });
     app.listen(80, function () {
         console.log('Opening VoterChain...\nEnter Ctrl+C to Exit...');
-        opn('http://localhost/firebaseAuthIn');
+        open("http://localhost/firebaseAuthIn",browser);
     });
 }
 
