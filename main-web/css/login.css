@@ -23,6 +23,31 @@
     }
 }
 
+@-webkit-keyframes fadeInBody {
+    0% {
+        background: #373737;
+        opacity: 0;
+    }
+    100% {
+        background: url(01.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position-x: 0;
+        background-position-y: 0;
+        background-size: cover;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .login-submit, .login-submit:before, .login-submit:after {
     background: #373737;
 }

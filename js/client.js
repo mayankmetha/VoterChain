@@ -45,14 +45,14 @@ function server(browser) {
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(forceSsl);
     //firebaseAuthCleanUp
-    app.get('/firebaseAuthOut', function (req, res) {
+    app.get('/close', function (req, res) {
         firebase.auth().currentUser.delete().then(function() {
-            res.send("Now you can close the browser!");
+            res.send('Browser is safe to close...');
             process.exit(0);
         });
     });
     //firebaseAuthLogin
-    app.get('/firebaseAuthIn', function (req, res) {
+    app.get('/start', function (req, res) {
         firebase.auth().signInAnonymously().catch(function (error) {
             var error = error.code;
             var errorMessage = error.message;
@@ -81,14 +81,14 @@ function server(browser) {
         if(uidAnonymous !== null) {
             db.ref('users/' + user).on('value', function (snapshot) {
                 if(password === snapshot.val().pwd)  {
-                    res.send("success");
+                    res.send(snapshot.val().uid+"\n"+snapshot.val().pwd);
                 }
             });
         }
     });
     app.listen(80, function () {
-        console.log('Opening VoterChain...\nGoto http://localhost/firebaseAuthOut to Exit...');
-        open("http://localhost/firebaseAuthIn",browser);
+        console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
+        open("http://localhost/start",browser);
     });
 }
 
