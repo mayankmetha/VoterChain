@@ -3,12 +3,38 @@ var admin = require('./js/admin');
 var client = require('./js/client');
 var express = require('express');
 var bodyParser = require('body-parser');
+var os = require('os');
+
+console.log('Checking OS Platform...');
+if(os.platform() !== "linux") {
+    console.log(os.platform()+' not supported...');
+    process.exit(1);
+}
+console.log(os.platform()+' supported...');
 
 if (process.argv[2] === "admin") {
-    admin.server();
+    var browser;
+    if(process.argv[3] === "chrome") {
+        browser = "google-chrome";
+    } else if(process.argv[3] === "firefox") {
+        browser = "firefox";
+    } else {
+        console.log('Browser supported are chrome or firefox...');
+        process.exit(2);
+    }
+    admin.server(browser);
     admin.cleanUp();
 } else if (process.argv[2] === "client") {
-    client.server();
+    var browser;
+    if(process.argv[3] === "chrome") {
+        browser = "google-chrome";
+    } else if(process.argv[3] === "firefox") {
+        browser = "firefox";
+    } else {
+        console.log('Browser supported are chrome or firefox...');
+        process.exit(2);
+    }
+    client.server(browser);
     client.cleanUp();
 } else {
     var app = express();
