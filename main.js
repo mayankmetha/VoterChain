@@ -26,7 +26,11 @@ if (process.argv[2] === "admin") {
     } else if(process.argv[3] === "safari" && platform === "darwin") {
         browser = "safari";
     } else {
-        console.log('Browser supported are chrome, safari or firefox...');
+        if(platform === "linux") {
+            console.log('Browser supported are chrome or firefox...');
+        } else {
+            console.log('Browser supported are chrome, safari or firefox...');
+        }
         process.exit(0);
     }
     admin.server(browser);
@@ -44,7 +48,11 @@ if (process.argv[2] === "admin") {
     } else if(process.argv[3] === "safari" && platform === "darwin") {
         browser = "safari";
     } else {
-        console.log('Browser supported are chrome, safari or firefox...');
+        if(platform === "linux") {
+            console.log('Browser supported are chrome or firefox...');
+        } else {
+            console.log('Browser supported are chrome, safari or firefox...');
+        }
         process.exit(0);
     }
     client.server(browser);
