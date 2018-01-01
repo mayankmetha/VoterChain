@@ -8,7 +8,7 @@ var os = require('os');
 console.log('Checking OS Platform...');
 if(os.platform() !== "linux" && os.platform() !== "darwin") {
     console.log(os.platform()+' not supported...');
-    process.exit(1);
+    process.exit(0);
 }
 var platform = os.platform();
 console.log(platform+' supported...');
@@ -27,7 +27,7 @@ if (process.argv[2] === "admin") {
         browser = "safari";
     } else {
         console.log('Browser supported are chrome, safari or firefox...');
-        process.exit(2);
+        process.exit(0);
     }
     admin.server(browser);
     admin.cleanUp();
@@ -45,7 +45,7 @@ if (process.argv[2] === "admin") {
         browser = "safari";
     } else {
         console.log('Browser supported are chrome, safari or firefox...');
-        process.exit(2);
+        process.exit(0);
     }
     client.server(browser);
     client.cleanUp();
