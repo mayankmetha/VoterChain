@@ -6,20 +6,27 @@ var bodyParser = require('body-parser');
 var os = require('os');
 
 console.log('Checking OS Platform...');
-if(os.platform() !== "linux") {
+if(os.platform() !== "linux" && os.platform() !== "darwin") {
     console.log(os.platform()+' not supported...');
     process.exit(1);
 }
-console.log(os.platform()+' supported...');
+var platform = os.platform();
+console.log(platform+' supported...');
 
 if (process.argv[2] === "admin") {
     var browser;
     if(process.argv[3] === "chrome") {
-        browser = "google-chrome";
+        if(platform === "linux") {
+            browser = "google-chrome";
+        } else {
+            browser = "google chrome"
+        }
     } else if(process.argv[3] === "firefox") {
         browser = "firefox";
+    } else if(process.argv[3] === "safari" && platform === "darwin") {
+        browser = "safari";
     } else {
-        console.log('Browser supported are chrome or firefox...');
+        console.log('Browser supported are chrome, safari or firefox...');
         process.exit(2);
     }
     admin.server(browser);
@@ -27,11 +34,17 @@ if (process.argv[2] === "admin") {
 } else if (process.argv[2] === "client") {
     var browser;
     if(process.argv[3] === "chrome") {
-        browser = "google-chrome";
+        if(platform === "linux") {
+            browser = "google-chrome";
+        } else {
+            browser = "google chrome"
+        }
     } else if(process.argv[3] === "firefox") {
         browser = "firefox";
+    } else if(process.argv[3] === "safari" && platform === "darwin") {
+        browser = "safari";
     } else {
-        console.log('Browser supported are chrome or firefox...');
+        console.log('Browser supported are chrome, safari or firefox...');
         process.exit(2);
     }
     client.server(browser);

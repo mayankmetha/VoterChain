@@ -2,6 +2,7 @@
     0% {
         background: #373737;
         opacity: 0;
+        -webkit-opacity: 0;
     }
     100% {
         background: url(01.jpg);
@@ -11,15 +12,18 @@
         background-position-y: 0;
         background-size: cover;
         opacity: 1;
+        -webkit-opacity: 1;
     }
 }
 
 @keyframes fadeIn {
     0% {
         opacity: 0;
+        -webkit-opacity: 0;
     }
     100% {
         opacity: 1;
+        -webkit-opacity: 1;
     }
 }
 
@@ -27,6 +31,7 @@
     0% {
         background: #373737;
         opacity: 0;
+        -webkit-opacity: 0;
     }
     100% {
         background: url(01.jpg);
@@ -36,15 +41,18 @@
         background-position-y: 0;
         background-size: cover;
         opacity: 1;
+        -webkit-opacity: 1;
     }
 }
 
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0;
+        -webkit-opacity: 0;
     }
     100% {
         opacity: 1;
+        -webkit-opacity: 1;
     }
 }
 
@@ -52,9 +60,7 @@
     background: #373737;
 }
 
-body {
-    color: #404040;
-    font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+html {
     animation-name: fadeInBody;
     animation-delay: 0.0s;
     animation-duration: 0.5s;
@@ -69,7 +75,11 @@ body {
     -webkit-animation-duration: 0.5s;
     -webkit-animation-timing-function: ease-in;
     -webkit-animation-fill-mode: both;
+}
 
+body {
+    color: #404040;
+    font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .login-card {
