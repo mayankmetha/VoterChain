@@ -1,7 +1,7 @@
 function signin() {
     // FirebaseUI config.
     var uiConfig = {
-        signInSuccessUrl: 'http://localhost/admin',
+        signInSuccessUrl: '/admin',
         signInOptions: [
             {
                 provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,

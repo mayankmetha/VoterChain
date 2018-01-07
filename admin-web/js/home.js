@@ -18,7 +18,7 @@ function main() {
             // User is signed out.
             admin = null;
             db = null;
-            window.location = "http://localhost/";
+            window.location = "/";
         }
     }, function (error) {
         console.log(error);
