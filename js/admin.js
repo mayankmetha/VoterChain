@@ -65,6 +65,10 @@ function server(browser) {
         res.send("Now you can close the browser!");
         process.exit(0);
     });
+
+    app.get('*' , function(req,res) {
+        res.sendFile(path.join(__dirname + '/../admin-web/html/404.html'));
+    });
     
     app.listen(80, function() {
         console.log('Opening VoterChain Admin...\nGoto http://localhost/exit to exit...');
