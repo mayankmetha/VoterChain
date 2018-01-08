@@ -22,17 +22,18 @@
     <div id="page1part2">
         <div class="form">
             <form>
+                <p class="login">LOGIN</p>
                 <p>
                     <input type="text" placeholder="username" />
                     <br />
-                    <span class="correct" style="visibility: hidden"><i class="fas fa-check">Valid Input</i></span>
-                    <span class="incorrect" style="visibility: hidden"><i class="fas fa-times">Invalid Input</i></span>
+                    <span class="correct" id="user-green" style="display:none"><i class="fas fa-check"></i> Valid</span>
+                    <span class="incorrect" id="user-red" style="display:none"><i class="fas fa-times"></i> Invalid</span>
                 </p>
                 <p>
                     <input type="password" placeholder="password" />
                     <br />
-                    <span class="correct" style="visibility: hidden"><i class="fas fa-check">Valid Input</i></span>
-                    <span class="incorrect" style="visibility: hidden"><i class="fas fa-times">Invalid Input</i></span>
+                    <span class="correct" id="pwd-green" style="display:none"><i class="fas fa-check"></i> Valid</span>
+                    <span class="incorrect" id="pwd-red" style="display:none"><i class="fas fa-times"></i> Invalid</span>
                 </p>
                 <p>
                     <button>Login</button>

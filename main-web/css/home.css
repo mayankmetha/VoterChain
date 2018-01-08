@@ -27,13 +27,12 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 24px;
     font-weight: 250;
-    color: antiquewhite
+    color: white;
 }
 
 form {
     background-color: white;
     width: 280px;
-    display: inline-block;
 }
 
 input, button {
@@ -73,13 +72,30 @@ button {
     justify-content: center;
 }
 
+.login {
+    position: relative;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 250;
+    color: #00b6a4;
+    padding: 5px 5px;
+    border-bottom: 2px solid #00b6a4;
+    margin: 0% 0%;
+}
 
 .correct {
     color: green;
+    padding-left: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
 }
 
 .incorrect {
     color: red;
+    padding-left: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 640px) {
