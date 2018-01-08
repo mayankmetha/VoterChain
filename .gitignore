@@ -5,3 +5,4 @@ config.js
 *.crt
 *.key
 .DS_Store
+*.7z
