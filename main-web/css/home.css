@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0% 0%;
+    padding: 0% 0%;
+}
+
+.title {
+    position: relative;
+    margin-top: 150px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+}
+
+.desc {
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 250;
+    color: antiquewhite
+}
+
+@media screen and (min-width: 480px) {
+    
+    #page1part1 {
+        height:100%;
+        width: 50%;
+        float: left;
+        background: #40e0d0;
+    }
+    
+    #page1part2 {
+        height: 100%;
+        width: 50%;
+        float: right;
+        background: #40e0d0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    
+}
