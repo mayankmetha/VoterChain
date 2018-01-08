@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoterChain</title>
     <link type="text/css" rel="stylesheet" href="../css/home.css" />
+    <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/fontawesome/fontawesome-all.js"></script>
 </head>
 
 <body>
@@ -22,12 +24,18 @@
             <form>
                 <p>
                     <input type="text" placeholder="username" />
+                    <br />
+                    <span class="correct" style="visibility: hidden"><i class="fas fa-check">Valid Input</i></span>
+                    <span class="incorrect" style="visibility: hidden"><i class="fas fa-times">Invalid Input</i></span>
                 </p>
                 <p>
                     <input type="password" placeholder="password" />
+                    <br />
+                    <span class="correct" style="visibility: hidden"><i class="fas fa-check">Valid Input</i></span>
+                    <span class="incorrect" style="visibility: hidden"><i class="fas fa-times">Invalid Input</i></span>
                 </p>
                 <p>
-                    <input type="submit" value="submit" />
+                    <button>Login</button>
                 </p>
             </form>
         </div>
