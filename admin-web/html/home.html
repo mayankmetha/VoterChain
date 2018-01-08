@@ -61,7 +61,7 @@
         </div>
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-third">
-                <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
+                <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('addCanModal').style.display='block'">
                     <i class="fas fa-plus fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>ADD CANDIDATE</h5>
@@ -253,6 +253,45 @@
                     </p>
                     <p>
                         <button id="rmUser" class="w3-btn w3-blue" onclick="event.preventDefault();rmusr()">Submit</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="addCanModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+            <header class="w3-container w3-blue w3-center">
+                <span onclick="document.getElementById('addCanModal').style.display='none';resetAddCanForm()" class="w3-button w3-display-topright">
+                    <i class="fas fa-2x fa-times" aria-hidden="true"></i>
+                </span>
+                <h3>ADD CANDIDATE</h3>
+            </header>
+            <div class="w3-container">
+                <form class="w3-container" id="addCanForm">
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="addcan" placeholder="Candidate ID">
+                        <label class="w3-text-red" id="addcan-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="addpar" placeholder="Party ID">
+                        <label class="w3-text-red" id="addpar-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="addcon" placeholder="Constitution ID">
+                        <label class="w3-text-red" id="addcon-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <button id="addcanbutton" class="w3-btn w3-blue" onclick="event.preventDefault();addCanForm()">Submit</button>
                     </p>
                 </form>
             </div>
