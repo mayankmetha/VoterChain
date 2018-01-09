@@ -1,4 +1,4 @@
-html, body {
+html, body, #body {
     top: 0px;
     left: 0px;
     height: 100%;
@@ -100,10 +100,24 @@ button {
 
 @media only screen and (max-width: 640px) {
 
+    #page1 {
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        margin: 0% 0%;
+        padding: 0% 0%;
+    }
+
     #page1part1 {
         height: 100%;
         width: 100%;
         background: #00b6a4;
+        background-attachment: fixed;
+        background-image: url("../assets/intro.svg");
+		background-position: top right;
+		background-repeat: no-repeat;
+        background-size: auto 100%;
     }
     
     #page1part2 {
@@ -113,14 +127,28 @@ button {
     }
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 641px) {
+
+    #page1 {
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        margin: 0% 0%;
+        padding: 0% 0%;
+        background: #00b6a4;
+        background-attachment: fixed;
+        background-image: url("../assets/intro.svg");
+		background-position: top right;
+		background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
     
     #page1part1 {
         display: block;
         height:100%;
         width: 50%;
         float: left;
-        background: #00b6a4;
     }
     
     #page1part2 {
@@ -128,6 +156,5 @@ button {
         height: 100%;
         width: 50%;
         float: right;
-        background: #00b6a4;
     }
 }
