@@ -1,10 +1,16 @@
-html, body {
+html, body{
     top: 0px;
     left: 0px;
     height: 100%;
     width: 100%;
     margin: 0% 0%;
     padding: 0% 0%;
+    position: absolute;
+    overflow: auto;
+    scroll-snap-points-y: repeat(100%);
+    scroll-snap-type: mandatory;
+    -webkit-scroll-snap-type: mandatory;
+    scroll-snap-destination: 100% 0%;
 }
 
 .title {
