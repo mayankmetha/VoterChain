@@ -106,7 +106,7 @@ button {
         display: block;
         background: #00b6a4;
         background-attachment: fixed;
-        background-image: url("../assets/intro.svg");
+        background-image: url("../assets/home1.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;
@@ -157,7 +157,7 @@ button {
         float: left;
         background: #00b6a4;
         background-attachment: fixed;
-        background-image: url("../assets/intro.svg");
+        background-image: url("../assets/home1.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: 200% 100%;
@@ -170,7 +170,7 @@ button {
         float: right;
         background: #00b6a4;
         background-attachment: fixed;
-        background-image: url("../assets/intro.svg");
+        background-image: url("../assets/home1.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: 200% 100%;
