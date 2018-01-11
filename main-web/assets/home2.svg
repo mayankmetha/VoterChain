@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+width="1000px" height="500px" 
+viewBox="0 0 1000 500" zoomAndPan="disable" preserveAspectRatio="none">
+    <style type="text/css"><![CDATA[
+        polygon
+        {
+            fill: rgba(0,0,0,0);
+            stroke: rgba(255,255,255,0.20);
+			stroke-width: 1px;
+        }
+    ]]></style>
+
+	<polygon points="500,100 1000,250 1000,100"/>
+	
+</svg>
