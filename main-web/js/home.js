@@ -30,7 +30,7 @@ function mobile() {
         offset: 0,
         scrollbars: true,
         touchScroll: true,
-        updateHash: true,
+        updateHash: false,
         setHeights: false,
         easing: "easeOutExpo"
     });
@@ -43,7 +43,7 @@ function desktop() {
         offset: 0,
         scrollbars: true,
         touchScroll: true,
-        updateHash: true,
+        updateHash: false,
         setHeights: false,
         easing: 'easeOutExpo'
     });
