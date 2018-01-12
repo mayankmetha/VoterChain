@@ -143,6 +143,11 @@ button {
         width: 100%;
         background: #e09200;
         display: block;
+        background-attachment: fixed;
+        background-image: url("../assets/home3.svg");
+		background-position: top right;
+		background-repeat: no-repeat;
+        background-size: auto 100%;
     }
     
     #page3part2 {
@@ -213,6 +218,11 @@ button {
         width: 50%;
         float: left;
         background: #e09200;
+        background-attachment: fixed;
+        background-image: url("../assets/home3.svg");
+		background-position: top right;
+		background-repeat: no-repeat;
+        background-size: auto 100%;
     }
     
     #page3part2 {
@@ -221,6 +231,11 @@ button {
         width: 50%;
         float: right;
         background: #e09200;
+        background-attachment: fixed;
+        background-image: url("../assets/home3.svg");
+		background-position: top right;
+		background-repeat: no-repeat;
+        background-size: auto 100%;
     }
 
 }
