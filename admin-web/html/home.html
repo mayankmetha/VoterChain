@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="w3-third">
-                <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
+                <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('modCanModal').style.display='block'">
                     <i class="fas fa-pencil-alt fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>MODIFY CANDIDATE</h5>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="w3-third">
-                <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('').style.display='block'">
+                <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('rmCanModal').style.display='block'">
                     <i class="fas fa-trash fa-3x" aria-hidden="true" style="color:#2196F3"></i>
                     <div class="w3-text-blue w3-top-margin">
                         <h5>REMOVE CANDIDATE</h5>
@@ -270,7 +270,7 @@
             <div class="w3-container">
                 <form class="w3-container" id="addCanForm">
                     <p>
-                        <input class="w3-input w3-text-blue" type="text" id="addcan" placeholder="Candidate ID">
+                        <input class="w3-input w3-text-blue" type="text" id="addcan" placeholder="Candidate Name">
                         <label class="w3-text-red" id="addcan-label" style="visibility: hidden">
                             <i class="fas fa-exclamation" aria-hidden="true"></i>
                             <span> Error</span>                        
@@ -291,7 +291,99 @@
                         </label>
                     </p>
                     <p>
+                        <input class="w3-input w3-text-blue" type="text" id="addele" placeholder="Election ID">
+                        <label class="w3-text-red" id="addele-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
                         <button id="addcanbutton" class="w3-btn w3-blue" onclick="event.preventDefault();addCanForm()">Submit</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modCanModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+            <header class="w3-container w3-blue w3-center">
+                <span onclick="document.getElementById('modCanModal').style.display='none';resetModCanForm()" class="w3-button w3-display-topright">
+                    <i class="fas fa-2x fa-times" aria-hidden="true"></i>
+                </span>
+                <h3>MODIFY CANDIDATE</h3>
+            </header>
+            <div class="w3-container">
+                <form class="w3-container" id="modCanForm">
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="modcan" placeholder="Candidate Name">
+                        <label class="w3-text-red" id="modcan-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="modpar" placeholder="Party ID">
+                        <label class="w3-text-red" id="modpar-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="modcon" placeholder="Constitution ID">
+                        <label class="w3-text-red" id="modcon-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="modele" placeholder="Election ID">
+                        <label class="w3-text-red" id="modele-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <button id="modcanbutton" class="w3-btn w3-blue" onclick="event.preventDefault();modCanForm()">Submit</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="rmCanModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+            <header class="w3-container w3-blue w3-center">
+                <span onclick="document.getElementById('rmCanModal').style.display='none';resetrmCanForm()" class="w3-button w3-display-topright">
+                    <i class="fas fa-2x fa-times" aria-hidden="true"></i>
+                </span>
+                <h3>REMOVE CANDIDATE</h3>
+            </header>
+            <div class="w3-container">
+                <form class="w3-container" id="rmCanForm">
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="rmpar" placeholder="Party ID">
+                        <label class="w3-text-red" id="rmpar-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="rmcon" placeholder="Constitution ID">
+                        <label class="w3-text-red" id="rmcon-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <input class="w3-input w3-text-blue" type="text" id="rmele" placeholder="Election ID">
+                        <label class="w3-text-red" id="rmele-label" style="visibility: hidden">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                            <span> Error</span>                        
+                        </label>
+                    </p>
+                    <p>
+                        <button id="rmcanbutton" class="w3-btn w3-blue" onclick="event.preventDefault();rmCanForm()">Submit</button>
                     </p>
                 </form>
             </div>
