@@ -10,6 +10,8 @@ function main() {
     resetAddCanForm();
     resetModCanForm();
     resetrmCanForm();
+    resetStartEleForm();
+    resetStopEleForm();
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -315,8 +317,8 @@ function rmusr() {
         document.getElementById('rmuser').classList.remove('w3-text-red');
         userFlag = true;
     }
-    if(admin != null && userFlag == true) {
-        db.ref('users/'+user).remove();
+    if (admin != null && userFlag == true) {
+        db.ref('users/' + user).remove();
         document.getElementById('rmUserModal').style.display = 'none';
         resetrmusr();
     }
@@ -335,7 +337,7 @@ function addCanForm() {
     var par = document.getElementById('addpar').value;
     var con = document.getElementById('addcon').value;
     var ele = document.getElementById('addele').value;
-    if(can === "") {
+    if (can === "") {
         document.getElementById('addcan').classList.remove('w3-text-blue');
         document.getElementById('addcan').classList.add('w3-text-red');
         document.getElementById('addcan-label').style.visibility = '';
@@ -346,7 +348,7 @@ function addCanForm() {
         document.getElementById('addcan-label').style.visibility = 'hidden';
         canFlag = true;
     }
-    if(par === "") {
+    if (par === "") {
         document.getElementById('addpar').classList.remove('w3-text-blue');
         document.getElementById('addpar').classList.add('w3-text-red');
         document.getElementById('addpar-label').style.visibility = '';
@@ -357,7 +359,7 @@ function addCanForm() {
         document.getElementById('addpar-label').style.visibility = 'hidden';
         parFlag = true;
     }
-    if(con === "") {
+    if (con === "") {
         document.getElementById('addcon').classList.remove('w3-text-blue');
         document.getElementById('addcon').classList.add('w3-text-red');
         document.getElementById('addcon-label').style.visibility = '';
@@ -368,7 +370,7 @@ function addCanForm() {
         document.getElementById('addcon-label').style.visibility = 'hidden';
         conFlag = true;
     }
-    if(ele === "") {
+    if (ele === "") {
         document.getElementById('addele').classList.remove('w3-text-blue');
         document.getElementById('addele').classList.add('w3-text-red');
         document.getElementById('addele-label').style.visibility = '';
@@ -379,8 +381,8 @@ function addCanForm() {
         document.getElementById('addele-label').style.visibility = 'hidden';
         eleFlag = true;
     }
-    if(admin !=null && parFlag == true && conFlag == true && eleFlag == true && canFlag == true) {
-        db.ref("candidate/"+ele+"/"+con).update({
+    if (admin != null && parFlag == true && conFlag == true && eleFlag == true && canFlag == true) {
+        db.ref("candidate/" + ele + "/" + con).update({
             [par]: can
         });
         document.getElementById('addCanModal').style.display = 'none';
@@ -410,7 +412,7 @@ function modCanForm() {
     var par = document.getElementById('modpar').value;
     var con = document.getElementById('modcon').value;
     var ele = document.getElementById('modele').value;
-    if(can === "") {
+    if (can === "") {
         document.getElementById('modcan').classList.remove('w3-text-blue');
         document.getElementById('modcan').classList.add('w3-text-red');
         document.getElementById('modcan-label').style.visibility = '';
@@ -421,7 +423,7 @@ function modCanForm() {
         document.getElementById('modcan-label').style.visibility = 'hidden';
         canFlag = true;
     }
-    if(par === "") {
+    if (par === "") {
         document.getElementById('modpar').classList.remove('w3-text-blue');
         document.getElementById('modpar').classList.add('w3-text-red');
         document.getElementById('modpar-label').style.visibility = '';
@@ -432,7 +434,7 @@ function modCanForm() {
         document.getElementById('modpar-label').style.visibility = 'hidden';
         parFlag = true;
     }
-    if(con === "") {
+    if (con === "") {
         document.getElementById('modcon').classList.remove('w3-text-blue');
         document.getElementById('modcon').classList.add('w3-text-red');
         document.getElementById('modcon-label').style.visibility = '';
@@ -443,7 +445,7 @@ function modCanForm() {
         document.getElementById('modcon-label').style.visibility = 'hidden';
         conFlag = true;
     }
-    if(ele === "") {
+    if (ele === "") {
         document.getElementById('modele').classList.remove('w3-text-blue');
         document.getElementById('modele').classList.add('w3-text-red');
         document.getElementById('modele-label').style.visibility = '';
@@ -454,9 +456,13 @@ function modCanForm() {
         document.getElementById('modele-label').style.visibility = 'hidden';
         eleFlag = true;
     }
-    if(admin !=null && parFlag == true && conFlag == true && eleFlag == true && canFlag == true) {
-        db.ref("candidate/"+ele+"/"+con).update({
-            [par]: can
+    if (admin != null && parFlag == true && conFlag == true && eleFlag == true && canFlag == true) {
+        db.ref("candidate/" + ele + "/" + con).on('value', function (snapshot) {
+            if (snapshot.val().par != "") {
+                db.ref("candidate/" + ele + "/" + con).update({
+                    [par]: can
+                });
+            }
         });
         document.getElementById('modCanModal').style.display = 'none';
         resetModCanForm();
@@ -484,7 +490,7 @@ function rmCanForm() {
     var par = document.getElementById('rmpar').value;
     var con = document.getElementById('rmcon').value;
     var ele = document.getElementById('rmele').value;
-    if(par === "") {
+    if (par === "") {
         document.getElementById('rmpar').classList.remove('w3-text-blue');
         document.getElementById('rmpar').classList.add('w3-text-red');
         document.getElementById('rmpar-label').style.visibility = '';
@@ -495,7 +501,7 @@ function rmCanForm() {
         document.getElementById('rmpar-label').style.visibility = 'hidden';
         parFlag = true;
     }
-    if(con === "") {
+    if (con === "") {
         document.getElementById('rmcon').classList.remove('w3-text-blue');
         document.getElementById('rmcon').classList.add('w3-text-red');
         document.getElementById('rmcon-label').style.visibility = '';
@@ -506,7 +512,7 @@ function rmCanForm() {
         document.getElementById('rmcon-label').style.visibility = 'hidden';
         conFlag = true;
     }
-    if(ele === "") {
+    if (ele === "") {
         document.getElementById('rmele').classList.remove('w3-text-blue');
         document.getElementById('rmele').classList.add('w3-text-red');
         document.getElementById('rmele-label').style.visibility = '';
@@ -517,8 +523,8 @@ function rmCanForm() {
         document.getElementById('rmele-label').style.visibility = 'hidden';
         eleFlag = true;
     }
-    if(admin !=null && parFlag == true && conFlag == true && eleFlag == true) {
-        db.ref("candidate/"+ele+"/"+con+"/"+par).remove();
+    if (admin != null && parFlag == true && conFlag == true && eleFlag == true) {
+        db.ref("candidate/" + ele + "/" + con + "/" + par).remove();
         document.getElementById('rmCanModal').style.display = 'none';
         resetrmCanForm();
     }
@@ -535,4 +541,70 @@ function resetrmCanForm() {
     document.getElementById('rmele-label').style.visibility = 'hidden';
     document.getElementById('rmele').classList.add('w3-text-blue');
     document.getElementById('rmele').classList.remove('w3-text-red');
+}
+
+function startEleForm() {
+    var flag = false;
+    var startEle = document.getElementById('startele').value;
+    if (startEle === "") {
+        document.getElementById('startele').classList.remove('w3-text-blue');
+        document.getElementById('startele').classList.add('w3-text-red');
+        document.getElementById('startele-label').style.visibility = '';
+        flag = false;
+    } else {
+        document.getElementById('startele').classList.add('w3-text-blue');
+        document.getElementById('startele').classList.remove('w3-text-red');
+        document.getElementById('startele-label').style.visibility = 'hidden';
+        flag = true;
+    }
+    if (admin != null && flag == true) {
+        var time = new Date().getTime();
+        db.ref("election/" + startEle).update({
+            start: time
+        });
+        document.getElementById('startEleModal').style.display = 'none';
+        resetStartEleForm();
+    }
+}
+
+function resetStartEleForm() {
+    document.getElementById('startEleForm').reset();
+    document.getElementById('startele-label').style.visibility = 'hidden';
+    document.getElementById('startele').classList.add('w3-text-blue');
+    document.getElementById('startele').classList.remove('w3-text-red');
+}
+
+function stopEleForm() {
+    var flag = false;
+    var stopEle = document.getElementById('stopele').value;
+    if (stopEle === "") {
+        document.getElementById('stopele').classList.remove('w3-text-blue');
+        document.getElementById('stopele').classList.add('w3-text-red');
+        document.getElementById('stopele-label').style.visibility = '';
+        flag = false;
+    } else {
+        document.getElementById('stopele').classList.add('w3-text-blue');
+        document.getElementById('stopele').classList.remove('w3-text-red');
+        document.getElementById('stopele-label').style.visibility = 'hidden';
+        flag = true;
+    }
+    if (admin != null && flag == true) {
+        db.ref("election/" + stopEle).on('value', function (snapshot) {
+            if (snapshot.val().start > 0) {
+                var time = new Date().getTime();
+                db.ref("election/" + stopEle).update({
+                    stop: time
+                });
+            }
+        });
+        document.getElementById('stopEleModal').style.display = 'none';
+        resetStopEleForm();
+    }
+}
+
+function resetStopEleForm() {
+    document.getElementById('stopEleForm').reset();
+    document.getElementById('stopele-label').style.visibility = 'hidden';
+    document.getElementById('stopele').classList.add('w3-text-blue');
+    document.getElementById('stopele').classList.remove('w3-text-red');
 }
