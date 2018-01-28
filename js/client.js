@@ -26,19 +26,6 @@ firebase.initializeApp(firebaseConfig.config);
 
 var db = firebase.database();
 
-function auth() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            isAnonymous = user.isAnonymous;
-            uidAnonymous = user.uid;
-        } else {
-            isAnonymous = null;
-            uid = null;
-            db = null;
-        }
-    });
-}
-
 function server(browser) {
     https.createServer(options,app).listen(443);
     app.use(bodyParser.json());
@@ -56,6 +43,12 @@ function server(browser) {
         firebase.auth().signInAnonymously().catch(function (error) {
             var error = error.code;
             var errorMessage = error.message;
+        });
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                isAnonymous = user.isAnonymous;
+                uidAnonymous = user.uid;
+            }
         });
         res.redirect('/');
     });
@@ -109,7 +102,7 @@ function server(browser) {
 function cleanUp() {
     process.on('SIGINT', () => {
         console.log('Exiting due to SIGINT signal...');
-        console.log('Report uid to admin:'+uidAnonymous);
+        console.log('Report uid to admin: ' + uidAnonymous);
         process.exit(0);
     });
     process.on('exit', () => {
