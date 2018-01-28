@@ -10,14 +10,12 @@ viewBox="0 0 1000 500" zoomAndPan="disable" preserveAspectRatio="none">
 		}
         #circle
         {
-            r: 5px;
             stroke: rgba(255,255,255,0);
             stroke-width: 0px;
             fill: rgba(255,255,255,0.50);
         }
         #hide
         {
-            r: 10px;
             stroke: #e90080;
             stroke-width: 0px;
             fill: #e90080;
@@ -49,46 +47,46 @@ viewBox="0 0 1000 500" zoomAndPan="disable" preserveAspectRatio="none">
     <line x1="750" y1="350" x2="850" y2="100" />
     <line x1="850" y1="100" x2="800" y2="0" />
 
-    <circle id="hide" cx="800" cy="500" />
-    <circle id="hide" cx="450" cy="500" />
-    <circle id="hide" cx="0" cy="400" />
-    <circle id="hide" cx="300" cy="500" />
-    <circle id="hide" cx="600" cy="450" />
-    <circle id="hide" cx="900" cy="450" />
-    <circle id="hide" cx="1000" cy="500" />
-    <circle id="hide" cx="0" cy="200" />
-    <circle id="hide" cx="200" cy="350" />
-    <circle id="hide" cx="450" cy="250" />
-    <circle id="hide" cx="750" cy="350" />
-    <circle id="hide" cx="1000" cy="250" />
-    <circle id="hide" cx="0" cy="100" />
-    <circle id="hide" cx="250" cy="50" />
-    <circle id="hide" cx="200" cy="0" />
-    <circle id="hide" cx="550" cy="150" />
-    <circle id="hide" cx="500" cy="0" />
-    <circle id="hide" cx="850" cy="100" />
-    <circle id="hide" cx="1000" cy="50" />
-    <circle id="hide" cx="800" cy="0" />
+    <circle id="hide" cx="800" cy="500" r="10" />
+    <circle id="hide" cx="450" cy="500" r="10" />
+    <circle id="hide" cx="0" cy="400" r="10" />
+    <circle id="hide" cx="300" cy="500" r="10" />
+    <circle id="hide" cx="600" cy="450" r="10" />
+    <circle id="hide" cx="900" cy="450" r="10" />
+    <circle id="hide" cx="1000" cy="500" r="10" />
+    <circle id="hide" cx="0" cy="200" r="10" />
+    <circle id="hide" cx="200" cy="350" r="10" />
+    <circle id="hide" cx="450" cy="250" r="10" />
+    <circle id="hide" cx="750" cy="350" r="10" />
+    <circle id="hide" cx="1000" cy="250" r="10" />
+    <circle id="hide" cx="0" cy="100" r="10" />
+    <circle id="hide" cx="250" cy="50" r="10" />
+    <circle id="hide" cx="200" cy="0" r="10" />
+    <circle id="hide" cx="550" cy="150" r="10" />
+    <circle id="hide" cx="500" cy="0" r="10" />
+    <circle id="hide" cx="850" cy="100" r="10" />
+    <circle id="hide" cx="1000" cy="50" r="10" />
+    <circle id="hide" cx="800" cy="0" r="10" />
 
-    <circle id="circle" cx="800" cy="500" />
-    <circle id="circle" cx="450" cy="500" />
-    <circle id="circle" cx="0" cy="400" />
-    <circle id="circle" cx="300" cy="500" />
-    <circle id="circle" cx="600" cy="450" />
-    <circle id="circle" cx="900" cy="450" />
-    <circle id="circle" cx="1000" cy="500" />
-    <circle id="circle" cx="0" cy="200" />
-    <circle id="circle" cx="200" cy="350" />
-    <circle id="circle" cx="450" cy="250" />
-    <circle id="circle" cx="750" cy="350" />
-    <circle id="circle" cx="1000" cy="250" />
-    <circle id="circle" cx="0" cy="100" />
-    <circle id="circle" cx="250" cy="50" />
-    <circle id="circle" cx="200" cy="0" />
-    <circle id="circle" cx="550" cy="150" />
-    <circle id="circle" cx="500" cy="0" />
-    <circle id="circle" cx="850" cy="100" />
-    <circle id="circle" cx="1000" cy="50" />
-    <circle id="circle" cx="800" cy="0" />
+    <circle id="circle" cx="800" cy="500" r="5" />
+    <circle id="circle" cx="450" cy="500" r="5" />
+    <circle id="circle" cx="0" cy="400" r="5" />
+    <circle id="circle" cx="300" cy="500" r="5" />
+    <circle id="circle" cx="600" cy="450" r="5" />
+    <circle id="circle" cx="900" cy="450" r="5" />
+    <circle id="circle" cx="1000" cy="500" r="5" />
+    <circle id="circle" cx="0" cy="200" r="5" />
+    <circle id="circle" cx="200" cy="350" r="5" />
+    <circle id="circle" cx="450" cy="250" r="5" />
+    <circle id="circle" cx="750" cy="350" r="5" />
+    <circle id="circle" cx="1000" cy="250" r="5" />
+    <circle id="circle" cx="0" cy="100" r="5" />
+    <circle id="circle" cx="250" cy="50" r="5" />
+    <circle id="circle" cx="200" cy="0" r="5" />
+    <circle id="circle" cx="550" cy="150" r="5" />
+    <circle id="circle" cx="500" cy="0" r="5" />
+    <circle id="circle" cx="850" cy="100" r="5" />
+    <circle id="circle" cx="1000" cy="50" r="5" />
+    <circle id="circle" cx="800" cy="0" r="5" />
 
 </svg>
