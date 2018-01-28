@@ -106,7 +106,7 @@ button {
         display: block;
         background: #00b6a4;
         background-attachment: fixed;
-        background-image: url("../assets/home1.svg");
+        background-image: url("/home1.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;
@@ -125,7 +125,7 @@ button {
         background: #e90080;
         display: block;
         background-attachment: fixed;
-        background-image: url("../assets/home2.svg");
+        background-image: url("/home2.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;
@@ -144,7 +144,7 @@ button {
         background: #e09200;
         display: block;
         background-attachment: fixed;
-        background-image: url("../assets/home3.svg");
+        background-image: url("/home3.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;
@@ -167,7 +167,7 @@ button {
         float: left;
         background: #00b6a4;
         background-attachment: fixed;
-        background-image: url("../assets/home1.svg");
+        background-image: url("/home1.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: 200% 100%;
@@ -180,7 +180,7 @@ button {
         float: right;
         background: #00b6a4;
         background-attachment: fixed;
-        background-image: url("../assets/home1.svg");
+        background-image: url("/home1.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: 200% 100%;
@@ -193,7 +193,7 @@ button {
         float: left;
         background: #e90080;
         background-attachment: fixed;
-        background-image: url("../assets/home2.svg");
+        background-image: url("/home2.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;
@@ -206,7 +206,7 @@ button {
         float: right;
         background: #e90080;
         background-attachment: fixed;
-        background-image: url("../assets/home2.svg");
+        background-image: url("/home2.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;
@@ -219,7 +219,7 @@ button {
         float: left;
         background: #e09200;
         background-attachment: fixed;
-        background-image: url("../assets/home3.svg");
+        background-image: url("/home3.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;
@@ -232,7 +232,7 @@ button {
         float: right;
         background: #e09200;
         background-attachment: fixed;
-        background-image: url("../assets/home3.svg");
+        background-image: url("/home3.svg");
 		background-position: top right;
 		background-repeat: no-repeat;
         background-size: auto 100%;

@@ -57,24 +57,37 @@ function server(browser) {
             var error = error.code;
             var errorMessage = error.message;
         });
-        res.redirect('/login');
+        res.redirect('/');
     });
-    //login
-    app.get('/login', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/html/login.html'));
+    //home
+    app.get('/', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/html/home.html'));
     });
-    app.get('/login.css', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/css/login.css'));
+    app.get('/home.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/home.css'));
     });
-    app.get('/01.jpg', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/assets/01.jpg'));
+    app.get('/home.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/home.js'));
     });
-    app.get('/arrow.png', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/assets/arrow.png'));
+    app.get('/jquery.min.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.min.js'));
     });
-    app.get('/cryptojs/sha512.js', function(req,res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/cryptojs/sha512.js'));
+    app.get('/jquery.scrollify.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.scrollify.js'));
     });
+    app.get('/fontawesome-all.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
+    });
+    app.get('/home1.svg', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/assets/home1.svg'));
+    });
+    app.get('/home2.svg', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/assets/home2.svg'));
+    });
+    app.get('/home3.svg', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/assets/home3.svg'));
+    });
+    /*
     app.post('/login', function (req, res) {
         user = req.body.user;
         var password = req.body.password;
@@ -86,6 +99,7 @@ function server(browser) {
             });
         }
     });
+    */
     app.listen(80, function () {
         console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
         open("http://localhost/start",browser);
@@ -95,6 +109,7 @@ function server(browser) {
 function cleanUp() {
     process.on('SIGINT', () => {
         console.log('Exiting due to SIGINT signal...');
+        console.log('Report uid to admin:'+uidAnonymous);
         process.exit(0);
     });
     process.on('exit', () => {
