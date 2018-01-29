@@ -62,9 +62,10 @@ function server(browser) {
     app.get('/addPeer', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/peer.html'));
     });
-    app.post('/addPeer', function(res,res) {
-        blockchain.connectToPeer(req.body.peer);
-        res.send(req.body.peer+" has been added");
+    app.post('/addPeer', function(req,res) {
+        var peer = req.body.peer;
+        blockchain.connectToPeer(peer);
+        res.send(peer+" has been added");
     });
     //home
     app.get('/', function (req, res) {
