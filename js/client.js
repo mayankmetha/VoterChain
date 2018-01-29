@@ -10,6 +10,7 @@ var fs = require('fs');
 var https = require('https');
 var forceSsl = require('express-force-ssl');
 var firebaseConfig = require('./config');
+var blockchain = require('./blockchain');
 
 var app = express();
 var key = fs.readFileSync(path.join(__dirname+'/../ssl/private.key'));
@@ -50,7 +51,20 @@ function server(browser) {
                 uidAnonymous = user.uid;
             }
         });
+        res.redirect('/servePeer');
+    });
+    //start peer server
+    app.get('/servePeer', function(req,res) {
+        blockchain.server('127.0.0.1','6000');
         res.redirect('/');
+    });
+    //add peer
+    app.get('/addPeer', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/html/peer.html'));
+    });
+    app.post('/addPeer', function(res,res) {
+        blockchain.connectToPeer(req.body.peer);
+        res.send(req.body.peer+" has been added");
     });
     //home
     app.get('/', function (req, res) {
@@ -83,6 +97,7 @@ function server(browser) {
     app.get('/home3.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/home3.svg'));
     });
+    //login
     app.post('/login', function (req, res) {
         user = req.body.user;
         var password = CryptoJS.SHA512(req.body.password).toString();
@@ -95,8 +110,8 @@ function server(browser) {
         }
     });
     app.listen(80, function () {
-        console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
-        open("http://localhost/start",browser);
+        console.log('Opening VoterChain...\nGoto http://127.0.0.1/close to Exit...');
+        open("http://127.0.0.1/start",browser);
     });
 }
 

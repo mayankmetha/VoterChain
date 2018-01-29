@@ -71,8 +71,8 @@ function server(browser) {
     });
     
     app.listen(80, function() {
-        console.log('Opening VoterChain Admin...\nGoto http://localhost/exit to exit...');
-        open("http://localhost",browser);    
+        console.log('Opening VoterChain Admin...\nGoto http://127.0.0.1/exit to exit...');
+        open("http://127.0.0.1",browser);    
     });
 }
 
