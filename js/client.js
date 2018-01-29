@@ -55,7 +55,8 @@ function server(browser) {
     });
     //start peer server
     app.get('/servePeer', function(req,res) {
-        blockchain.server('/*your ip*/','6000');
+        //TODO: use you ip address instead of 127.0.0.1
+        blockchain.server('127.0.0.1','6000');
         res.redirect('/');
     });
     //add peer
