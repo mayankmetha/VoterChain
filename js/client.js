@@ -62,6 +62,9 @@ function server(browser) {
     app.get('/home.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/home.js'));
     });
+    app.get('/login.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/login.js'));
+    });
     app.get('/jquery.min.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.min.js'));
     });
@@ -80,19 +83,17 @@ function server(browser) {
     app.get('/home3.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/home3.svg'));
     });
-    /*
     app.post('/login', function (req, res) {
         user = req.body.user;
-        var password = req.body.password;
+        var password = CryptoJS.SHA512(req.body.password).toString();
         if(uidAnonymous !== null) {
             db.ref('users/' + user).on('value', function (snapshot) {
                 if(password === snapshot.val().pwd)  {
-                    res.send(snapshot.val().uid+"\n"+snapshot.val().pwd);
+                    res.send("UID: "+snapshot.val().uid+"\nPWD: "+snapshot.val().pwd+"\nCONID: "+snapshot.val().conid);
                 }
             });
         }
     });
-    */
     app.listen(80, function () {
         console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
         open("http://localhost/start",browser);
