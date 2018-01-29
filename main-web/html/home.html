@@ -10,9 +10,10 @@
     <script type="text/javascript" src="fontawesome-all.js"></script>
     <script type="text/javascript" src="jquery.scrollify.js"></script>
     <script type="text/javascript" src="home.js"></script>
+    <script type="text/javascript" src="login.js"></script>
 </head>
 
-<body>
+<body onload="resetForms()">
         <div id="page1part1" class="mobile desktop">
             <div class="title">
                 VoterChain
@@ -23,10 +24,10 @@
         </div>
         <div id="page1part2" class="mobile">
             <div class="form">
-                <form>
+                <form id="loginForm" action="/login" method="POST">
                     <p class="login">LOGIN</p>
                     <p>
-                        <input type="text" placeholder="username" />
+                        <input name="user" id="user" type="text" placeholder="username" />
                         <br />
                         <span class="correct" id="user-green" style="display:none">
                             <i class="fas fa-check"></i> Valid</span>
@@ -34,7 +35,7 @@
                             <i class="fas fa-times"></i> Invalid</span>
                     </p>
                     <p>
-                        <input type="password" placeholder="password" />
+                        <input name="password" id="password" type="password" placeholder="password" />
                         <br />
                         <span class="correct" id="pwd-green" style="display:none">
                             <i class="fas fa-check"></i> Valid</span>
@@ -42,7 +43,7 @@
                             <i class="fas fa-times"></i> Invalid</span>
                     </p>
                     <p>
-                        <button>Login</button>
+                        <button type="submit" onclick="event.preventDefault();login()">Login</button>
                     </p>
                 </form>
             </div>
