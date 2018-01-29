@@ -544,8 +544,9 @@ function resetrmCanForm() {
 }
 
 function startEleForm() {
-    var flag = false;
+    var flag = false, regexFlag = false;
     var startEle = document.getElementById('startele').value;
+    var conRegex = document.getElementById('starteleConRegex').value;
     if (startEle === "") {
         document.getElementById('startele').classList.remove('w3-text-blue');
         document.getElementById('startele').classList.add('w3-text-red');
@@ -557,10 +558,23 @@ function startEleForm() {
         document.getElementById('startele-label').style.visibility = 'hidden';
         flag = true;
     }
-    if (admin != null && flag == true) {
+    if (conRegex === "") {
+        document.getElementById('starteleConRegex').classList.remove('w3-text-blue');
+        document.getElementById('starteleConRegex').classList.add('w3-text-red');
+        document.getElementById('starteleConRegex-label').style.visibility = '';
+        regexFlag = false;
+    } else {
+        document.getElementById('starteleConRegex').classList.add('w3-text-blue');
+        document.getElementById('starteleConRegex').classList.remove('w3-text-red');
+        document.getElementById('starteleConRegex-label').style.visibility = 'hidden';
+        regexFlag = true;
+    }
+    if (admin != null && flag == true && regexFlag == true) {
         var time = new Date().getTime();
         db.ref("election/" + startEle).update({
-            start: time
+            conRegex: conRegex,
+            start: time,
+            stop: "NAN"
         });
         document.getElementById('startEleModal').style.display = 'none';
         resetStartEleForm();
