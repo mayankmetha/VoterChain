@@ -1,0 +1,71 @@
+html {
+    top: 0px;
+    left: 0px;
+    margin: 0% 0%;
+    padding: 0% 0%;
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    top: 0px;
+    left: 0px;
+    margin: 0% 0%;
+    padding: 0% 0%;
+    background: #a569bd ;
+    background-image: url('cogs.svg');
+    background-position: top right;
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.card {
+    width: 280px;
+    background-color:  #ffffff ;
+    position: relative;
+    top:100px;
+    display: block;
+    align-content: center;
+    justify-content: center;
+    margin: auto auto;
+}
+
+h1 {
+    color: black;
+    position: relative;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 300;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+    border-bottom: 2px solid  #a569bd ;
+}
+
+input {
+    position: relative;
+    width: 250px;
+    margin-left: 15px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px solid black;
+    border-bottom: 1px solid #a569bd;
+}
+
+button {
+    position: relative;
+    width: 250px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #a569bd;
+    border: 0.5px solid black;
+    border-radius: 25em;
+    color: white;
+}

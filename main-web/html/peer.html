@@ -9,11 +9,17 @@
 </head>
 
 <body onload="document.getElementById('peerForm').reset();">
-    <h1>ADD PEER</h1>
-    <form id="peerForm" action="/addPeer" method="POST">
-        <input type="text" name="peer" id="ip" placeholder="websocket address" />
-        <button type="submit" value="submit">Add Peer</button>
-    </form>
+    <div class="card">
+        <h1>ADD PEER</h1>
+        <form id="peerForm" action="/addPeer" method="POST">
+            <p>
+                <input type="text" name="peer" id="ip" placeholder="websocket address" />
+            </p>
+            <p>
+                <button type="submit" value="submit">Add Peer</button>
+            </p>
+        </form>
+    </div>
 </body>
 
 </html>
