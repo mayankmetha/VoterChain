@@ -8,6 +8,7 @@ var CryptoJS = require('crypto-js');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var https = require('https');
+var ip = require('ip');
 var forceSsl = require('express-force-ssl');
 var firebaseConfig = require('./config');
 var blockchain = require('./blockchain');
@@ -26,6 +27,8 @@ var user;
 firebase.initializeApp(firebaseConfig.config);
 
 var db = firebase.database();
+
+var myip = ip.address();
 
 function server(browser) {
     https.createServer(options,app).listen(443);
@@ -55,7 +58,7 @@ function server(browser) {
     });
     //start peer server
     app.get('/servePeer', function(req,res) {
-        blockchain.server('127.0.0.1','6000');
+        blockchain.server(myip,'6000');
         res.redirect('/');
     });
     //add peer
@@ -111,8 +114,8 @@ function server(browser) {
         }
     });
     app.listen(80, function () {
-        console.log('Opening VoterChain...\nGoto http://127.0.0.1/close to Exit...');
-        open("http://127.0.0.1/start",browser);
+        console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
+        open("http://localhost/start",browser);
     });
 }
 
