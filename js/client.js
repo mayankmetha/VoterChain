@@ -65,6 +65,9 @@ function server(browser) {
     app.get('/addPeer', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/peer.html'));
     });
+    app.get('/peer.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/peer.css'));
+    });
     app.post('/addPeer', function(req,res) {
         var peer = req.body.peer;
         blockchain.connectToPeer(peer);
