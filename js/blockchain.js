@@ -178,7 +178,7 @@ var sockets = [];
 function server(ip, ipPort) {
     var server = new webSocket.Server({ port: ipPort, host: ip });
     server.on('connection', ws => initConnection(ws));
-    console.log('P2PServer: ' + ip + ':' + ipPort);
+    console.log('Your p2p socket is ws://' + ip + ':' + ipPort);
 }
 
 //init Connection
