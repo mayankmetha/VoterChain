@@ -107,6 +107,12 @@ function server(browser) {
     app.get('/home3.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/home3.svg'));
     });
+    app.get('/blocks', function(req,res) {
+        res.send(JSON.stringify(blockchain.getChain()));
+    });
+    app.get('/count', function(req,res) {
+        res.send(JSON.stringify(blockchain.getChain().length));
+    });
     //login
     app.post('/login', function (req, res) {
         user = req.body.user;

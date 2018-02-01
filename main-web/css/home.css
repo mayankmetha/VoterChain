@@ -63,13 +63,30 @@ button {
     color: white;
 }
 
-.form {
+.form, .table {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     align-content: center;
     justify-content: center;
+}
+
+table {
+    width: 280px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    color: white;
+}
+
+thead td {
+    font-style: italic;
+    border-bottom: 2px solid white;
+}
+
+tbody {
+    font-style: normal;
 }
 
 .login {

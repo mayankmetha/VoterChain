@@ -8,6 +8,8 @@ $(document).ready(function () {
         //desktop screen
         desktop();
     }
+    getCount();
+    getBlock();
 });
 $(window).resize(function () {
     var width = $(window).width();
@@ -47,3 +49,49 @@ function desktop() {
         easing: 'easeOutExpo'
     });
 }
+
+function getCount() {
+    $.ajax({
+        dataType: "json",
+        url: "/count",
+        type: "GET",
+        success: function (data) {
+            var str = "Block count: " + data;
+            $("#counter").text(str);
+        }
+    });
+    setTimeout(getCount, 1000);
+}
+
+function getBlock() {
+    $.ajax({
+        dataType: "json",
+        url: "/blocks",
+        type: "GET",
+        success: function (data) {
+            $("#blocks").text("");
+            drawTable(data);
+        }
+    });
+   // setTimeout(getBlock, 1000);
+}
+
+function drawTable(data) {
+    var rows = data.length - 1;
+    var limit;
+    if (rows <= 9) {
+        limit = 0;
+    } else {
+        limit = data.length - 10;
+    }
+    var str = "<table><thead><td>Index</td><td>TimeStamp</td><td>Hash</td></thead><tbody>";
+    for (var i = rows; i >= limit; i--) {
+        var hash = data[i].hash;
+        var row = "<tr><td>"+data[i].index + "</td><td>" + data[i].time + "</td><td>" + hash.substr(0, 10) + "..." + "</td></tr>";
+        str += row;
+    }
+    str += "</tbody></table>";
+    $("#blocks").append(str);
+}
+
+
