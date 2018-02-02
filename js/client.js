@@ -35,6 +35,18 @@ function server(browser) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(forceSsl);
+    //test code
+    //TODO: test mining of blocks
+    app.post('/mineBlock', (req, res) => {
+        var newBlock = blockchain.genBlocks(req.body.uid, req.body.eleid, req.body.conid, req.body.parid);
+        if (blockchain.addBlock(newBlock)) {
+            blockchain.broadcast(blockchain.responseLatestMsg());
+            console.log('block added: ' + JSON.stringify(newBlock));
+        } else {
+            console.log('cannot add illegal block!');
+        }
+        res.send();
+    });
     //firebaseAuthCleanUp
     app.get('/close', function (req, res) {
         firebase.auth().currentUser.delete().then(function() {
