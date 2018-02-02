@@ -1,8 +1,5 @@
-var blockchain = require('./js/blockchain');
 var admin = require('./js/admin');
 var client = require('./js/client');
-var express = require('express');
-var bodyParser = require('body-parser');
 var os = require('os');
 
 var platform = os.platform();
