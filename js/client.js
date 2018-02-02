@@ -11,7 +11,7 @@ var https = require('https');
 var ip = require('ip');
 var forceSsl = require('express-force-ssl');
 var firebaseConfig = require('./config');
-var blockchain = require('./blockchain');
+var blockchain = require('./blockchain-new');
 
 var app = express();
 var key = fs.readFileSync(path.join(__dirname+'/../ssl/private.key'));
@@ -31,10 +31,10 @@ var db = firebase.database();
 var myip = ip.address();
 
 function server(browser) {
-    https.createServer(options,app).listen(443);
+    //https.createServer(options,app).listen(443);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
-    app.use(forceSsl);
+    //app.use(forceSsl);
     //test code
     //TODO: test mining of blocks
     app.post('/mineBlock', (req, res) => {

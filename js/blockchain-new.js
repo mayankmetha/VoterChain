@@ -1,17 +1,20 @@
 //external modules
 var CryptoJS = require('crypto-js');
 var webSocket = require('ws');
+var hex2bin = require('./hex2bin');
 
 /*
     block
 */
 //block of blockchain
-function block(index, prevHash, time, data, hash) {
+function block(index, prevHash, time, data, hash, difficulty, nonce) {
     this.index = index;
     this.prevHash = prevHash;
     this.time = time;
     this.data = data;
     this.hash = hash;
+    this.difficulty = difficulty;
+    this.nonce = nonce;
 }
 
 /*
@@ -40,25 +43,69 @@ function genHash(data) {
 
 //block 0
 function setGenBlock() {
-    return new block(0, "0", 0, "genesis block", CryptoJS.SHA256("0").toString());
+    return new block(0, "0", 0, "genesis block", CryptoJS.SHA256("0").toString(), 0, 0);
 }
 
 //variable
 var blockchain = [setGenBlock()];
+var BLOCK_GENERATION_INTERVAL = 10;
+var DIFFICULTY_ADJUSTMENT_INTERVAL = 10;
+
+//get difficulty
+function getDifficulty(block) {
+    if (block.index % DIFFICULTY_ADJUSTMENT_INTERVAL === 0 && block.index !== 0) {
+        return getAdjustedDifficulty(block);
+    } else {
+        return block.difficulty;
+    }
+}
+
+//adjust difficulty
+function getAdjustedDifficulty(block) {
+    var prevAdjustmentBlock = blockchain[blockchain.length - DIFFICULTY_ADJUSTMENT_INTERVAL];
+    var timeExpected = BLOCK_GENERATION_INTERVAL * DIFFICULTY_ADJUSTMENT_INTERVAL;
+    var timeTaken = block.time - prevAdjustmentBlock.time;
+    if (timeTaken < timeExpected / 2) {
+        return prevAdjustmentBlock.difficulty + 1;
+    } else if (timeTaken > timeExpected * 2) {
+        return prevAdjustmentBlock.difficulty - 1;
+    } else {
+        return prevAdjustmentBlock.difficulty;
+    }
+}
+
+//current time
+function getCurrentTime() {
+    return new Date().getTime();
+}
 
 //get last blocks
 function getLastBlock() {
     return blockchain[blockchain.length - 1];
-};
+}
 
 //generate blocks
 function genBlocks(uid, eleid, conid, parid) {
     var index = getLastBlock().index + 1;
     var prevHash = getLastBlock().hash;
-    var time = new Date().getTime();
+    var time = getCurrentTime();
     var data = new blockData(uid, eleid, conid, parid);
-    var hash = genHash(data);
-    return new block(index, prevHash, time, data, hash);
+    //var hash = genHash(data);
+    var difficulty = getDifficulty(getLastBlock());
+    return findBlock(index, prevHash, time, data, difficulty);
+    //return new block(index, prevHash, time, data, hash, difficulty, nonce);
+}
+
+//find block
+function findBlock(index, prevHash, time, data, difficulty) {
+    var nonce = 0;
+    while(true) {
+        var hash = genHash(data);
+        if(hashMatchesDifficulty(hash, difficulty)) {
+            return new block(index, prevHash, time, data, hash, difficulty, nonce);
+        }
+        nonce++;
+    }
 }
 
 //validate block added to blockchain
@@ -69,17 +116,50 @@ function isValidBlock(newBlock, prevBlock) {
     } else if (prevBlock.hash !== newBlock.prevHash) {
         console.log("prevHashNotMatchError");
         return false;
-    } else if (blockHash(newBlock) !== newBlock.hash) {
+    } else if(!isValidTimestamp(newBlock,prevBlock)) {
+        console.log("newBlockTimestampError");
+        return false;
+    }else if (!hasValidHash(newBlock)) {
         console.log("hashMismatchError");
         return false;
     }
     return true;
 }
 
+//validate timestamp 
+function isValidTimestamp(newBlock, prevBlock) {
+    return (prevBlock.time-1000 < newBlock.time) && (newBlock.time-1000 < getCurrentTime());
+}
+
+//is hash valid
+function hasValidHash(block) {
+    if(!hashMatchBlockContent(block)) {
+        console.log("Invalid hash");
+        return false;
+    }
+    if(!hashMatchesDifficulty(block.hash,block.difficulty)) {
+        console.log("Block difficulty error");
+        return false;
+    }
+    return true;
+}
+
+//hashMatchBlockContent
+function hashMatchBlockContent(block) {
+    return blockHash(block) === block.hash;
+}
+
+//hashMatchesDifficulty
+function hashMatchesDifficulty(hash, difficulty) {
+    var hashInBin = hex2bin.hex2bin(hash);
+    var reqPrefix = '0'.repeat(difficulty);
+    return hashInBin.startsWith(reqPrefix);
+}
+
 //check if hash has repeated
 function isHashRepeated(newBlock) {
-    for(var i=1;i<blockchain.length;i++) {
-        if(blockchain[i].hash ===  newBlock.hash) {
+    for (var i = 1; i < blockchain.length; i++) {
+        if (blockchain[i].hash === newBlock.hash) {
             return false;
         }
     }
@@ -116,9 +196,25 @@ function getChain() {
     return blockchain;
 }
 
+//getAccumulatedDifficulty
+function getAccumulatedDifficulty(chain) {
+    return chain.map((block) => block.difficulty)
+        .map((difficulty) => Math.pow(2,difficulty))
+        .reduce((a,b) => a+b);
+}
+
 //long chain rule
-function replaceChain(chain) {
+/*function replaceChain(chain) {
     if (isValidChain(chain) && chain.length > blockchain.length) {
+        blockchain = chain;
+        console.log("fetchingLongerChain");
+        broadcast(responseLatestMsg());
+    } else {
+        console.log("fetchChainError");
+    }
+}*/
+function replaceChain(chain) {
+    if (isValidChain(chain) && getAccumulatedDifficulty(chain) > getAccumulatedDifficulty(getChain())) {
         blockchain = chain;
         console.log("fetchingLongerChain");
         broadcast(responseLatestMsg());
@@ -266,8 +362,6 @@ function handleBlockchainResponse(message) {
     }
 }
 
-//export
-//TODO: cleanup code below
 module.exports = {
     block: block,
     blockData: blockData,
@@ -294,3 +388,4 @@ module.exports = {
     initErrorHandler: initErrorHandler,
     isHashRepeated: isHashRepeated
 };
+

@@ -73,7 +73,7 @@ function getBlock() {
             drawTable(data);
         }
     });
-   // setTimeout(getBlock, 1000);
+    setTimeout(getBlock, 1000);
 }
 
 function drawTable(data) {
