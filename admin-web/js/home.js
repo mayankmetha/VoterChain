@@ -570,7 +570,7 @@ function startEleForm() {
         regexFlag = true;
     }
     if (admin != null && flag == true && regexFlag == true) {
-        var time = new Date().getTime();
+        var time = Math.round(new Date().getTime()/1000);
         db.ref("election/" + startEle).update({
             conRegex: conRegex,
             start: time,
@@ -605,7 +605,7 @@ function stopEleForm() {
     if (admin != null && flag == true) {
         db.ref("election/" + stopEle).on('value', function (snapshot) {
             if (snapshot.val().start > 0) {
-                var time = new Date().getTime();
+                var time = Math.round(new Date().getTime()/1000);
                 db.ref("election/" + stopEle).update({
                     stop: time
                 });

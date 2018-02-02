@@ -11,7 +11,7 @@ var https = require('https');
 var ip = require('ip');
 var forceSsl = require('express-force-ssl');
 var firebaseConfig = require('./config');
-var blockchain = require('./blockchain-new');
+var blockchain = require('./blockchain');
 
 var app = express();
 var key = fs.readFileSync(path.join(__dirname+'/../ssl/private.key'));

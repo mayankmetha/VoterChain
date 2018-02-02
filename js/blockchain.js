@@ -55,7 +55,7 @@ function getLastBlock() {
 function genBlocks(uid, eleid, conid, parid) {
     var index = getLastBlock().index + 1;
     var prevHash = getLastBlock().hash;
-    var time = new Date().getTime();
+    var time = Math.round(new Date().getTime()/1000);
     var data = new blockData(uid, eleid, conid, parid);
     var hash = genHash(data);
     return new block(index, prevHash, time, data, hash);
