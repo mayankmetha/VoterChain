@@ -84,10 +84,10 @@ function drawTable(data) {
     } else {
         limit = data.length - 10;
     }
-    var str = "<table><thead><td>Block</td><td>Time</td><td>Hash</td></thead><tbody>";
+    var str = "<table><thead><td>TIME</td><td>HASH</td></thead><tbody>";
     for (var i = rows; i >= limit; i--) {
         var hash = data[i].hash;
-        var row = "<tr><td>"+data[i].index + "</td><td>" + data[i].time + "</td><td>" + hash.substr(0, 5) + "..." + "</td></tr>";
+        var row = "<tr><td>" + data[i].time + "</td><td>" + hash.substr(0, 7) + "..." + "</td></tr>";
         str += row;
     }
     str += "</tbody></table>";
