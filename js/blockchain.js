@@ -1,7 +1,7 @@
 //external modules
 var CryptoJS = require('crypto-js');
 var webSocket = require('ws');
-
+//TODO: add Proof of work
 /*
     block
 */
@@ -267,6 +267,7 @@ function handleBlockchainResponse(message) {
 }
 
 //export
+//TODO: cleanup code below
 module.exports = {
     block: block,
     blockData: blockData,
