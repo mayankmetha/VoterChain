@@ -1,14 +1,19 @@
+//imports
 var admin = require('./js/admin');
 var client = require('./js/client');
 var os = require('os');
 
+//variables
 var platform = os.platform();
 var browser;
+
+//check OS (Linux||macOS)
 if(platform !== "linux" && platform !== "darwin") {
     console.log(os.platform()+' not supported...');
     process.exit(0);
 }
 
+//select mode (admin||client||help)
 if (process.argv[2] === "admin") {
     selectBrowser();
     admin.server(browser);
@@ -24,6 +29,7 @@ if (process.argv[2] === "admin") {
     helpMes();
 }
 
+//help message
 function helpMes() {
     if(platform === "linux") {
         console.log("USAGE:\tsudo npm start [client|admin] [firefox|chrome]");
@@ -34,6 +40,7 @@ function helpMes() {
     process.exit(0);
 }
 
+//selecting browser(Firefox||Chrome for Linux Firefox||Chrome||Safari for macOS)
 function selectBrowser() {
     if(process.argv[3] === "chrome") {
         if(platform === "linux") {
