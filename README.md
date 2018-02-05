@@ -4,6 +4,8 @@ blockchain based evoting system
 ## Commands
 ### sudo npm start [mode=admin|client] [browser=chrome|firefox]
 start program
+### npm start help
+help message
 
 ## Config
 1) add firebase config and module export config to js/config.js
