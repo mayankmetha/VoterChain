@@ -10,17 +10,22 @@ $(document).ready(function () {
     }
     getCount();
     getBlock();
+    $("#blocks").click(function() {
+        window.location.href = "/blocks";
+    });
 });
 $(window).resize(function () {
     var width = $(window).width();
     var height = $(window).height();
-    $.scrollify.instantMove("#1");
     if (width <= 640) {
         //mobile screen
         mobile();
     } else {
         //desktop screen
         desktop();
+    }
+    if(width == 640) {
+        $.scrollify.instantMove("#1");
     }
 });
 
@@ -56,8 +61,8 @@ function getCount() {
         url: "/count",
         type: "GET",
         success: function (data) {
-            var str = "Block count: " + data;
-            $("#counter").text(str);
+            var str = "Block count<br />" + data;
+            $("#counter").html(str);
         }
     });
     setTimeout(getCount, 1000);
@@ -93,5 +98,3 @@ function drawTable(data) {
     str += "</tbody></table>";
     $("#blocks").append(str);
 }
-
-
