@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoterChain Admin</title>
+    <!-- js and css -->
     <script type="text/javascript" src="firebase/firebase.js"></script>
     <script type="text/javascript" src="firebaseui/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="firebaseui/firebaseui.css" />
@@ -16,6 +17,7 @@
 </head>
 
 <body onload="main()">
+    <!-- header -->
     <div id="header" class="w3-bar w3-blue w3-xlarge">
         <span class="w3-bar-item">VoterChain Admin</span>
         <span class="w3-bar-item w3-right">
@@ -24,7 +26,10 @@
             </span>
         </span>
     </div>
+
+    <!-- cards table -->
     <div id="dbFunctions" class="w3-container">
+        <!-- user row -->
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-quarter">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('addUserModal').style.display='block'">
@@ -59,6 +64,7 @@
                 </div>
             </div>
         </div>
+        <!-- candidate row -->
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-third">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('addCanModal').style.display='block'">
@@ -85,6 +91,7 @@
                 </div>
             </div>
         </div>
+        <!-- election row -->
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-half">
                 <div class="w3-card w3-hover-shadow w3-padding-32 w3-center" onclick="document.getElementById('startEleModal').style.display='block'">
@@ -105,6 +112,7 @@
         </div>
     </div>
 
+    <!-- add user form -->
     <div id="addUserModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -151,6 +159,7 @@
         </div>
     </div>
 
+    <!-- modify user form -->
     <div id="modConIDModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -195,6 +204,7 @@
         </div>
     </div>
 
+    <!-- change user password form -->
     <div id="pwdModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -234,6 +244,7 @@
         </div>
     </div>
 
+    <!-- remove user form -->
     <div id="rmUserModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -259,6 +270,7 @@
         </div>
     </div>
 
+    <!-- add candidate form -->
     <div id="addCanModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -305,6 +317,7 @@
         </div>
     </div>
 
+    <!-- modify candidate form -->
     <div id="modCanModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -351,6 +364,7 @@
         </div>
     </div>
 
+    <!-- remove candidate form -->
     <div id="rmCanModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -390,6 +404,7 @@
         </div>
     </div>
 
+    <!-- start election form -->
     <div id="startEleModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">
@@ -422,6 +437,7 @@
         </div>
     </div>
 
+    <!-- stop election form -->
     <div id="stopEleModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <header class="w3-container w3-blue w3-center">

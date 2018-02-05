@@ -1,8 +1,11 @@
+//variables
 var admin;
 var db;
 var userid;
 
+//main
 function main() {
+    //reset forms
     resetAddUserForm();
     resetmodconidForm();
     resetpwdusr();
@@ -12,6 +15,7 @@ function main() {
     resetrmCanForm();
     resetStartEleForm();
     resetStopEleForm();
+    //get login status
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -30,12 +34,14 @@ function main() {
     });
 }
 
+//logout
 function logout() {
     if (admin != null) {
         firebase.auth().signOut();
     }
 }
 
+//add users form
 function addusr() {
     var userFlag = false, pwdFlag = false, pwd2Flag = false, pwdEqual = false, conidFlag = false;
     var user = document.getElementById('adduser').value;
@@ -116,6 +122,7 @@ function addusr() {
     }
 }
 
+//reset users form
 function resetAddUserForm() {
     document.getElementById('adduserForm').reset();
     document.getElementById('adduser').classList.add('w3-text-blue');
@@ -132,6 +139,7 @@ function resetAddUserForm() {
     document.getElementById('addconid-label').style.visibility = 'hidden';
 }
 
+//modify user login form
 function modLoginConidusr() {
     var userFlag = false, pwdFlag = false;
     var user = document.getElementById('modconiduser').value;
@@ -177,6 +185,7 @@ function modLoginConidusr() {
     }
 }
 
+//modify user form
 function modUsrConid() {
     var conidFlag = false;
     var conid = document.getElementById('modconid').value;
@@ -203,6 +212,7 @@ function modUsrConid() {
     }
 }
 
+//reset modify user form
 function resetmodconidForm() {
     userid = "";
     document.getElementById('modconidForm').style.display = 'none';
@@ -220,6 +230,7 @@ function resetmodconidForm() {
     document.getElementById('modconid').classList.remove('w3-text-red');
 }
 
+//change user form
 function pwdusr() {
     var userFlag = false, pwdFlag = false, pwd2Flag = false, pwdEqual = false;
     var user = document.getElementById('pwduser').value;
@@ -290,6 +301,7 @@ function pwdusr() {
     }
 }
 
+//reset user form
 function resetpwdusr() {
     document.getElementById('pwdForm').reset();
     document.getElementById('pwduser-label').style.visibility = 'hidden';
@@ -303,6 +315,7 @@ function resetpwdusr() {
     document.getElementById('pwdpwd2').classList.remove('w3-text-red');
 }
 
+//remove user form
 function rmusr() {
     var userFlag = false;
     var user = document.getElementById('rmuser').value;
@@ -324,6 +337,7 @@ function rmusr() {
     }
 }
 
+//reset remove user form
 function resetrmusr() {
     document.getElementById('rmuserForm').reset();
     document.getElementById('rmuser-label').style.visibility = 'hidden';
@@ -331,6 +345,7 @@ function resetrmusr() {
     document.getElementById('rmuser').classList.remove('w3-text-red');
 }
 
+//add candidate form
 function addCanForm() {
     var parFlag = false, conFlag = false, eleFlag = false, canFlag = false;
     var can = document.getElementById('addcan').value;
@@ -390,6 +405,7 @@ function addCanForm() {
     }
 }
 
+//reset candidate form
 function resetAddCanForm() {
     document.getElementById('addCanForm').reset();
     document.getElementById('addcan-label').style.visibility = 'hidden';
@@ -406,6 +422,7 @@ function resetAddCanForm() {
     document.getElementById('addele').classList.remove('w3-text-red');
 }
 
+//modify candidate form
 function modCanForm() {
     var parFlag = false, conFlag = false, eleFlag = false, canFlag = false;
     var can = document.getElementById('modcan').value;
@@ -469,6 +486,7 @@ function modCanForm() {
     }
 }
 
+//reset candidate form
 function resetModCanForm() {
     document.getElementById('modCanForm').reset();
     document.getElementById('modcan-label').style.visibility = 'hidden';
@@ -485,6 +503,7 @@ function resetModCanForm() {
     document.getElementById('modele').classList.remove('w3-text-red');
 }
 
+//remove candidate form
 function rmCanForm() {
     var parFlag = false, conFlag = false, eleFlag = false;
     var par = document.getElementById('rmpar').value;
@@ -530,6 +549,7 @@ function rmCanForm() {
     }
 }
 
+//reser remove candidate form
 function resetrmCanForm() {
     document.getElementById('rmCanForm').reset();
     document.getElementById('rmpar-label').style.visibility = 'hidden';
@@ -543,6 +563,7 @@ function resetrmCanForm() {
     document.getElementById('rmele').classList.remove('w3-text-red');
 }
 
+//start election form
 function startEleForm() {
     var flag = false, regexFlag = false;
     var startEle = document.getElementById('startele').value;
@@ -581,6 +602,7 @@ function startEleForm() {
     }
 }
 
+//reset start election form
 function resetStartEleForm() {
     document.getElementById('startEleForm').reset();
     document.getElementById('startele-label').style.visibility = 'hidden';
@@ -588,6 +610,7 @@ function resetStartEleForm() {
     document.getElementById('startele').classList.remove('w3-text-red');
 }
 
+//stop election form
 function stopEleForm() {
     var flag = false;
     var stopEle = document.getElementById('stopele').value;
@@ -616,6 +639,7 @@ function stopEleForm() {
     }
 }
 
+//reset stop election form
 function resetStopEleForm() {
     document.getElementById('stopEleForm').reset();
     document.getElementById('stopele-label').style.visibility = 'hidden';
