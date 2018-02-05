@@ -74,6 +74,16 @@ function server(browser) {
         blockchain.server(myip,'6000');
         res.redirect('/');
     });
+    //3rd party files
+    app.get('/jquery.min.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.min.js'));
+    });
+    app.get('/jquery.scrollify.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.scrollify.js'));
+    });
+    app.get('/fontawesome-all.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
+    });
     //add peer
     app.get('/addPeer', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/peer.html'));
@@ -102,15 +112,6 @@ function server(browser) {
     app.get('/login.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/login.js'));
     });
-    app.get('/jquery.min.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.min.js'));
-    });
-    app.get('/jquery.scrollify.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.scrollify.js'));
-    });
-    app.get('/fontawesome-all.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
-    });
     app.get('/home1.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/home1.svg'));
     });
@@ -120,10 +121,10 @@ function server(browser) {
     app.get('/home3.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/home3.svg'));
     });
-    app.get('/blocks', function(req,res) {
+    app.get('/blockHome', function(req,res) {
         res.send(JSON.stringify(blockchain.getChain()));
     });
-    app.get('/count', function(req,res) {
+    app.get('/countHome', function(req,res) {
         res.send(JSON.stringify(blockchain.getChain().length));
     });
     //login
@@ -138,6 +139,17 @@ function server(browser) {
             });
         }
     });
+    //blocks
+    app.get('/blocks', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/html/blocks.html'));
+    });
+    app.get('/blocks.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/blocks.css'));
+    });
+    app.get('/blocks.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/blocks.js'));
+    });
+    //express config
     app.listen(80, function () {
         console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
         open("http://localhost/start",browser);

@@ -58,7 +58,7 @@ function desktop() {
 function getCount() {
     $.ajax({
         dataType: "json",
-        url: "/count",
+        url: "/countHome",
         type: "GET",
         success: function (data) {
             var str = "Block count<br />" + data;
@@ -71,7 +71,7 @@ function getCount() {
 function getBlock() {
     $.ajax({
         dataType: "json",
-        url: "/blocks",
+        url: "/blockHome",
         type: "GET",
         success: function (data) {
             $("#blocks").text("");
