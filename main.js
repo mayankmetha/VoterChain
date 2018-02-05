@@ -22,7 +22,7 @@ if (process.argv[2] === "admin") {
     selectBrowser();
     client.server(browser);
     client.cleanUp();
-} else if(process.argv[2] === "help") {
+} else if(process.argv[2] === "help" || process.argv[2] === "--help" || process.argv[2] === "-h") {
     helpMes();
 } else {
     console.log("Command Usage error...\n");

@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node main.js"
   },
+  "bin": {
+    "voterchain": "sudo node main.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mayankmetha/VoterChain.git"
