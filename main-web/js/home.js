@@ -10,7 +10,7 @@ $(document).ready(function () {
     }
     getCount();
     getBlock();
-    $("#blocks").click(function() {
+    $("#blocks").click(function () {
         window.location.href = "/blocks";
     });
 });
@@ -24,7 +24,7 @@ $(window).resize(function () {
         //desktop screen
         desktop();
     }
-    if(width == 640) {
+    if (width == 640) {
         $.scrollify.instantMove("#1");
     }
 });

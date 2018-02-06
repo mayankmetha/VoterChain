@@ -147,7 +147,7 @@ function server(browser) {
             res.send("Contact Admin\nYour account was blocked.")
         }
     });
-    //user login
+    //user page
     app.get('/users/:user', function (req, res) {
         invalid = 0;
         res.send("Welcome "+req.params.user);

@@ -1,0 +1,43 @@
+html, body {
+    margin: 0 0;
+}
+table {
+    width: 100%;
+}
+
+table, tbody, tr, td {
+    display: block;
+}
+
+tr {
+    border: 1px solid #ccc;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #eee;
+}
+
+td {
+    padding: 10px;
+    border: none;
+    position: relative;
+    padding-left: 40%;
+    text-align:left;
+    font-size: 18px;
+    word-wrap: break-word;
+}
+
+td:before {
+    position: absolute;
+    left:5px;
+    top: 7px;
+    width: 40%;
+    padding-right: 10px;
+    white-space: nowrap;
+    color: #000;
+    font-weight: bold;
+    text-align: left;
+    font-size: 18px;
+    word-wrap: break-word;
+    content: attr(data-column);
+}
