@@ -4,7 +4,7 @@ blockchain based evoting system
 ## Commands
 ### sudo npm start [mode=admin|client] [browser=chrome|firefox]
 start program
-### npm start help
+### sudo npm start help
 help message
 
 ## Config
