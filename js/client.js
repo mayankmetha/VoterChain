@@ -14,8 +14,8 @@ var firebaseConfig = require('./config');
 var blockchain = require('./blockchain');
 
 var app = express();
-var key = fs.readFileSync(path.join(__dirname+'/../ssl/private.key'));
-var cert = fs.readFileSync(path.join(__dirname+'/../ssl/private.crt'));
+var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
+var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
 var options = {
     key: key,
     cert: cert
@@ -34,9 +34,9 @@ var myip = ip.address();
 
 //disable https and forceSsl in terminal test mode
 function server(browser) {
-    https.createServer(options,app).listen(443);
+    https.createServer(options, app).listen(443);
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(forceSsl);
     //test code
     //TODO: test mining of blocks
@@ -52,7 +52,7 @@ function server(browser) {
     });
     //firebaseAuthCleanUp
     app.get('/close', function (req, res) {
-        firebase.auth().currentUser.delete().then(function() {
+        firebase.auth().currentUser.delete().then(function () {
             res.send('Browser is safe to close...');
             process.exit(0);
         });
@@ -72,8 +72,8 @@ function server(browser) {
         res.redirect('/servePeer');
     });
     //start peer server
-    app.get('/servePeer', function(req,res) {
-        blockchain.server(myip,'6000');
+    app.get('/servePeer', function (req, res) {
+        blockchain.server(myip, '6000');
         res.redirect('/');
     });
     //3rd party files
@@ -96,14 +96,14 @@ function server(browser) {
     app.get('/cogs.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/cogs.svg'));
     });
-    app.post('/addPeer', function(req,res) {
+    app.post('/addPeer', function (req, res) {
         var peer = req.body.peer;
         blockchain.connectToPeer(peer);
-        res.send(peer+" has been added");
+        res.send(peer + " has been added");
     });
     //home
     app.get('/', function (req, res) {
-        if(invalid == 1 || invalid == 2) {
+        if (invalid == 1 || invalid == 2) {
             invalid = 0;
             res.sendFile(path.join(__dirname + '/../main-web/html/homeInvalidLogin.html'));
         } else {
@@ -129,17 +129,17 @@ function server(browser) {
     app.get('/home3.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/home3.svg'));
     });
-    app.get('/blockHome', function(req,res) {
+    app.get('/blockHome', function (req, res) {
         res.send(JSON.stringify(blockchain.getChain()));
     });
-    app.get('/countHome', function(req,res) {
+    app.get('/countHome', function (req, res) {
         res.send(JSON.stringify(blockchain.getChain().length));
     });
     //invalidateLoginAttempt
-    app.get('/invalidLoginAttempt', function(req,res) {
-        if(falseAttempt < 5) {
-            falseAttempt = falseAttempt+1;
-            db.ref('users/'+user).update({
+    app.get('/invalidLoginAttempt', function (req, res) {
+        if (falseAttempt < 5) {
+            falseAttempt = falseAttempt + 1;
+            db.ref('users/' + user).update({
                 falseAttempt: falseAttempt
             });
             res.redirect('/');
@@ -147,21 +147,22 @@ function server(browser) {
             res.send("Contact Admin\nYour account was blocked.")
         }
     });
-     //user
-     app.get('/user', function (req, res) {
-         invalid = 0;
-        res.send(user+ " login Success");
+    //user login
+    app.get('/users/:user', function (req, res) {
+        invalid = 0;
+        res.send("Welcome "+req.params.user);
     });
     //login
     app.post('/login', function (req, res) {
         user = req.body.user;
         var password = CryptoJS.SHA512(req.body.password).toString();
-        if(uidAnonymous !== null) {
+        if (uidAnonymous !== null) {
             db.ref('users/' + user).once('value', function (snapshot) {
-                if(snapshot.exists()) {
+                if (snapshot.exists()) {
                     falseAttempt = snapshot.val().falseAttempt;
-                    if(password === snapshot.val().pwd && falseAttempt < 5) {
-                        res.redirect('/user');
+                    if (password === snapshot.val().pwd && falseAttempt < 5) {
+                        var url = "/users/"+user;
+                        res.redirect(url);
                     } else {
                         invalid = 1;
                         res.redirect('/invalidLoginAttempt');
@@ -169,11 +170,11 @@ function server(browser) {
                 } else {
                     invalid = 2;
                     res.redirect('/');
-                } 
+                }
             });
         } else {
             res.redirect('/');
-        }  
+        }
     });
     //blocks
     app.get('/blocks', function (req, res) {
@@ -188,7 +189,7 @@ function server(browser) {
     //express config
     app.listen(80, function () {
         console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
-        open("http://localhost/start",browser);
+        open("http://localhost/start", browser);
     });
 }
 
