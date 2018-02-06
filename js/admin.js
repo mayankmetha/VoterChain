@@ -70,7 +70,7 @@ function server(browser) {
         process.exit(0);
     });
     //error 404
-    app.get('*' , function(req,res) {
+    app.all('*' , function(req,res) {
         res.sendFile(path.join(__dirname + '/../admin-web/html/404.html'));
     });
     //express settings
