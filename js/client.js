@@ -23,6 +23,8 @@ var options = {
 var isAnonymous;
 var uidAnonymous;
 var user;
+var invalid = 0;
+var falseAttempt;
 
 firebase.initializeApp(firebaseConfig.config);
 
@@ -32,10 +34,10 @@ var myip = ip.address();
 
 //disable https and forceSsl in terminal test mode
 function server(browser) {
-    //https.createServer(options,app).listen(443);
+    https.createServer(options,app).listen(443);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
-    //app.use(forceSsl);
+    app.use(forceSsl);
     //test code
     //TODO: test mining of blocks
     app.post('/mineBlock', (req, res) => {
@@ -101,7 +103,13 @@ function server(browser) {
     });
     //home
     app.get('/', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/html/home.html'));
+        if(invalid == 1 || invalid == 2) {
+            invalid = 0;
+            res.sendFile(path.join(__dirname + '/../main-web/html/homeInvalidLogin.html'));
+        } else {
+            invalid = 0;
+            res.sendFile(path.join(__dirname + '/../main-web/html/home.html'));
+        }
     });
     app.get('/home.css', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/css/home.css'));
@@ -127,17 +135,45 @@ function server(browser) {
     app.get('/countHome', function(req,res) {
         res.send(JSON.stringify(blockchain.getChain().length));
     });
+    //invalidateLoginAttempt
+    app.get('/invalidLoginAttempt', function(req,res) {
+        if(falseAttempt < 5) {
+            falseAttempt = falseAttempt+1;
+            db.ref('users/'+user).update({
+                falseAttempt: falseAttempt
+            });
+            res.redirect('/');
+        } else {
+            res.send("Contact Admin\nYour account was blocked.")
+        }
+    });
+     //user
+     app.get('/user', function (req, res) {
+         invalid = 0;
+        res.send(user+ " login Success");
+    });
     //login
     app.post('/login', function (req, res) {
         user = req.body.user;
         var password = CryptoJS.SHA512(req.body.password).toString();
         if(uidAnonymous !== null) {
-            db.ref('users/' + user).on('value', function (snapshot) {
-                if(password === snapshot.val().pwd)  {
-                    res.send("UID: "+snapshot.val().uid+"\nPWD: "+snapshot.val().pwd+"\nCONID: "+snapshot.val().conid);
-                }
+            db.ref('users/' + user).once('value', function (snapshot) {
+                if(snapshot.exists()) {
+                    falseAttempt = snapshot.val().falseAttempt;
+                    if(password === snapshot.val().pwd && falseAttempt < 5) {
+                        res.redirect('/user');
+                    } else {
+                        invalid = 1;
+                        res.redirect('/invalidLoginAttempt');
+                    }
+                } else {
+                    invalid = 2;
+                    res.redirect('/');
+                } 
             });
-        }
+        } else {
+            res.redirect('/');
+        }  
     });
     //blocks
     app.get('/blocks', function (req, res) {

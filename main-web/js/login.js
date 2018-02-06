@@ -6,6 +6,14 @@ function resetForms() {
     document.getElementById('pwd-red').style.display = "none";
 }
 
+function resetFormsInvalid() {
+    document.getElementById('loginForm').reset();
+    document.getElementById('user-green').style.display = "none";
+    document.getElementById('user-red').style.display = "block";
+    document.getElementById('pwd-green').style.display = "none";
+    document.getElementById('pwd-red').style.display = "block";
+}
+
 function login() {
     var user = document.getElementById('user').value;
     var pwd = document.getElementById('password').value;
