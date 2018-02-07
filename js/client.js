@@ -10,6 +10,7 @@ var fs = require('fs');
 var https = require('https');
 var ip = require('ip');
 var forceSsl = require('express-force-ssl');
+var wait = require('wait-for-stuff');
 var firebaseConfig = require('./config');
 var blockchain = require('./blockchain');
 
@@ -50,10 +51,15 @@ function server(browser) {
         }
         res.send();
     });
+    //message css file
+    app.get('/message.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
+    });
     //firebaseAuthCleanUp
     app.get('/close', function (req, res) {
         firebase.auth().currentUser.delete().then(function () {
-            res.send('Browser is safe to close...');
+            res.sendFile(path.join(__dirname + '/../main-web/html/close.html'));
+            wait.for.time(5);
             process.exit(0);
         });
     });
@@ -99,7 +105,7 @@ function server(browser) {
     app.post('/addPeer', function (req, res) {
         var peer = req.body.peer;
         blockchain.connectToPeer(peer);
-        res.send(peer + " has been added");
+        res.sendFile(path.join(__dirname + '/../main-web/html/peerAddDone.html'));
     });
     //home
     app.get('/', function (req, res) {
@@ -144,7 +150,7 @@ function server(browser) {
             });
             res.redirect('/');
         } else {
-            res.send("Contact Admin\nYour account was blocked.")
+            res.sendFile(path.join(__dirname + '/../main-web/html/userBlocked.html'));
         }
     });
     //user page
