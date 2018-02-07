@@ -40,7 +40,7 @@ function genHash(data) {
 
 //block 0
 function setGenBlock() {
-    return new block(0, "0", 0, "genesis block", CryptoJS.SHA256("0").toString());
+    return new block(0, "0", 0, new blockData(0,0,0,0), CryptoJS.SHA256(0).toString());
 }
 
 //variable

@@ -1,43 +1,44 @@
 html, body {
     margin: 0 0;
-}
-table {
-    width: 100%;
-}
-
-table, tbody, tr, td {
-    display: block;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
 }
 
-tr {
-    border: 1px solid #ccc;
-}
-
-tr:nth-of-type(odd) {
+.odd {
     background-color: #eee;
 }
 
-td {
-    padding: 10px;
-    border: none;
-    position: relative;
-    padding-left: 40%;
-    text-align:left;
-    font-size: 18px;
-    word-wrap: break-word;
+.even {
+    background-color: #ccc;
 }
 
-td:before {
-    position: absolute;
-    left:5px;
-    top: 7px;
-    width: 40%;
-    padding-right: 10px;
-    white-space: nowrap;
-    color: #000;
+table {
+    width: 100%;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+    margin: 0 0;
+    border-collapse: collapse;
+}
+
+tr {
+    margin: 0 0;
+}
+
+.header {
     font-weight: bold;
+    text-align: right;
+    width: 25%;
+    word-break: break-word;
+    border-right: 1px solid #888;
+}
+
+.content {
     text-align: left;
-    font-size: 18px;
-    word-wrap: break-word;
-    content: attr(data-column);
+    width: 75%;
+    word-break: break-all;
+}
+
+td {
+    padding: 5px 5px;
+    margin: 0 0;
 }

@@ -17,10 +17,21 @@ function getBlock() {
 
 function drawTable(data) {
     var rows = data.length - 1;
-    var str = "<table><tbody>";
+    var str = "";
     for (var i = rows; i >= 0; i--) {
-        var hash = data[i].hash;
-        var row = "<tr><td data-column='index'>"+data[i].index+"</td>"+"<td data-column='prevHash'>"+data[i].prevHash+"</td>"+"<td data-column='time'>"+data[i].time+"</td>"+"<td data-column='hash'>"+data[i].hash+"</td><tr>";
+        var style;
+        if(i%2==0) {
+            style = "odd";
+        } else {
+            style = "even";
+        }
+        var row = "<table class="+style+">";
+        row += "<tr><td class=header>Index</td><td class=content>"+data[i].index+"</td></tr>";
+        row += "<tr><td class=header>Previous Hash</td><td class=content>"+data[i].prevHash+"</td></tr>";
+        row += "<tr><td class=header>Time</td><td class=content>"+data[i].time+"</td></tr>";
+        row += "<tr><td class=header>User ID</td><td class=content>"+data[i].data.uid+"</td></tr>";
+        row += "<tr><td class=header>Election ID</td><td class=content>"+data[i].data.eleid+"</td></tr>";
+        row += "<tr><td class=header>Hash</td><td class=content>"+data[i].hash+"</td></tr></table>";
         str += row;
     }
     str += "</tbody></table>";
