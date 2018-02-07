@@ -5,6 +5,7 @@ var open = require('open');
 var fs = require('fs');
 var https = require('https');
 var forceSsl = require('express-force-ssl');
+var wait = require('wait-for-stuff');
 
 //express instance
 var app = express();
@@ -66,7 +67,9 @@ function server(browser) {
     });
     //shutdown server
     app.get('/exit', function (req, res) {
+        //TODO: add a html page
         res.send("Now you can close the browser!");
+        wait.for.time(5);
         process.exit(0);
     });
     //error 404
