@@ -67,8 +67,7 @@ function server(browser) {
     });
     //shutdown server
     app.get('/exit', function (req, res) {
-        //TODO: add a html page
-        res.send("Now you can close the browser!");
+        res.sendFile(path.join(__dirname + '/../admin-web/html/exit.html'));
         wait.for.time(5);
         process.exit(0);
     });
