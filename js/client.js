@@ -12,7 +12,7 @@ var ip = require('ip');
 var forceSsl = require('express-force-ssl');
 var wait = require('wait-for-stuff');
 var firebaseConfig = require('./config');
-var blockchain = require('./blockchain-new');
+var blockchain = require('./blockchain');
 
 var app = express();
 var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
@@ -35,10 +35,10 @@ var myip = ip.address();
 
 //disable https and forceSsl in terminal test mode
 function server(browser) {
-    //https.createServer(options, app).listen(443);
+    https.createServer(options, app).listen(443);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    //app.use(forceSsl);
+    app.use(forceSsl);
     //test code
     //TODO: test mining of blocks
     app.post('/mineBlock', (req, res) => {
@@ -66,8 +66,8 @@ function server(browser) {
     //firebaseAuthLogin
     app.get('/start', function (req, res) {
         firebase.auth().signInAnonymously().catch(function (error) {
-            var error = error.code;
-            var errorMessage = error.message;
+            console.log(error.code);
+            console.log(error.message);
         });
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
