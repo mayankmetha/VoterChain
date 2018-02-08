@@ -1,36 +1,31 @@
-var blockchain = require('./blockchain');
+//TODO: incomplete and broken
+function genMap(chain) {
+    var eleMap = new Map();
+    var eleKey = 0;
+    var conMap = new Map();
+    var conKey = 0;
+    var parMap = new Map();
+    var parKey = 0;
 
-var chain = blockchain.getChain();
-
-function election() {
-    this.constituency = new constituency()[];
-    this.constituencySum = [];
-    this.result = null;
-}
-
-function constituency() {
-    this.party = [];
-    this.result = null;
-}
-
-var election = new election()[];
-
-function calculate() {
-    for(var i=1;i<chain.length;i++) {
-        var eleid = chain[i].data.eleid;
-        var conid = chain[i].data.conid;
-        var parid = chain[i].data.parid;
-        //get sum of votes per party per constituency per election
-        election[eleid].constituency[conid].party[parid]++;
-    }
-    for(eleid in election) {
-        for(conid in election[eleid].constituency) {
-            //step1: get key of max value of party in every constituency and store in result
-            //step2: get number of constituency a party secured and store in constituencySum
+    for(var i = 1; i < chain.length; i++) {
+        if(!eleMap.has(chain[i].data.eleid)) {
+            eleMap.set(chain[i].data.eleid, eleKey);
+            console.log(eleMap.entries());
+            eleKey++;
         }
-        //step3: get key of max value of constituencySum of every election and store in result
+        if(!conMap.has(chain[i].data.conid)) {
+            conMap.set(chain[i].data.conid, conKey);
+            console.log(conMap.entries());
+            conKey++;
+        }
+        if(!parMap.has(chain[i].data.parid)) {
+            parMap.set(chain[i].data.parid, parKey);
+            console.log(parMap.entries());
+            parKey++;
+        }
     }
 }
 
-//export election[] to display various results
-
+module.exports = {
+    genMap: genMap
+};

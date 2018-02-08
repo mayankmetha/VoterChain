@@ -13,6 +13,7 @@ var forceSsl = require('express-force-ssl');
 var wait = require('wait-for-stuff');
 var firebaseConfig = require('./config');
 var blockchain = require('./blockchain');
+var calculation = require('./calculation');
 
 var app = express();
 var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
@@ -35,10 +36,10 @@ var myip = ip.address();
 
 //disable https and forceSsl in terminal test mode
 function server(browser) {
-    https.createServer(options, app).listen(443);
+    //https.createServer(options, app).listen(443);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(forceSsl);
+    //app.use(forceSsl);
     //test code
     //TODO: test mining of blocks
     app.post('/mineBlock', (req, res) => {
@@ -50,6 +51,11 @@ function server(browser) {
             console.log('cannot add illegal block!');
         }
         res.send();
+    });
+    //test code
+    //TODO: development and testing calculation
+    app.get('/cal', function(req, res) {
+        res.send(calculation.genMap(blockchain.getChain()));
     });
     //message css file
     app.get('/message.css', function (req, res) {
