@@ -32,6 +32,7 @@ function genMap(chain, eleConParMap, ele, con, par) {
             par.set(chain[i].data.parid, chain[i].data.parid);
         }
     }
+    console.log(eleConParMap.entries());
 }
 
 function computePartyMax(eleConParMap, eleConMap, ele, con, par) {
