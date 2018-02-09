@@ -9,6 +9,7 @@ function calculateInit(chain) {
     var par = new Map();
     genMap(chain, eleConParMap, ele, con, par);
     computePartyMax(eleConParMap, eleConMap, ele, con, par);
+    computeNumberOfConstituency(eleConMap, eleParMap, ele, con, par);
 }
 
 function genMap(chain, eleConParMap, ele, con, par) {
@@ -56,7 +57,23 @@ function computePartyMax(eleConParMap, eleConMap, ele, con, par) {
 }
 
 function computeNumberOfConstituency(eleConMap, eleParMap, ele, con, par) {
+    ele.forEach(function(eleKey) {
+        par.forEach(function(parKey) {
+            var count = 0;
+            con.forEach(function(conKey) {
+                if(eleConMap.has(eleKey+""+conKey) && parKey == eleConMap.get(eleKey+""+conKey)) {
+                    count++;
+                }
+            });
+            if(count != 0) {
+                eleParMap.set(eleKey+""+parKey,count);
+            }
+        });
+    });
+    console.log(eleParMap.entries());
 }
+
+function computeConstituencyMax() {}
 
 module.exports = {
     calculateInit: calculateInit
