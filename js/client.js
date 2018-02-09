@@ -55,7 +55,7 @@ function server(browser) {
     //test code
     //TODO: development and testing calculation
     app.get('/cal', function(req, res) {
-        res.send(calculation.genMap(blockchain.getChain()));
+        res.send(calculation.calculateInit(blockchain.getChain()));
     });
     //message css file
     app.get('/message.css', function (req, res) {
