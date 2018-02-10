@@ -1,19 +1,36 @@
-//TODO: incomplete and broken
-function calculateInit(chain) {
-    var eleConParMap = new Map();
-    var eleParMap = new Map();
-    var eleConMap = new Map();
-    var eleMap = new Map();
+function eleMap(chain) {
     var ele = new Map();
-    var con = new Map();
-    var par = new Map();
-    genMap(chain, eleConParMap, ele, con, par);
-    computePartyMax(eleConParMap, eleConMap, ele, con, par);
-    computeNumberOfConstituency(eleConMap, eleParMap, ele, con, par);
+    for (var i = 1; i < chain.length; i++) {
+        if (!ele.has(chain[i].data.eleid)) {
+            ele.set(chain[i].data.eleid, chain[i].data.eleid);
+        }
+    }
+    return ele;
 }
 
-function genMap(chain, eleConParMap, ele, con, par) {
-    for (var i = 0; i < chain.length; i++) {
+function conMap(chain) {
+    var con = new Map();
+    for (var i = 1; i < chain.length; i++) {
+        if (!con.has(chain[i].data.conid)) {
+            con.set(chain[i].data.conid, chain[i].data.conid);
+        }
+    }
+    return con;
+}
+
+function parMap(chain) {
+    var par = new Map();
+    for (var i = 1; i < chain.length; i++) {
+        if (!par.has(chain[i].data.parid)) {
+            par.set(chain[i].data.parid, chain[i].data.parid);
+        }
+    }
+    return par;
+}
+
+function genMap(chain) {
+    var eleConParMap = new Map();
+    for (var i = 1; i < chain.length; i++) {
         var key = chain[i].data.eleid + "" + chain[i].data.conid + "" + chain[i].data.parid;
         if (eleConParMap.has(key)) {
             var val = eleConParMap.get(key);
@@ -22,20 +39,12 @@ function genMap(chain, eleConParMap, ele, con, par) {
         } else {
             eleConParMap.set(key, 1);
         }
-        if (!ele.has(chain[i].data.eleid)) {
-            ele.set(chain[i].data.eleid, chain[i].data.eleid);
-        }
-        if (!con.has(chain[i].data.conid)) {
-            con.set(chain[i].data.conid, chain[i].data.conid);
-        }
-        if (!par.has(chain[i].data.parid)) {
-            par.set(chain[i].data.parid, chain[i].data.parid);
-        }
     }
-    console.log(eleConParMap.entries());
+    return eleConParMap;
 }
 
-function computePartyMax(eleConParMap, eleConMap, ele, con, par) {
+function computePartyMax(eleConParMap, ele, con, par) {
+    var eleConMap = new Map();
     ele.forEach(function(eleKey) {
         con.forEach(function(conKey) {
             var str = eleKey+""+conKey;
@@ -54,10 +63,11 @@ function computePartyMax(eleConParMap, eleConMap, ele, con, par) {
             }
         });
     });
-    console.log(eleConMap.entries());
+    return eleConMap;
 }
 
-function computeNumberOfConstituency(eleConMap, eleParMap, ele, con, par) {
+function computeNumberOfConstituency(eleConMap, ele, con, par) {
+    var eleParMap = new Map();
     ele.forEach(function(eleKey) {
         par.forEach(function(parKey) {
             var count = 0;
@@ -71,11 +81,35 @@ function computeNumberOfConstituency(eleConMap, eleParMap, ele, con, par) {
             }
         });
     });
-    console.log(eleParMap.entries());
+    return eleParMap;
 }
 
-function computeConstituencyMax() {}
+function computeConstituencyMax(eleParMap, ele, par) {
+    var eleMap = new eleMap();
+    ele.forEach(function(eleKey) {
+        var party = "";
+        var max = -1;
+        par.forEach(function(parKey) {
+            if(eleParMap.has(eleKey+""+parKey)) {
+                if(max < eleParMap.get(eleKey+""+parKey)) {
+                    max = eleParMap.get(eleKey+""+parKey);
+                    party = parKey;
+                }
+            }
+        });
+        if(party !== "") {
+            eleMap.set(eleKey,party);
+        }
+    });
+    return eleMap;
+}
 
 module.exports = {
-    calculateInit: calculateInit
+    eleMap: eleMap,
+    conMap: conMap,
+    parMap: parMap,
+    genMap: genMap,
+    computePartyMax: computePartyMax,
+    computeNumberOfConstituency: computeNumberOfConstituency,
+    computeConstituencyMax: computeConstituencyMax
 };
