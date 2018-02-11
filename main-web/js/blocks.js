@@ -31,6 +31,8 @@ function drawTable(data) {
         row += "<tr><td class=header>Time</td><td class=content>"+data[i].time+"</td></tr>";
         row += "<tr><td class=header>User ID</td><td class=content>"+data[i].data.uid+"</td></tr>";
         row += "<tr><td class=header>Election ID</td><td class=content>"+data[i].data.eleid+"</td></tr>";
+        row += "<tr><td class=header>Constituency ID</td><td class=content>"+data[i].data.conid+"</td></tr>";
+        row += "<tr><td class=header>Party ID</td><td class=content>"+data[i].data.parid+"</td></tr>";
         row += "<tr><td class=header>Hash</td><td class=content>"+data[i].hash+"</td></tr></table>";
         str += row;
     }

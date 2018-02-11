@@ -89,6 +89,7 @@ function isHashRepeated(newBlock) {
 //add block to blockchain
 function addBlock(newBlock) {
     if (isValidBlock(newBlock, getLastBlock()) && isHashRepeated(newBlock)) {
+        newBlock.data.uid = CryptoJS.HmacSHA256(newBlock.data.uid,newBlock.hash).toString();
         blockchain.push(newBlock);
         return true;
     }
