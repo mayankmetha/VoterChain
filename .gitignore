@@ -7,3 +7,4 @@ config.js
 .DS_Store
 *.7z
 *.sha256
+docs
