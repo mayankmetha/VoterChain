@@ -3,10 +3,7 @@
   "version": "0.0.0",
   "description": "blockchain based evoting system",
   "scripts": {
-    "start": "node main.js"
-  },
-  "bin": {
-    "voterchain": "sudo node main.js"
+    "start": "bash verify.sh; if [ $? -eq 1 ]; then exit 0; fi; node main.js"
   },
   "repository": {
     "type": "git",
