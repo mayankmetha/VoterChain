@@ -14,6 +14,7 @@ var wait = require('wait-for-stuff');
 var firebaseConfig = require('./config');
 var blockchain = require('./blockchain');
 var calculation = require('./calculation');
+var map2json = require('./map2json');
 
 var app = express();
 var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
@@ -54,8 +55,22 @@ function server(browser) {
     });
     //test code
     //TODO: development and testing calculation
-    app.get('/cal', function(req, res) {
-        res.send(calculation.calculateInit(blockchain.getChain()));
+    app.get('/cal/:options', function(req, res) {
+        var chain = blockchain.getChain();
+        switch(req.params.options) {
+            case "1":
+                res.send(map2json.map2json(calculation.genMap(chain)));
+                break;
+            case "2":
+                res.send(map2json.map2json(calculation.computePartyMax(chain)));
+                break;
+            case "3":
+                res.send(map2json.map2json(calculation.computeNumberOfConstituency(chain)));
+                break;
+            case "4":
+                res.send(map2json.map2json(calculation.computeConstituencyMax(chain)));
+                break;
+        }
     });
     //message css file
     app.get('/message.css', function (req, res) {

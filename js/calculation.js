@@ -1,4 +1,4 @@
-function eleMap(chain) {
+function genEleMap(chain) {
     var ele = new Map();
     for (var i = 1; i < chain.length; i++) {
         if (!ele.has(chain[i].data.eleid)) {
@@ -8,7 +8,7 @@ function eleMap(chain) {
     return ele;
 }
 
-function conMap(chain) {
+function genConMap(chain) {
     var con = new Map();
     for (var i = 1; i < chain.length; i++) {
         if (!con.has(chain[i].data.conid)) {
@@ -18,7 +18,7 @@ function conMap(chain) {
     return con;
 }
 
-function parMap(chain) {
+function genParMap(chain) {
     var par = new Map();
     for (var i = 1; i < chain.length; i++) {
         if (!par.has(chain[i].data.parid)) {
@@ -43,7 +43,11 @@ function genMap(chain) {
     return eleConParMap;
 }
 
-function computePartyMax(eleConParMap, ele, con, par) {
+function computePartyMax(chain) {
+    var ele = genEleMap(chain);
+    var con = genConMap(chain);
+    var par = genParMap(chain);
+    var eleConParMap = genMap(chain);
     var eleConMap = new Map();
     ele.forEach(function(eleKey) {
         con.forEach(function(conKey) {
@@ -66,7 +70,11 @@ function computePartyMax(eleConParMap, ele, con, par) {
     return eleConMap;
 }
 
-function computeNumberOfConstituency(eleConMap, ele, con, par) {
+function computeNumberOfConstituency(chain) {
+    var ele = genEleMap(chain);
+    var con = genConMap(chain);
+    var par = genParMap(chain);
+    var eleConMap = computePartyMax(chain);
     var eleParMap = new Map();
     ele.forEach(function(eleKey) {
         par.forEach(function(parKey) {
@@ -84,8 +92,12 @@ function computeNumberOfConstituency(eleConMap, ele, con, par) {
     return eleParMap;
 }
 
-function computeConstituencyMax(eleParMap, ele, par) {
-    var eleMap = new eleMap();
+function computeConstituencyMax(chain) {
+    var ele = genEleMap(chain);
+    var con = genConMap(chain);
+    var par = genParMap(chain);
+    var eleParMap = computeNumberOfConstituency(chain);
+    var eleMap = new Map();
     ele.forEach(function(eleKey) {
         var party = "";
         var max = -1;
@@ -105,9 +117,6 @@ function computeConstituencyMax(eleParMap, ele, par) {
 }
 
 module.exports = {
-    eleMap: eleMap,
-    conMap: conMap,
-    parMap: parMap,
     genMap: genMap,
     computePartyMax: computePartyMax,
     computeNumberOfConstituency: computeNumberOfConstituency,
