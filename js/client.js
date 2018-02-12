@@ -37,10 +37,10 @@ var myip = ip.address();
 
 //disable https and forceSsl in terminal test mode
 function server(browser) {
-    //https.createServer(options, app).listen(443);
+    https.createServer(options, app).listen(443);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    //app.use(forceSsl);
+    app.use(forceSsl);
     //test code
     //TODO: test mining of blocks
     app.post('/mineBlock', (req, res) => {

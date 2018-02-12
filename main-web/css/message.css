@@ -45,13 +45,10 @@ h1 {
     background-color: white;
     border-radius: 100px;
     text-align: center;
-    
-}
-
-a {
     color: #a569bd;
     font-weight: bold;
     font-size: 18px;
     font-style: normal;
     text-decoration: none;
+    
 }
