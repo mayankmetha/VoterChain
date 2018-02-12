@@ -1,6 +1,12 @@
 //external modules
 var CryptoJS = require('crypto-js');
 var webSocket = require('ws');
+var fs = require('fs');
+var path = require('path');
+
+//ssl
+var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
+var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
 
 /*
     block
@@ -177,7 +183,7 @@ var sockets = [];
 
 //P2P server
 function server(ip, ipPort) {
-    var server = new webSocket.Server({ port: ipPort, host: ip });
+    var server = new webSocket.Server({ port: ipPort, host: ip, cert: cert, key: key });
     server.on('connection', ws => initConnection(ws));
     console.log('Your p2p socket is ws://' + ip + ':' + ipPort);
 }
