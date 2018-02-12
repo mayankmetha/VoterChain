@@ -115,7 +115,8 @@ function addusr() {
         db.ref('users/' + user).set({
             uid: uid,
             pwd: pwd,
-            conid: conid
+            conid: conid,
+            falseAttempt: 0
         });
         document.getElementById('addUserModal').style.display = 'none';
         resetAddUserForm();
