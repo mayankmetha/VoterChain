@@ -1,12 +1,6 @@
 //external modules
 var CryptoJS = require('crypto-js');
 var webSocket = require('ws');
-//var fs = require('fs');
-//var path = require('path');
-
-//ssl
-//var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
-//var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
 
 /*
     block
