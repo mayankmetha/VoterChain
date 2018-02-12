@@ -1,7 +1,7 @@
 bc2af47dbe22ba3e844562e6d7de99217a8bcbc3c201c90a3b64546bf98f9e83  ./js/client.js
 f941350fcb4ab75763972ffa7ca652918fff45799c1e4e7e3afcaeb1f3bd5c54  ./js/config.js
-83d7fcdcf29a1935517ab88a7f306bc47f99fbdd9ed5175a4dd1a98d1593fcdd  ./js/blockchain.js
-1bb7da76f6aecb48d4654e37b42f426f864654fb88d6654714035251f295cfe0  ./js/admin.js
+6d0eff152c1fb89ac69f0be1cd17f7b791b3959964eae35ea136d5dff5fb2cca  ./js/blockchain.js
+972f264be7517b196a7606e2cd76d8ee77dca44c8fdb6755a96ff44168ba6981  ./js/admin.js
 d49e1d0ed6335d96c9106c19e50949a049b5ca42fea7207e21c1d421b899559b  ./js/map2json.js
 e15716ed0a9b297f2b1425ffb15df664574034e1a2c7f13bb80cc9d5e196fff4  ./js/calculation.js
 97397bc736a79eb65dea149ca57049849c18bf9fa25d8265e67219131e8e97e4  ./package.json
@@ -30,7 +30,7 @@ c037f01e13dddf0aaf984e84d9e95d36aabb2ea8d1229511d3c64ad742ef9097  ./admin-web/fi
 484f2b8690f350cbc2e4021befdee5d2f09faa44f11f5bab2dd5c9d9547d006d  ./admin-web/firebaseui/firebaseui.css
 ea9769dc77d308f965d93c82b5848533836209ff04695cb3cd73bbea04f02ba6  ./admin-web/js/config.js
 9e4c1a5e9dcbdd14d4b15e1781d4717d53ce381bdc448208679968c933a06bd4  ./admin-web/js/login.js
-25b86ea4ac561562ade101457eb2dc95cd896872d72ca04a34b4e2a3c9893972  ./admin-web/js/home.js
+c9de2c0cfc0e0b2e7840e544373177cde010766c94d6d05b27adbd939906c88d  ./admin-web/js/home.js
 1bafb343e11c1b7e32cff643ebf5c9cf960aa282cc55f180ef34b355c9e4edb5  ./admin-web/firebase/firebase.js
 01ca138d986617cc48bb89ad482b58bc109723a510310c09437d4523e987320e  ./admin-web/w3css/w3.css
 46ad59f13d30ad897d8f2b6e6f65fbbfd9ff52b9f7a89c60db9b19d92f42a597  ./admin-web/cryptojs/sha512.js

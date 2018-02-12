@@ -68,7 +68,7 @@ function server(browser) {
     //shutdown server
     app.get('/exit', function (req, res) {
         res.sendFile(path.join(__dirname + '/../admin-web/html/exit.html'));
-        wait.for.time(5);
+        wait.for.time(10);
         process.exit(0);
     });
     //error 404
