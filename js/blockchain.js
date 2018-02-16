@@ -64,6 +64,7 @@ function genBlocks(uid, eleid, conid, parid) {
     var index = getLastBlock().index + 1;
     var prevHash = getLastBlock().hash;
     var time = Math.round(new Date().getTime()/1000);
+    uid = CryptoJS.HmacSHA512(uid,macKey).toString();
     var data = new blockData(uid, eleid, conid, parid);
     var hash = genHash(data);
     return new block(index, prevHash, time, data, hash);
@@ -97,7 +98,6 @@ function isHashRepeated(newBlock) {
 //add block to blockchain
 function addBlock(newBlock) {
     if (isValidBlock(newBlock, getLastBlock()) && isHashRepeated(newBlock)) {
-        newBlock.data.uid = CryptoJS.HmacSHA512(newBlock.data.uid,macKey).toString();
         blockchain.push(newBlock);
         return true;
     }
