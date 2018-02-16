@@ -8,7 +8,6 @@ var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
 var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
 
 var macKey = fs.readFileSync(path.join(__dirname + '/../ssl/blockchain.key')).toString();
-console.log(macKey);
 
 /*
     block
