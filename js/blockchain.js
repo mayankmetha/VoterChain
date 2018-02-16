@@ -7,6 +7,9 @@ var fs = require('fs');
 var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
 var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
 
+var macKey = fs.readFileSync(path.join(__dirname + '/../ssl/blockchain.key')).toString();
+console.log(macKey);
+
 /*
     block
 */
@@ -94,6 +97,7 @@ function isHashRepeated(newBlock) {
 //add block to blockchain
 function addBlock(newBlock) {
     if (isValidBlock(newBlock, getLastBlock()) && isHashRepeated(newBlock)) {
+        newBlock.data.uid = CryptoJS.HmacSHA512(newBlock.data.uid,macKey).toString();
         blockchain.push(newBlock);
         return true;
     }
