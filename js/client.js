@@ -61,19 +61,15 @@ function server(browser) {
         switch(req.params.options) {
             case "1":
                 res.send(map2json.map2json(calculation.genMap(chain)));
-                res.destroy();
                 break;
             case "2":
                 res.send(map2json.map2json(calculation.computePartyMax(chain)));
-                res.emit('end');
                 break;
             case "3":
                 res.send(map2json.map2json(calculation.computeNumberOfConstituency(chain)));
-                res.end();
                 break;
             case "4":
                 res.send(map2json.map2json(calculation.computeConstituencyMax(chain)));
-                res.end();
                 break;
         }
     });
