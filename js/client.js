@@ -181,13 +181,46 @@ function server(browser) {
         if(uidAnonymous != null) {
             db.ref('users/' + user).once('value', function (snapshot) {
                 if(snapshot.exists()) {
-                    if(password === snapshot.val().snapshot) {
-                        res.send("Welcome " + req.params.user);
+                    if(password == snapshot.val().pwd && user == req.params.user) {
+                        res.sendFile(path.join(__dirname + '/../main-web/html/user.html'));
+                    } else {
+                        res.redirect('/');
                     }
+                } else {
+                    res.redirect('/');
                 }
             });
+        } else {
+            res.redirect('/');
         }
-        res.redirect('/');
+    });
+    app.get('/user.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/user.css'));
+    });
+    app.get('/user.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/user.js'));
+    });
+    app.get('/username', function (req, res) {
+        res.send(JSON.stringify(user));
+    });
+    app.get('/getElection', function (req, res) {
+        var conid;
+        var conRegex;
+        if(uidAnonymous != null) {
+            db.ref('users/'+user).once('value', function(snapshot) {
+                if(snapshot.exists()) {
+                    conid = snapshot.val().conid;
+                }
+            });
+            db.ref('election/').once('value', function(snapshot) {
+                snapshot.forEach(function(electionSnapshot) {
+                    conRegex = electionSnapshot.val().conRegex;
+                    if(conid.startsWith(conRegex)) {
+                        //electionSnapshot.key
+                    }
+                });
+            });
+        }
     });
     //login
     app.post('/login', function (req, res) {
