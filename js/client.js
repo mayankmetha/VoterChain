@@ -28,6 +28,7 @@ var uidAnonymous;
 var user;
 var invalid = 0;
 var falseAttempt;
+var password;
 
 firebase.initializeApp(firebaseConfig.config);
 
@@ -37,10 +38,10 @@ var myip = ip.address();
 
 //disable https and forceSsl in terminal test mode
 function server(browser) {
-    https.createServer(options, app).listen(443);
+    //https.createServer(options, app).listen(443);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(forceSsl);
+    //app.use(forceSsl);
     //test code
     //TODO: test mining of blocks
     app.post('/mineBlock', (req, res) => {
@@ -60,15 +61,19 @@ function server(browser) {
         switch(req.params.options) {
             case "1":
                 res.send(map2json.map2json(calculation.genMap(chain)));
+                res.destroy();
                 break;
             case "2":
                 res.send(map2json.map2json(calculation.computePartyMax(chain)));
+                res.emit('end');
                 break;
             case "3":
                 res.send(map2json.map2json(calculation.computeNumberOfConstituency(chain)));
+                res.end();
                 break;
             case "4":
                 res.send(map2json.map2json(calculation.computeConstituencyMax(chain)));
+                res.end();
                 break;
         }
     });
@@ -177,12 +182,21 @@ function server(browser) {
     //user page
     app.get('/users/:user', function (req, res) {
         invalid = 0;
-        res.send("Welcome "+req.params.user);
+        if(uidAnonymous != null) {
+            db.ref('users/' + user).once('value', function (snapshot) {
+                if(snapshot.exists()) {
+                    if(password === snapshot.val().snapshot) {
+                        res.send("Welcome " + req.params.user);
+                    }
+                }
+            });
+        }
+        res.redirect('/');
     });
     //login
     app.post('/login', function (req, res) {
         user = req.body.user;
-        var password = CryptoJS.SHA512(req.body.password).toString();
+        password = CryptoJS.SHA512(req.body.password).toString();
         if (uidAnonymous !== null) {
             db.ref('users/' + user).once('value', function (snapshot) {
                 if (snapshot.exists()) {
@@ -216,7 +230,7 @@ function server(browser) {
     //express config
     app.listen(80, function () {
         console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
-        open("http://localhost/start", browser);
+        //open("http://localhost/start", browser);
     });
 }
 
