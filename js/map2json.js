@@ -1,4 +1,3 @@
-var temp = [];
 function ds(key, value) {
     this.key = key;
     this.value = value;
@@ -9,6 +8,7 @@ function concatDS(key, value) {
 }
 
 function map2json(map) {
+    var temp = [];
     map.forEach(function(value,key) {
         temp.push(concatDS(key,value));
     });
