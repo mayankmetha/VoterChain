@@ -42,8 +42,7 @@ function server(browser) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(forceSsl);
-    //test code
-    //TODO: test mining of blocks
+    //TODO: test code   
     app.post('/mineBlock', (req, res) => {
         var newBlock = blockchain.genBlocks(req.body.uid, req.body.eleid, req.body.conid, req.body.parid);
         if (blockchain.addBlock(newBlock)) {
@@ -54,8 +53,6 @@ function server(browser) {
         }
         res.send();
     });
-    //test code
-    //TODO: development and testing calculation
     app.get('/cal/:options', function (req, res) {
         var chain = blockchain.getChain();
         switch (req.params.options) {
@@ -73,6 +70,54 @@ function server(browser) {
                 break;
         }
     });
+    app.get('/user.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/user.css'));
+    });
+    app.get('/user.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/user.js'));
+    });
+    app.get('/username', function (req, res) {
+        res.send(JSON.stringify(user));
+    });
+    app.get('/getelections', function (req, res) {
+        var conid;
+        var conRegex;
+        var eleArr = [];
+        if (uidAnonymous != null) {
+            db.ref('users/' + user).once('value', function (snapshot) {
+                if (snapshot.exists()) {
+                    conid = snapshot.val().conid;
+                }
+                db.ref('election/').once('value', function (snapshot) {
+                    snapshot.forEach(function (electionSnapshot) {
+                        conRegex = electionSnapshot.val().conRegex;
+                        if (conid.startsWith(conRegex)) {
+                            eleArr.push(electionSnapshot.key);
+                        }
+                    });
+                    res.send(JSON.stringify(eleArr));
+                });
+            });
+        }
+    });
+    app.get('/getcandidate/:eleid', function (req, res) {
+        var conid;
+        if (uidAnonymous != null) {
+            db.ref('users/' + user).once('value', function (snapshot) {
+                if (snapshot.exists()) {
+                    conid = snapshot.val().conid;
+                }
+                db.ref('candidate/'+req.params.eleid+'/'+conid).once('value', function (snapshot) {
+                    var canMap = new Map();
+                    snapshot.forEach(function (childSnapshot) {
+                        canMap.set(childSnapshot.key, childSnapshot.val());
+                    });
+                    res.send(map2json.map2json(canMap));
+                });
+            });
+        }
+    });
+
     //message css file
     app.get('/message.css', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
@@ -192,36 +237,6 @@ function server(browser) {
             });
         } else {
             res.redirect('/');
-        }
-    });
-    app.get('/user.css', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/css/user.css'));
-    });
-    app.get('/user.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/user.js'));
-    });
-    app.get('/username', function (req, res) {
-        res.send(JSON.stringify(user));
-    });
-    app.get('/getElections', function (req, res) {
-        var conid;
-        var conRegex;
-        var eleArr = [];
-        if (uidAnonymous != null) {
-            db.ref('users/' + user).once('value', function (snapshot) {
-                if (snapshot.exists()) {
-                    conid = snapshot.val().conid;
-                }
-            });
-            db.ref('election/').once('value', function (snapshot) {
-                snapshot.forEach(function (electionSnapshot) {
-                    conRegex = electionSnapshot.val().conRegex;
-                    if (conid.startsWith(conRegex)) {
-                        eleArr.push(electionSnapshot.key);
-                    }
-                });
-                res.send(JSON.stringify(eleArr));
-            });
         }
     });
     //login
