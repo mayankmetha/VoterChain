@@ -3,6 +3,8 @@ $(document).ready(function () {
     getElections();
 });
 
+var election;
+
 function getUserName() {
     $.ajax({
         dataType: "json",
@@ -20,11 +22,13 @@ function getElections() {
         url: "../getElections",
         type: "GET",
         success: function (data) {
+            election = data;
             var str = "";
             for(var i = 0; i < data.length; i++) {
                 str += data[i] + "<br />";
             }
             $("#elections").html(str);
+            console.log(election);
         }
     });
 }
