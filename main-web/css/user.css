@@ -1,4 +1,5 @@
 html, body {
+    padding: 0 0;
     margin: 0 0;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -6,12 +7,12 @@ html, body {
 #header {
     overflow: hidden;
     background-color: #333;
-    position: fixed;
+    position: block;
     top: 0;
     width: 100%;
 }
 
-#user {
+.user {
     font-size: 20px;
     text-align: center;
     color: white;

@@ -17,9 +17,14 @@ function getUserName() {
 function getElections() {
     $.ajax({
         dataType: "json",
-        url: "../getElection",
+        url: "../getElections",
         type: "GET",
         success: function (data) {
+            var str = "";
+            for(var i = 0; i < data.length; i++) {
+                str += data[i] + "<br />";
+            }
+            $("#elections").html(str);
         }
     });
 }
