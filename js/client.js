@@ -56,9 +56,9 @@ function server(browser) {
     });
     //test code
     //TODO: development and testing calculation
-    app.get('/cal/:options', function(req, res) {
+    app.get('/cal/:options', function (req, res) {
         var chain = blockchain.getChain();
-        switch(req.params.options) {
+        switch (req.params.options) {
             case "1":
                 res.send(map2json.map2json(calculation.genMap(chain)));
                 break;
@@ -178,10 +178,10 @@ function server(browser) {
     //user page
     app.get('/users/:user', function (req, res) {
         invalid = 0;
-        if(uidAnonymous != null) {
+        if (uidAnonymous != null) {
             db.ref('users/' + user).once('value', function (snapshot) {
-                if(snapshot.exists()) {
-                    if(password == snapshot.val().pwd && user == req.params.user) {
+                if (snapshot.exists()) {
+                    if (password == snapshot.val().pwd && user == req.params.user) {
                         res.sendFile(path.join(__dirname + '/../main-web/html/user.html'));
                     } else {
                         res.redirect('/');
@@ -203,22 +203,24 @@ function server(browser) {
     app.get('/username', function (req, res) {
         res.send(JSON.stringify(user));
     });
-    app.get('/getElection', function (req, res) {
+    app.get('/getElections', function (req, res) {
         var conid;
         var conRegex;
-        if(uidAnonymous != null) {
-            db.ref('users/'+user).once('value', function(snapshot) {
-                if(snapshot.exists()) {
+        var eleArr = [];
+        if (uidAnonymous != null) {
+            db.ref('users/' + user).once('value', function (snapshot) {
+                if (snapshot.exists()) {
                     conid = snapshot.val().conid;
                 }
             });
-            db.ref('election/').once('value', function(snapshot) {
-                snapshot.forEach(function(electionSnapshot) {
+            db.ref('election/').once('value', function (snapshot) {
+                snapshot.forEach(function (electionSnapshot) {
                     conRegex = electionSnapshot.val().conRegex;
-                    if(conid.startsWith(conRegex)) {
-                        //electionSnapshot.key
+                    if (conid.startsWith(conRegex)) {
+                        eleArr.push(electionSnapshot.key);
                     }
                 });
+                res.send(JSON.stringify(eleArr));
             });
         }
     });
@@ -231,7 +233,7 @@ function server(browser) {
                 if (snapshot.exists()) {
                     falseAttempt = snapshot.val().falseAttempt;
                     if (password === snapshot.val().pwd && falseAttempt < 5) {
-                        var url = "/users/"+user;
+                        var url = "/users/" + user;
                         res.redirect(url);
                     } else {
                         invalid = 1;
