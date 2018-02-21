@@ -88,15 +88,15 @@ function isValidBlock(newBlock, prevBlock) {
 function isHashRepeated(newBlock) {
     for(var i=1;i<blockchain.length;i++) {
         if(blockchain[i].hash ===  newBlock.hash) {
-            return false;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 //add block to blockchain
 function addBlock(newBlock) {
-    if (isValidBlock(newBlock, getLastBlock()) && isHashRepeated(newBlock)) {
+    if (isValidBlock(newBlock, getLastBlock()) && !isHashRepeated(newBlock)) {
         blockchain.push(newBlock);
         return true;
     }

@@ -3,8 +3,6 @@ $(document).ready(function () {
     getElections();
 });
 
-var election;
-
 function getUserName() {
     $.ajax({
         dataType: "json",
@@ -22,13 +20,34 @@ function getElections() {
         url: "../getElections",
         type: "GET",
         success: function (data) {
-            election = data;
-            var str = "";
             for(var i = 0; i < data.length; i++) {
-                str += data[i].value + "<br />";
+                var ele = data[i].value;
+                if(!voteExist(ele)) {
+                    getCandidates(ele);
+                }
             }
-            $("#elections").html(str);
-            console.log(election);
+        }
+    });
+}
+
+function getCandidates(eleid) {
+    $.ajax({
+        dataType: "json",
+        url: "../getcandidate/"+eleid,
+        type: "GET",
+        success: function (data) {
+            console.log(data);
+        }
+    });
+}
+
+function voteExist(eleid) {
+    $.ajax({
+        dataType: "json",
+        url: "../blk/"+eleid,
+        type: "GET",
+        success: function (data) {
+            console.log(data);
         }
     });
 }

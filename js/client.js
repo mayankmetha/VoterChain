@@ -29,6 +29,7 @@ var user;
 var invalid = 0;
 var falseAttempt;
 var password;
+var uid;
 
 firebase.initializeApp(firebaseConfig.config);
 
@@ -69,6 +70,10 @@ function server(browser) {
                 res.send(map2json.map2json(calculation.computeConstituencyMax(chain)));
                 break;
         }
+    });
+    app.get('/blk/:eleid', function (req, res) {
+        var blk = blockchain.genBlocks(uid, req.params.eleid, 0, 0);
+        res.send(JSON.stringify(blockchain.isHashRepeated(blk)));
     });
     app.get('/user.css', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/css/user.css'));
@@ -249,6 +254,7 @@ function server(browser) {
     //login
     app.post('/login', function (req, res) {
         user = req.body.user;
+        uid = CryptoJS.SHA512(user).toString();
         password = CryptoJS.SHA512(req.body.password).toString();
         if (uidAnonymous !== null) {
             db.ref('users/' + user).once('value', function (snapshot) {
@@ -282,8 +288,8 @@ function server(browser) {
     });
     //express config
     app.listen(80, function () {
-        console.log('Opening VoterChain...\nGoto http://localhost/close to Exit...');
-        open("http://localhost/start", browser);
+        console.log('Opening VoterChain...\nGoto https://localhost/close to Exit...');
+        open("https://localhost/start", browser);
     });
 }
 

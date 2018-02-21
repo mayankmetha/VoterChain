@@ -77,8 +77,8 @@ function server(browser) {
     });
     //express settings
     app.listen(80, function() {
-        console.log('Opening VoterChain Admin...\nGoto http://localhost/exit to exit...');
-        open("http://localhost",browser);    
+        console.log('Opening VoterChain Admin...\nGoto https://localhost/exit to exit...');
+        open("https://localhost",browser);    
     });
 }
 
