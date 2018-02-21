@@ -25,7 +25,7 @@ function getElections() {
             election = data;
             var str = "";
             for(var i = 0; i < data.length; i++) {
-                str += data[i] + "<br />";
+                str += data[i].value + "<br />";
             }
             $("#elections").html(str);
             console.log(election);

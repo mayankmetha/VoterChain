@@ -82,7 +82,8 @@ function server(browser) {
     app.get('/getelections', function (req, res) {
         var conid;
         var conRegex;
-        var eleArr = [];
+        var eMap = new Map();
+        var index = 0;
         if (uidAnonymous != null) {
             db.ref('users/' + user).once('value', function (snapshot) {
                 if (snapshot.exists()) {
@@ -92,10 +93,11 @@ function server(browser) {
                     snapshot.forEach(function (electionSnapshot) {
                         conRegex = electionSnapshot.val().conRegex;
                         if (conid.startsWith(conRegex)) {
-                            eleArr.push(electionSnapshot.key);
+                            eMap.set(index, electionSnapshot.key);
+                            index = index + 1;
                         }
                     });
-                    res.send(JSON.stringify(eleArr));
+                    res.send(map2json.map2json(eMap));
                 });
             });
         }
