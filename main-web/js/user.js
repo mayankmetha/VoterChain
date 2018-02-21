@@ -1,9 +1,10 @@
 var conid;
+var count = 0;
+var ele;
 $(document).ready(function () {
     getUserName();
     getElections();
     getConid();
-    console.log(window.location.pathname);
 });
 
 function getConid() {
@@ -13,7 +14,6 @@ function getConid() {
         type: "GET",
         success: function (data) {
             conid = data;
-            console.log(data);
         }
     });
 }
@@ -35,11 +35,10 @@ function getElections() {
         url: "/getElections",
         type: "GET",
         success: function (data) {
+            ele = data;
             for(var i = 0; i < data.length; i++) {
-                var ele = data[i].value;
-                if(voteExist(ele) !== false) {
-                    getCandidates(ele);
-                }
+                var eleid = data[i].value;
+                voteExist(eleid);
             }
         }
     });
@@ -51,18 +50,38 @@ function getCandidates(eleid) {
         url: "/getcandidate/"+eleid,
         type: "GET",
         success: function (data) {
-            console.log(data);
+            generateForm(eleid, data);
         }
     });
 }
 
+function generateForm(eleid, data) {
+    var url = "https://localhost"+window.location.pathname+"/"+conid+"/"+eleid;
+    var html = "<form id="+eleid+" class=votecard method=POST action="+url+">";
+    html += "<div class=h4>"+eleid+"</div><div class=radio>";
+    for(var i = 0; i < data.length; i++) {
+        if(i == 0) {
+            html += "<label><input type=radio name=parid value="+data[i].key+" checked />"+data[i].value+"</label>";
+        } else {
+            html += "<label><input type=radio name=parid value="+data[i].key+" />"+data[i].value+"</label>";
+        }
+    }
+    html += "</div><div class=submit><input type=submit value=submit /></div></form>";
+    $('#elections').append(html);
+}
+
 function voteExist(eleid) {
-    $.ajax({
+    var result = $.ajax({
         dataType: "json",
         url: "/blk/"+eleid,
         type: "GET",
-        success: function (data) {
-            return data;
+    });
+
+    result.then(function (data) {
+        if(data == false) getCandidates(eleid);
+        else count++;
+        if(count == ele.length) {
+            $('#elections').append("<div class=h3>NO ACTIVE ELECTION</div>")
         }
     });
 }

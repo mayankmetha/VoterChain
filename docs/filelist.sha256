@@ -1,4 +1,4 @@
-6bfcc70fef1807b00f8ca596407f7e5600ec31a9d6b80f6ee6cff823339a09d2  ./js/client.js
+b0b9ad4f59b3263c506517b5e467a4b786bc4746f828c1b7e1f878f7180eda73  ./js/client.js
 f941350fcb4ab75763972ffa7ca652918fff45799c1e4e7e3afcaeb1f3bd5c54  ./js/config.js
 e6ba5b0e7a38b269861d20ac348883c89041999e19d5a656d641e83cac210b0a  ./js/blockchain.js
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./js/config.js.temp
@@ -13,9 +13,9 @@ e15716ed0a9b297f2b1425ffb15df664574034e1a2c7f13bb80cc9d5e196fff4  ./js/calculati
 8c986f0d6e4b20472a49c1a5533718b441f68b2ddd53dc75981a76b258b10e56  ./main-web/js/home.js
 eeed8563aaf0bbac30fc9c764e13fb58063ff485c853a1c52a778fbe42f3a300  ./main-web/js/fontawesome/fontawesome-all.js
 4b9370887edbde8e53265982dd24ff4b44c3213618a08907b49cd50a3f32d472  ./main-web/js/blocks.js
-a5bfef3adfeb69f04f15ac5c8075fc83f61e66c499477e7d9969dfd072108939  ./main-web/js/user.js
+144eef92d45600a3449ea69eac517e361bcc577132e5ef34b129b619836f3d79  ./main-web/js/user.js
 a48ad436fd021c15c5fd6a715bcf0f9e9485b4b4e758393d77958d7def6f4567  ./main-web/css/home.css
-60d92011cbf906292fc3f3a4343ef5faabc29840d14c3a04f0f5f3d84b6e4b9c  ./main-web/css/user.css
+9ad31b771d7b952b1a05ed8c17349f992c01502faf11a8c749e255da1a4bf8f1  ./main-web/css/user.css
 b552a2d1fa535fd88ea69cacdabf3e80859556b2a0a3bc38280c83863a58ebe2  ./main-web/css/blocks.css
 dca756d3147f219657ee93bd390506db34867719683f38b0e631a9fbad879f79  ./main-web/css/peer.css
 9544a7d0f0ab78c3d8c8cc4d1cc04f82a1701f21cb2ad84722931e69ad0f9e08  ./main-web/css/message.css
@@ -26,7 +26,7 @@ ed5fd52dd0b5655ebf3e83a42c3fc6a1a778930c93e1b75f2dffdeb436450993  ./main-web/ass
 df8a4f465bca8ae1500fa480a292f83ecae65f322211c70fdd740110b16c2161  ./main-web/html/home.html
 b45b199dd6797c818f4b942c6261d770b1a8337d9dbe2a445c61d77037cf38af  ./main-web/html/peer.html
 afcb91837a85c5044e45a05655f2e022577ab6872aed7a5a3e0c5e2299ac7a30  ./main-web/html/peerAddDone.html
-5c62fd9301891ccf2973bad8d3e7774e2f7bb57e691bb00185b1175f57ec7d9b  ./main-web/html/user.html
+2d66f7a102ae9359e46019858fed2d17e2f7b82d79165162387b7e9b36431235  ./main-web/html/user.html
 79c0f901950f83380ef2e25a14cb131b8dfec1cbef9bb121cbea357277180dfa  ./main-web/html/close.html
 d0f6ce8e261b5f17971a30588f020cbc72849d29142e85d808f9bbec30f9e647  ./main-web/html/userBlocked.html
 627275da5fe1856dc5bd004ca5c09140eab46dd269992ff98c6693836ed2c058  ./main-web/html/blocks.html

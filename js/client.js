@@ -54,6 +54,16 @@ function server(browser) {
         }
         res.send();
     });
+    app.post('/users/:uid/:conid/:eleid', function (req, res) {
+        var newBlock = blockchain.genBlocks(req.params.uid, req.params.eleid, req.params.conid, req.body.parid);
+        if (blockchain.addBlock(newBlock)) {
+            blockchain.broadcast(blockchain.responseLatestMsg());
+            console.log('block added: ' + JSON.stringify(newBlock));
+        } else {
+            console.log('cannot add illegal block!');
+        }
+        res.redirect('/users/'+uid);
+    });
     app.get('/cal/:options', function (req, res) {
         var chain = blockchain.getChain();
         switch (req.params.options) {
