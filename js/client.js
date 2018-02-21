@@ -84,6 +84,13 @@ function server(browser) {
     app.get('/username', function (req, res) {
         res.send(JSON.stringify(user));
     });
+    app.get('/conid', function (req, res) {
+        db.ref('users/' + user).once('value', function (snapshot) {
+            if (snapshot.exists()) {
+                res.send(JSON.stringify(snapshot.val().conid));
+            }
+        });
+    });
     app.get('/getelections', function (req, res) {
         var conid;
         var conRegex;
@@ -233,12 +240,12 @@ function server(browser) {
         }
     });
     //user page
-    app.get('/users/:user', function (req, res) {
+    app.get('/users/:uid', function (req, res) {
         invalid = 0;
         if (uidAnonymous != null) {
             db.ref('users/' + user).once('value', function (snapshot) {
                 if (snapshot.exists()) {
-                    if (password == snapshot.val().pwd && user == req.params.user) {
+                    if (password == snapshot.val().pwd && uid == req.params.uid) {
                         res.sendFile(path.join(__dirname + '/../main-web/html/user.html'));
                     } else {
                         res.redirect('/');
@@ -261,7 +268,7 @@ function server(browser) {
                 if (snapshot.exists()) {
                     falseAttempt = snapshot.val().falseAttempt;
                     if (password === snapshot.val().pwd && falseAttempt < 5) {
-                        var url = "/users/" + user;
+                        var url = "/users/" + uid;
                         res.redirect(url);
                     } else {
                         invalid = 1;
