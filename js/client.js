@@ -117,7 +117,12 @@ function server(browser) {
             });
         }
     });
-
+    app.get('/logout', function (req, res) {
+        user = "";
+        password = "";
+        invalid = 0;
+        res.redirect('/');
+    });
     //message css file
     app.get('/message.css', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));

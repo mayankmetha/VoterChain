@@ -1,4 +1,4 @@
-335d07933aab2f98af023be098713cf60ef5c88499f1261f3a941a686b0a286d  ./js/client.js
+9b7b583eef4bbabc1bf0e0f1f650ac5475c0680f775a4bea2000ee9beef8ca35  ./js/client.js
 f941350fcb4ab75763972ffa7ca652918fff45799c1e4e7e3afcaeb1f3bd5c54  ./js/config.js
 72bbbfbfc16d272f465544cfc4fda82b57d3453febc071850fc0503022310fd7  ./js/blockchain.js
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./js/config.js.temp
@@ -15,7 +15,7 @@ eeed8563aaf0bbac30fc9c764e13fb58063ff485c853a1c52a778fbe42f3a300  ./main-web/js/
 4b9370887edbde8e53265982dd24ff4b44c3213618a08907b49cd50a3f32d472  ./main-web/js/blocks.js
 8fed7988ba7c508454a05de82b715973e8ae73c7b6acacad6a2d2a251c7cfcd3  ./main-web/js/user.js
 a48ad436fd021c15c5fd6a715bcf0f9e9485b4b4e758393d77958d7def6f4567  ./main-web/css/home.css
-1f4657b5b79520881cd0933ab5e191cb5ab26fd1f7128212f5b755907d134bfa  ./main-web/css/user.css
+60d92011cbf906292fc3f3a4343ef5faabc29840d14c3a04f0f5f3d84b6e4b9c  ./main-web/css/user.css
 b552a2d1fa535fd88ea69cacdabf3e80859556b2a0a3bc38280c83863a58ebe2  ./main-web/css/blocks.css
 dca756d3147f219657ee93bd390506db34867719683f38b0e631a9fbad879f79  ./main-web/css/peer.css
 9544a7d0f0ab78c3d8c8cc4d1cc04f82a1701f21cb2ad84722931e69ad0f9e08  ./main-web/css/message.css
@@ -26,7 +26,7 @@ ed5fd52dd0b5655ebf3e83a42c3fc6a1a778930c93e1b75f2dffdeb436450993  ./main-web/ass
 df8a4f465bca8ae1500fa480a292f83ecae65f322211c70fdd740110b16c2161  ./main-web/html/home.html
 b45b199dd6797c818f4b942c6261d770b1a8337d9dbe2a445c61d77037cf38af  ./main-web/html/peer.html
 afcb91837a85c5044e45a05655f2e022577ab6872aed7a5a3e0c5e2299ac7a30  ./main-web/html/peerAddDone.html
-dc639201291a11ec96509bc616681c87eebda974c29274289197bcb91e990d74  ./main-web/html/user.html
+5c62fd9301891ccf2973bad8d3e7774e2f7bb57e691bb00185b1175f57ec7d9b  ./main-web/html/user.html
 79c0f901950f83380ef2e25a14cb131b8dfec1cbef9bb121cbea357277180dfa  ./main-web/html/close.html
 d0f6ce8e261b5f17971a30588f020cbc72849d29142e85d808f9bbec30f9e647  ./main-web/html/userBlocked.html
 627275da5fe1856dc5bd004ca5c09140eab46dd269992ff98c6693836ed2c058  ./main-web/html/blocks.html
