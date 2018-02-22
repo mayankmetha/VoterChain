@@ -60,11 +60,8 @@ function generateForm(eleid, data) {
     var html = "<form id="+eleid+" class=votecard method=POST action="+url+">";
     html += "<div class=h4>"+eleid+"</div><div class=radio>";
     for(var i = 0; i < data.length; i++) {
-        if(i == 0) {
-            html += "<label><input type=radio name=parid value="+data[i].key+" checked />"+data[i].value+"</label>";
-        } else {
-            html += "<label><input type=radio name=parid value="+data[i].key+" />"+data[i].value+"</label>";
-        }
+        html += "<input type=radio name=parid id="+eleid+data[i].key+" value="+data[i].key+" />";
+        html += "<label for="+eleid+data[i].key+">"+data[i].value+"</label>";
     }
     html += "</div><div class=submit><input type=submit value=submit /></div></form>";
     $('#elections').append(html);
