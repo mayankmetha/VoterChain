@@ -64,6 +64,7 @@ body {
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
+    text-align: center;
 }
 
 input[type=radio] {
@@ -71,8 +72,8 @@ input[type=radio] {
 }
 
 input[type=radio] + label {
+    display: inline-table;
     font-size: 18px;
-    display: block;
     text-align: center;
     background-color: #000;
     color: white;
@@ -80,6 +81,7 @@ input[type=radio] + label {
     padding-left: 10px;
     padding-bottom: 2px;
     padding-right: 10px;
+    border: 1px solid #008800;
 }
 
 input[type=radio]:checked + label { 
