@@ -25,11 +25,10 @@ var options = {
 };
 var isAnonymous;
 var uidAnonymous;
-var user;
+var user = new Map();
 var invalid = 0;
-var falseAttempt;
-var password;
-var uid;
+var falseAttempt = new Map();
+var password = new Map();
 
 firebase.initializeApp(firebaseConfig.config);
 
@@ -43,17 +42,7 @@ function server(browser) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(forceSsl);
-    //TODO: test code   
-    app.post('/mineBlock', (req, res) => {
-        var newBlock = blockchain.genBlocks(req.body.uid, req.body.eleid, req.body.conid, req.body.parid);
-        if (blockchain.addBlock(newBlock)) {
-            blockchain.broadcast(blockchain.responseLatestMsg());
-            console.log('block added: ' + JSON.stringify(newBlock));
-        } else {
-            console.log('cannot add illegal block!');
-        }
-        res.send();
-    });
+    //TODO: test code
     app.post('/users/:uid/:conid/:eleid', function (req, res) {
         var newBlock = blockchain.genBlocks(req.params.uid, req.params.eleid, req.params.conid, req.body.parid);
         if (blockchain.addBlock(newBlock)) {
@@ -62,7 +51,7 @@ function server(browser) {
         } else {
             console.log('cannot add illegal block!');
         }
-        res.redirect('/users/'+uid);
+        res.redirect('/users/'+req.params.uid);
     });
     app.get('/cal/:options', function (req, res) {
         var chain = blockchain.getChain();
@@ -81,8 +70,8 @@ function server(browser) {
                 break;
         }
     });
-    app.get('/blk/:eleid', function (req, res) {
-        var blk = blockchain.genBlocks(uid, req.params.eleid, 0, 0);
+    app.get('/users/:uid/blk/:eleid', function (req, res) {
+        var blk = blockchain.genBlocks(req.params.uid, req.params.eleid, 0, 0);
         res.send(JSON.stringify(blockchain.isHashRepeated(blk)));
     });
     app.get('/user.css', function (req, res) {
@@ -91,23 +80,23 @@ function server(browser) {
     app.get('/user.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/user.js'));
     });
-    app.get('/username', function (req, res) {
-        res.send(JSON.stringify(user));
+    app.get('/users/:uid/username', function (req, res) {
+        res.send(JSON.stringify(user.get(req.params.uid)));
     });
-    app.get('/conid', function (req, res) {
-        db.ref('users/' + user).once('value', function (snapshot) {
+    app.get('/users/:uid/conid', function (req, res) {
+        db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
             if (snapshot.exists()) {
                 res.send(JSON.stringify(snapshot.val().conid));
             }
         });
     });
-    app.get('/getelections', function (req, res) {
+    app.get('/users/:uid/getelections', function (req, res) {
         var conid;
         var conRegex;
         var eMap = new Map();
         var index = 0;
         if (uidAnonymous != null) {
-            db.ref('users/' + user).once('value', function (snapshot) {
+            db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
                 if (snapshot.exists()) {
                     conid = snapshot.val().conid;
                 }
@@ -124,10 +113,10 @@ function server(browser) {
             });
         }
     });
-    app.get('/getcandidate/:eleid', function (req, res) {
+    app.get('/users/:uid/getcandidate/:eleid', function (req, res) {
         var conid;
         if (uidAnonymous != null) {
-            db.ref('users/' + user).once('value', function (snapshot) {
+            db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
                 if (snapshot.exists()) {
                     conid = snapshot.val().conid;
                 }
@@ -141,15 +130,20 @@ function server(browser) {
             });
         }
     });
-    app.get('/logout', function (req, res) {
-        user = "";
-        password = "";
-        invalid = 0;
+    app.get('/users/:uid/logout', function (req, res) {
+        user.delete(req.params.uid);
+        password.delete(req.params.uid);
         res.redirect('/');
     });
     //message css file
     app.get('/message.css', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
+    });
+    app.get('/users/:uid/message.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
+    });
+    app.get('/users/:uid/fontawesome-all.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
     });
     //firebaseAuthCleanUp
     app.get('/close', function (req, res) {
@@ -238,24 +232,35 @@ function server(browser) {
         res.send(JSON.stringify(blockchain.getChain().length));
     });
     //invalidateLoginAttempt
-    app.get('/invalidLoginAttempt', function (req, res) {
-        if (falseAttempt < 5) {
-            falseAttempt = falseAttempt + 1;
-            db.ref('users/' + user).update({
-                falseAttempt: falseAttempt
+    app.get('/users/:uid/invalidLoginAttempt', function (req, res) {
+        var uid = req.params.uid;
+        if (falseAttempt.get(uid) < 5) {
+            var count = falseAttempt.get(uid);
+            count = count + 1;
+            falseAttempt.set(uid,count);
+            db.ref('users/' + user.get(uid)).once('value', function(snapshot) {
+                if(snapshot.exists()) {
+                    db.ref('users/' + user.get(uid)).update({
+                        falseAttempt: falseAttempt.get(uid)
+                    });
+                }
             });
             res.redirect('/');
         } else {
+            invalid = 0;
             res.sendFile(path.join(__dirname + '/../main-web/html/userBlocked.html'));
         }
+        user.delete(uid);
+        password.delete(uid);
+        falseAttempt.delete(uid);
     });
     //user page
     app.get('/users/:uid', function (req, res) {
         invalid = 0;
         if (uidAnonymous != null) {
-            db.ref('users/' + user).once('value', function (snapshot) {
+            db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
                 if (snapshot.exists()) {
-                    if (password == snapshot.val().pwd && uid == req.params.uid) {
+                    if (password.get(req.params.uid) == snapshot.val().pwd) {
                         res.sendFile(path.join(__dirname + '/../main-web/html/user.html'));
                     } else {
                         res.redirect('/');
@@ -270,26 +275,34 @@ function server(browser) {
     });
     //login
     app.post('/login', function (req, res) {
-        user = req.body.user;
-        uid = CryptoJS.SHA512(user).toString();
-        password = CryptoJS.SHA512(req.body.password).toString();
+        var usr = req.body.user;
+        var uid = CryptoJS.SHA512(usr).toString();
+        var pwd = CryptoJS.SHA512(req.body.password).toString();
+        user.set(uid,usr);
+        password.set(uid,pwd);
         if (uidAnonymous !== null) {
-            db.ref('users/' + user).once('value', function (snapshot) {
+            db.ref('users/' + usr).once('value', function (snapshot) {
                 if (snapshot.exists()) {
-                    falseAttempt = snapshot.val().falseAttempt;
-                    if (password === snapshot.val().pwd && falseAttempt < 5) {
+                    falseAttempt.set(uid,snapshot.val().falseAttempt);
+                    if (pwd === snapshot.val().pwd && falseAttempt.get(uid) < 5) {
                         var url = "/users/" + uid;
                         res.redirect(url);
                     } else {
                         invalid = 1;
-                        res.redirect('/invalidLoginAttempt');
+                        res.redirect('/users/'+uid+'/invalidLoginAttempt');
                     }
                 } else {
                     invalid = 2;
+                    user.delete(uid);
+                    password.delete(uid);
+                    falseAttempt.delete(uid);
                     res.redirect('/');
                 }
             });
         } else {
+            user.delete(uid);
+            password.delete(uid);
+            falseAttempt.delete(uid);
             res.redirect('/');
         }
     });

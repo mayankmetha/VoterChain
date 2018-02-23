@@ -1,16 +1,21 @@
 var conid;
 var count = 0;
 var ele;
+var path = "https://localhost"+window.location.pathname+"";
 $(document).ready(function () {
     getUserName();
     getElections();
     getConid();
+    $("#logout").on('click', function() {
+        window.location.href = path + "/logout";
+    });
 });
 
 function getConid() {
+    var url = path + "/conid";
     $.ajax({
         dataType: "json",
-        url: "/conid",
+        url: url,
         type: "GET",
         success: function (data) {
             conid = data;
@@ -19,9 +24,10 @@ function getConid() {
 }
 
 function getUserName() {
+    var url = path + "/username";
     $.ajax({
         dataType: "json",
-        url: "/username",
+        url: url,
         type: "GET",
         success: function (data) {
             $("#user").html(""+data+"<br />MAKE YOUR VOTE COUNT");
@@ -30,9 +36,10 @@ function getUserName() {
 }
 
 function getElections() {
+    var url = path + "/getelections";
     $.ajax({
         dataType: "json",
-        url: "/getElections",
+        url: url,
         type: "GET",
         success: function (data) {
             ele = data;
@@ -45,9 +52,10 @@ function getElections() {
 }
 
 function getCandidates(eleid) {
+    var url = path + "/getcandidate/" + eleid;
     $.ajax({
         dataType: "json",
-        url: "/getcandidate/"+eleid,
+        url: url,
         type: "GET",
         success: function (data) {
             generateForm(eleid, data);
@@ -68,9 +76,10 @@ function generateForm(eleid, data) {
 }
 
 function voteExist(eleid) {
+    var url = path + "/blk/" + eleid;
     var result = $.ajax({
         dataType: "json",
-        url: "/blk/"+eleid,
+        url: url,
         type: "GET",
     });
 
