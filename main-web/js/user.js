@@ -77,7 +77,7 @@ function generateForm(eleid, data) {
         }
         
     }
-    html += "</div><div class=submit><input type=submit value=submit /></div></form>";
+    html += "</div><div class=submit><input type=submit value=VOTE /></div></form>";
     $('#elections').append(html);
 }
 
