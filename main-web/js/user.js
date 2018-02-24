@@ -68,8 +68,14 @@ function generateForm(eleid, data) {
     var html = "<form id="+eleid+" class=votecard method=POST action="+url+">";
     html += "<div class=h4>"+eleid+"</div><div class=radio>";
     for(var i = 0; i < data.length; i++) {
-        html += "<input type=radio name=parid id="+eleid+data[i].key+" value="+data[i].key+" />";
-        html += "<label for="+eleid+data[i].key+">"+data[i].value+"</label>";
+        if(i == 0) {
+            html += "<input type=radio name=parid id="+eleid+data[i].key+" value="+data[i].key+" checked />";
+            html += "<label for="+eleid+data[i].key+">"+data[i].value+"</label>";
+        } else {
+            html += "<input type=radio name=parid id="+eleid+data[i].key+" value="+data[i].key+" />";
+            html += "<label for="+eleid+data[i].key+">"+data[i].value+"</label>";
+        }
+        
     }
     html += "</div><div class=submit><input type=submit value=submit /></div></form>";
     $('#elections').append(html);
