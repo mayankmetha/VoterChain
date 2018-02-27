@@ -1,4 +1,4 @@
-7156b09cb2859e4b35de319c92057fa1e1d1e700b552c48856b83608b6f444e9  ./js/client.js
+70432e511746f48550e5284a0037b5fabf064f101f1fe64f2bdd8b49f58a7d2a  ./js/client.js
 f941350fcb4ab75763972ffa7ca652918fff45799c1e4e7e3afcaeb1f3bd5c54  ./js/config.js
 e6ba5b0e7a38b269861d20ac348883c89041999e19d5a656d641e83cac210b0a  ./js/blockchain.js
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./js/config.js.temp
@@ -15,7 +15,7 @@ eeed8563aaf0bbac30fc9c764e13fb58063ff485c853a1c52a778fbe42f3a300  ./main-web/js/
 4b9370887edbde8e53265982dd24ff4b44c3213618a08907b49cd50a3f32d472  ./main-web/js/blocks.js
 3335feaa25dc76a6912439449d9c6159f2384dbdbcf031d81ad8990325aec292  ./main-web/js/user.js
 a48ad436fd021c15c5fd6a715bcf0f9e9485b4b4e758393d77958d7def6f4567  ./main-web/css/home.css
-aa3cf61cefb9c290150a85384622c11f77afc50ac59fdfcb47b4cff1bf1fa129  ./main-web/css/user.css
+4514f0f7547f78ac05bd292e0c7f07566e0b4ed0b07bfa9965b13d7c2b4d2f82  ./main-web/css/user.css
 b552a2d1fa535fd88ea69cacdabf3e80859556b2a0a3bc38280c83863a58ebe2  ./main-web/css/blocks.css
 dca756d3147f219657ee93bd390506db34867719683f38b0e631a9fbad879f79  ./main-web/css/peer.css
 9544a7d0f0ab78c3d8c8cc4d1cc04f82a1701f21cb2ad84722931e69ad0f9e08  ./main-web/css/message.css
@@ -31,6 +31,7 @@ afcb91837a85c5044e45a05655f2e022577ab6872aed7a5a3e0c5e2299ac7a30  ./main-web/htm
 d0f6ce8e261b5f17971a30588f020cbc72849d29142e85d808f9bbec30f9e647  ./main-web/html/userBlocked.html
 627275da5fe1856dc5bd004ca5c09140eab46dd269992ff98c6693836ed2c058  ./main-web/html/blocks.html
 4d767412a03eb05af8c147756638f07601fe23d8d616037395ef6ec437b3366a  ./main-web/html/homeInvalidLogin.html
+8596107ef33e2cf7f7237f1067c073ec535e8ec889078ebdb0c6fa93fb2cfd14  ./main-web/html/blkError.html
 c037f01e13dddf0aaf984e84d9e95d36aabb2ea8d1229511d3c64ad742ef9097  ./admin-web/firebaseui/firebaseui.js
 484f2b8690f350cbc2e4021befdee5d2f09faa44f11f5bab2dd5c9d9547d006d  ./admin-web/firebaseui/firebaseui.css
 ea9769dc77d308f965d93c82b5848533836209ff04695cb3cd73bbea04f02ba6  ./admin-web/js/config.js

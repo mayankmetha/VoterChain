@@ -44,14 +44,26 @@ function server(browser) {
     app.use(forceSsl);
     //TODO: test code
     app.post('/users/:uid/:conid/:eleid', function (req, res) {
-        var newBlock = blockchain.genBlocks(req.params.uid, req.params.eleid, req.params.conid, req.body.parid);
-        if (blockchain.addBlock(newBlock)) {
-            blockchain.broadcast(blockchain.responseLatestMsg());
-            console.log('block added: ' + JSON.stringify(newBlock));
-        } else {
-            console.log('cannot add illegal block!');
+        var curTime = Math.round(new Date().getTime()/1000);
+        if(uidAnonymous != null) {
+            db.ref('election/'+req.params.eleid).once('value', function (snapshot) {
+                if(snapshot.val().stop >= curTime || snapshot.val().stop == "NAN") {
+                    var newBlock = blockchain.genBlocks(req.params.uid, req.params.eleid, req.params.conid, req.body.parid);
+                    if (blockchain.addBlock(newBlock)) {
+                        blockchain.broadcast(blockchain.responseLatestMsg());
+                        console.log('block added: ' + JSON.stringify(newBlock));
+                    } else {
+                        console.log('cannot add illegal block!');
+                    }
+                    res.redirect('/users/'+req.params.uid);
+                } else {
+                    res.redirect('/users/'+req.params.uid+'/error');
+                }
+            });
         }
-        res.redirect('/users/'+req.params.uid);
+    });
+    app.get('/users/:uid/error', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/html/blkError.html'));
     });
     app.get('/cal/:options', function (req, res) {
         var chain = blockchain.getChain();
@@ -103,9 +115,12 @@ function server(browser) {
                 db.ref('election/').once('value', function (snapshot) {
                     snapshot.forEach(function (electionSnapshot) {
                         conRegex = electionSnapshot.val().conRegex;
-                        if (conid.startsWith(conRegex)) {
-                            eMap.set(index, electionSnapshot.key);
-                            index = index + 1;
+                        var curTime = Math.round(new Date().getTime()/1000);
+                        if (conid.startsWith(conRegex) && curTime >= electionSnapshot.val().start) {
+                            if(electionSnapshot.val().stop == "NAN" || curTime <= electionSnapshot.val().stop) {
+                                eMap.set(index, electionSnapshot.key);
+                                index = index + 1;
+                            }
                         }
                     });
                     res.send(map2json.map2json(eMap));
@@ -133,6 +148,7 @@ function server(browser) {
     app.get('/users/:uid/logout', function (req, res) {
         user.delete(req.params.uid);
         password.delete(req.params.uid);
+        falseAttempt.delete(req.params.uid);
         res.redirect('/');
     });
     //message css file

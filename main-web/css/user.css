@@ -29,7 +29,7 @@ body {
     flex: 1;
     overflow: auto;
     width: 100%;
-    background-color:#088;
+    background-color:#ff6a00;
 }
 
 .votecard {
@@ -90,7 +90,7 @@ input[type=radio]:checked + label {
     display: inline-table;
     font-size: 18px;
     text-align: center;
-    background-color: #088;
+    background-color: #ff6a00;
     color: white;
     padding-top: 2px;
     padding-left: 10px;
