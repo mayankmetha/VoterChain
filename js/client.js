@@ -1,3 +1,4 @@
+//imports
 var firebase = require('firebase');
 require('firebase/database');
 require('firebase/auth');
@@ -16,13 +17,18 @@ var blockchain = require('./blockchain');
 var calculation = require('./calculation');
 var map2json = require('./map2json');
 
+//express instance
 var app = express();
+
+//ssl
 var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
 var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
 var options = {
     key: key,
     cert: cert
 };
+
+//variables
 var isAnonymous;
 var uidAnonymous;
 var user = new Map();
@@ -30,41 +36,23 @@ var invalid = 0;
 var falseAttempt = new Map();
 var password = new Map();
 
+//firebase instance
 firebase.initializeApp(firebaseConfig.config);
-
 var db = firebase.database();
 
+//get ip address
 var myip = ip.address();
 
-//disable https and forceSsl in terminal test mode
+//express server
 function server(browser) {
+    //https
     https.createServer(options, app).listen(443);
+    //express plugins
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
+    //force https only
     app.use(forceSsl);
     //TODO: test code
-    app.post('/users/:uid/:conid/:eleid', function (req, res) {
-        var curTime = Math.round(new Date().getTime()/1000);
-        if(uidAnonymous != null) {
-            db.ref('election/'+req.params.eleid).once('value', function (snapshot) {
-                if(snapshot.val().stop >= curTime || snapshot.val().stop == "NAN") {
-                    var newBlock = blockchain.genBlocks(req.params.uid, req.params.eleid, req.params.conid, req.body.parid);
-                    if (blockchain.addBlock(newBlock)) {
-                        blockchain.broadcast(blockchain.responseLatestMsg());
-                        console.log('block added: ' + JSON.stringify(newBlock));
-                    } else {
-                        console.log('cannot add illegal block!');
-                    }
-                    res.redirect('/users/'+req.params.uid);
-                } else {
-                    res.redirect('/users/'+req.params.uid+'/error');
-                }
-            });
-        }
-    });
-    app.get('/users/:uid/error', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/html/blkError.html'));
-    });
     app.get('/results', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/results.html'));
     });
@@ -91,9 +79,44 @@ function server(browser) {
                 break;
         }
     });
-    app.get('/users/:uid/blk/:eleid', function (req, res) {
-        var blk = blockchain.genBlocks(req.params.uid, req.params.eleid, 0, 0);
-        res.send(JSON.stringify(blockchain.isHashRepeated(blk)));
+    //3rd party files
+    app.get('/jquery.min.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.min.js'));
+    });
+    app.get('/jquery.scrollify.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.scrollify.js'));
+    });
+    app.get('/fontawesome-all.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
+    });
+    app.get('/users/:uid/fontawesome-all.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
+    });
+    //message pages css file
+    app.get('/message.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
+    });
+    app.get('/users/:uid/message.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
+    });
+    //user page
+    app.get('/users/:uid', function (req, res) {
+        invalid = 0;
+        if (uidAnonymous != null) {
+            db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
+                if (snapshot.exists()) {
+                    if (password.get(req.params.uid) == snapshot.val().pwd) {
+                        res.sendFile(path.join(__dirname + '/../main-web/html/user.html'));
+                    } else {
+                        res.redirect('/');
+                    }
+                } else {
+                    res.redirect('/');
+                }
+            });
+        } else {
+            res.redirect('/');
+        }
     });
     app.get('/user.css', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/css/user.css'));
@@ -101,9 +124,40 @@ function server(browser) {
     app.get('/user.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/user.js'));
     });
+    //user election vote submit handler
+    app.post('/users/:uid/:conid/:eleid', function (req, res) {
+        var curTime = Math.round(new Date().getTime()/1000);
+        if(uidAnonymous != null) {
+            db.ref('election/'+req.params.eleid).once('value', function (snapshot) {
+                if(snapshot.val().stop >= curTime || snapshot.val().stop == "NAN") {
+                    var newBlock = blockchain.genBlocks(req.params.uid, req.params.eleid, req.params.conid, req.body.parid);
+                    if (blockchain.addBlock(newBlock)) {
+                        blockchain.broadcast(blockchain.responseLatestMsg());
+                        console.log('block added: ' + JSON.stringify(newBlock));
+                    } else {
+                        console.log('cannot add illegal block!');
+                    }
+                    res.redirect('/users/'+req.params.uid);
+                } else {
+                    res.redirect('/users/'+req.params.uid+'/error');
+                }
+            });
+        }
+    });
+    //vote error page
+    app.get('/users/:uid/error', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/html/blkError.html'));
+    });
+    //check blocks is valid or not
+    app.get('/users/:uid/blk/:eleid', function (req, res) {
+        var blk = blockchain.genBlocks(req.params.uid, req.params.eleid, 0, 0);
+        res.send(JSON.stringify(blockchain.isHashRepeated(blk)));
+    });
+    //get username
     app.get('/users/:uid/username', function (req, res) {
         res.send(JSON.stringify(user.get(req.params.uid)));
     });
+    //get constituent id
     app.get('/users/:uid/conid', function (req, res) {
         db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
             if (snapshot.exists()) {
@@ -111,6 +165,7 @@ function server(browser) {
             }
         });
     });
+    //get elections
     app.get('/users/:uid/getelections', function (req, res) {
         var conid;
         var conRegex;
@@ -137,6 +192,7 @@ function server(browser) {
             });
         }
     });
+    //get candidates for elections
     app.get('/users/:uid/getcandidate/:eleid', function (req, res) {
         var conid;
         if (uidAnonymous != null) {
@@ -154,23 +210,14 @@ function server(browser) {
             });
         }
     });
+    //user logout
     app.get('/users/:uid/logout', function (req, res) {
         user.delete(req.params.uid);
         password.delete(req.params.uid);
         falseAttempt.delete(req.params.uid);
         res.redirect('/');
     });
-    //message css file
-    app.get('/message.css', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
-    });
-    app.get('/users/:uid/message.css', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
-    });
-    app.get('/users/:uid/fontawesome-all.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
-    });
-    //firebaseAuthCleanUp
+    //firebaseAuth CleanUp
     app.get('/close', function (req, res) {
         firebase.auth().currentUser.delete().then(function () {
             res.sendFile(path.join(__dirname + '/../main-web/html/close.html'));
@@ -178,7 +225,7 @@ function server(browser) {
             process.exit(0);
         });
     });
-    //firebaseAuthLogin
+    //firebaseAuth Login
     app.get('/start', function (req, res) {
         firebase.auth().signInAnonymously().catch(function (error) {
             console.log(error.code);
@@ -196,16 +243,6 @@ function server(browser) {
     app.get('/servePeer', function (req, res) {
         blockchain.server(myip, '6000');
         res.redirect('/');
-    });
-    //3rd party files
-    app.get('/jquery.min.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.min.js'));
-    });
-    app.get('/jquery.scrollify.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/jquery/jquery.scrollify.js'));
-    });
-    app.get('/fontawesome-all.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
     });
     //add peer
     app.get('/addPeer', function (req, res) {
@@ -250,13 +287,15 @@ function server(browser) {
     app.get('/home3.svg', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/assets/home3.svg'));
     });
+    //block table on home page
     app.get('/blockHome', function (req, res) {
         res.send(JSON.stringify(blockchain.getChain()));
     });
+    //blockchain block count on home page
     app.get('/countHome', function (req, res) {
         res.send(JSON.stringify(blockchain.getChain().length));
     });
-    //invalidateLoginAttempt
+    //invalid login handling
     app.get('/users/:uid/invalidLoginAttempt', function (req, res) {
         var uid = req.params.uid;
         if (falseAttempt.get(uid) < 5) {
@@ -279,26 +318,7 @@ function server(browser) {
         password.delete(uid);
         falseAttempt.delete(uid);
     });
-    //user page
-    app.get('/users/:uid', function (req, res) {
-        invalid = 0;
-        if (uidAnonymous != null) {
-            db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
-                if (snapshot.exists()) {
-                    if (password.get(req.params.uid) == snapshot.val().pwd) {
-                        res.sendFile(path.join(__dirname + '/../main-web/html/user.html'));
-                    } else {
-                        res.redirect('/');
-                    }
-                } else {
-                    res.redirect('/');
-                }
-            });
-        } else {
-            res.redirect('/');
-        }
-    });
-    //login
+    //user login handling
     app.post('/login', function (req, res) {
         var usr = req.body.user;
         var uid = CryptoJS.SHA512(usr).toString();
@@ -331,7 +351,7 @@ function server(browser) {
             res.redirect('/');
         }
     });
-    //blocks
+    //blocks of blockchain page
     app.get('/blocks', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/blocks.html'));
     });
@@ -341,13 +361,14 @@ function server(browser) {
     app.get('/blocks.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/blocks.js'));
     });
-    //express config
+    //express settings
     app.listen(80, function () {
         console.log('Opening VoterChain...\nGoto https://localhost/close to Exit...');
         open("https://localhost/start", browser);
     });
 }
 
+//interupt and exit handler
 function cleanUp() {
     process.on('SIGINT', () => {
         console.log('Exiting due to SIGINT signal...');
@@ -360,6 +381,7 @@ function cleanUp() {
     });
 }
 
+//exports
 module.exports = {
     server: server,
     cleanUp: cleanUp
