@@ -33,19 +33,3 @@ function getElectionWinnerData() {
         }
     });
 }
-
-function drawChart(key,value) {
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: key,
-            datasets: [{
-                label: "Votes",
-                backgroundColor: ['rgb(255, 99, 132)','rgb(255, 99, 0)'],
-                borderColor: ['rgb(255, 99, 132)','rgb(255, 99, 0)'],
-                data: value,
-            }]
-        },
-    });
-}

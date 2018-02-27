@@ -59,9 +59,6 @@ function server(browser) {
     app.get('/results.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/results.js'));
     });
-    app.get('/chart.bundle.min.js', function (req, res) {
-        res.sendFile(path.join(__dirname + '/../main-web/js/chartjs/chart.bundle.min.js'));
-    });
     app.get('/cal/:options', function (req, res) {
         var chain = blockchain.getChain();
         switch (req.params.options) {
