@@ -1,1 +1,0 @@
-curl -H "Content-type:application/json" --data '{"uid": "", "eleid": "", "conid": "", "parid": ""}' https://localhost/mineBlock
