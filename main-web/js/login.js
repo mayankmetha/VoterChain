@@ -1,3 +1,4 @@
+//reset form
 function resetForms() {
     document.getElementById('loginForm').reset();
     document.getElementById('user-green').style.display = "none";
@@ -6,6 +7,7 @@ function resetForms() {
     document.getElementById('pwd-red').style.display = "none";
 }
 
+//reset invalid form
 function resetFormsInvalid() {
     document.getElementById('loginForm').reset();
     document.getElementById('user-green').style.display = "none";
@@ -14,6 +16,7 @@ function resetFormsInvalid() {
     document.getElementById('pwd-red').style.display = "block";
 }
 
+//login validation
 function login() {
     var user = document.getElementById('user').value;
     var pwd = document.getElementById('password').value;

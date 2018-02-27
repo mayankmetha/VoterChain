@@ -1,7 +1,10 @@
+//variables
 var conid;
 var count = 0;
 var ele;
 var path = "https://localhost"+window.location.pathname+"";
+
+//on device ready
 $(document).ready(function () {
     getUserName();
     getElections();
@@ -11,6 +14,7 @@ $(document).ready(function () {
     });
 });
 
+//get constituent id
 function getConid() {
     var url = path + "/conid";
     $.ajax({
@@ -23,6 +27,7 @@ function getConid() {
     });
 }
 
+//get user name
 function getUserName() {
     var url = path + "/username";
     $.ajax({
@@ -35,6 +40,7 @@ function getUserName() {
     });
 }
 
+//get elections
 function getElections() {
     var url = path + "/getelections";
     $.ajax({
@@ -51,6 +57,7 @@ function getElections() {
     });
 }
 
+//get candidates for elections
 function getCandidates(eleid) {
     var url = path + "/getcandidate/" + eleid;
     $.ajax({
@@ -63,6 +70,7 @@ function getCandidates(eleid) {
     });
 }
 
+//generate voting forms
 function generateForm(eleid, data) {
     var url = "https://localhost"+window.location.pathname+"/"+conid+"/"+eleid;
     var html = "<form id="+eleid+" class=votecard method=POST action="+url+">";
@@ -81,6 +89,7 @@ function generateForm(eleid, data) {
     $('#elections').append(html);
 }
 
+//check is vote exists before generating forms
 function voteExist(eleid) {
     var url = path + "/blk/" + eleid;
     var result = $.ajax({
@@ -88,7 +97,6 @@ function voteExist(eleid) {
         url: url,
         type: "GET",
     });
-
     result.then(function (data) {
         if(data == false) getCandidates(eleid);
         else count++;

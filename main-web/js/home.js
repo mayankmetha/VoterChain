@@ -1,3 +1,4 @@
+//on document ready
 $(document).ready(function () {
     var width = $(window).width();
     var height = $(window).height();
@@ -14,6 +15,8 @@ $(document).ready(function () {
         window.location.href = "/blocks";
     });
 });
+
+//on window resize
 $(window).resize(function () {
     var width = $(window).width();
     var height = $(window).height();
@@ -29,6 +32,7 @@ $(window).resize(function () {
     }
 });
 
+//mobile device screen scrolling
 function mobile() {
     $.scrollify({
         section: ".mobile",
@@ -42,6 +46,7 @@ function mobile() {
     });
 }
 
+//desktop device screen scrolling
 function desktop() {
     $.scrollify({
         section: ".desktop",
@@ -55,6 +60,7 @@ function desktop() {
     });
 }
 
+//get block count
 function getCount() {
     $.ajax({
         dataType: "json",
@@ -68,6 +74,7 @@ function getCount() {
     setTimeout(getCount, 1000);
 }
 
+//get blocks
 function getBlock() {
     $.ajax({
         dataType: "json",
@@ -81,6 +88,7 @@ function getBlock() {
     setTimeout(getBlock, 1000);
 }
 
+//draw tables
 function drawTable(data) {
     var rows = data.length - 1;
     var limit;

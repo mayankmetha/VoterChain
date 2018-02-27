@@ -1,7 +1,9 @@
+//on device ready
 $(document).ready(function () {
     getBlock();
 });
 
+//get blocks
 function getBlock() {
     $.ajax({
         dataType: "json",
@@ -15,6 +17,7 @@ function getBlock() {
     setTimeout(getBlock, 1000);
 }
 
+//draw table for each block
 function drawTable(data) {
     var rows = data.length - 1;
     var str = "";
