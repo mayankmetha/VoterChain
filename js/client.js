@@ -89,6 +89,9 @@ function server(browser) {
     app.get('/users/:uid/fontawesome-all.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/fontawesome/fontawesome-all.js'));
     });
+    app.get('/chart.bundle.min.js', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/js/chartjs/chart.bundle.min.js'));
+    });
     //message pages css file
     app.get('/message.css', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/css/message.css'));
