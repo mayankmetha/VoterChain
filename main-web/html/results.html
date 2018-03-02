@@ -6,12 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoterChain</title>
     <script type="text/javascript" src="/jquery.min.js"></script>
+    <script type="text/javascript" src="fontawesome-all.js"></script>
     <script type="text/javascript" src="/chart.bundle.min.js"></script>
     <script type="text/javascript" src="/results.js"></script>
+    <link type="text/css" rel="stylesheet" href="/results.css" />
 </head>
 
 <body>
-    <div id="chart"></div>
+    <div id="header">
+        <div class="topnav" id="topnav">
+            <div class="dropdown">
+                <button class="dropbtn">ELECTIONS
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="eleMenu">
+                </div>
+            </div>
+            <!-- <div class="dropdown">
+                <button class="dropbtn">CONSTITUENCY
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="eleMenu">
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div id="body">
+        <div id="chart">
+        </div>
+    </div>
 </body>
 
 </html>

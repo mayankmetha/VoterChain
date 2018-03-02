@@ -56,6 +56,9 @@ function server(browser) {
     app.get('/results', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/results.html'));
     });
+    app.get('/results.css', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../main-web/css/results.css'));
+    });
     app.get('/results.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/results.js'));
     });
@@ -301,11 +304,12 @@ function server(browser) {
         if (falseAttempt.get(uid) < 5) {
             var count = falseAttempt.get(uid);
             count = count + 1;
+            var usr = user.get(uid);
             falseAttempt.set(uid,count);
-            db.ref('users/' + user.get(uid)).once('value', function(snapshot) {
+            db.ref('users/' + usr).once('value', function(snapshot) {
                 if(snapshot.exists()) {
-                    db.ref('users/' + user.get(uid)).update({
-                        falseAttempt: falseAttempt.get(uid)
+                    db.ref('users/' + usr).update({
+                        falseAttempt: count
                     });
                 }
             });
@@ -345,9 +349,6 @@ function server(browser) {
                 }
             });
         } else {
-            user.delete(uid);
-            password.delete(uid);
-            falseAttempt.delete(uid);
             res.redirect('/');
         }
     });
