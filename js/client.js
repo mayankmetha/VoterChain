@@ -109,6 +109,9 @@ function server(browser) {
             db.ref('users/' + user.get(req.params.uid)).once('value', function (snapshot) {
                 if (snapshot.exists()) {
                     if (password.get(req.params.uid) == snapshot.val().pwd) {
+                        db.ref('users/' + user.get(req.params.uid)).update({
+                            falseAttempt: 0
+                        });
                         res.sendFile(path.join(__dirname + '/../main-web/html/user.html'));
                     } else {
                         res.redirect('/');
