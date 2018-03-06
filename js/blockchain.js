@@ -3,6 +3,7 @@ var CryptoJS = require('crypto-js');
 var webSocket = require('ws');
 var path = require('path');
 var fs = require('fs');
+var chalk = require('chalk');
 
 var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
 var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
@@ -72,13 +73,13 @@ function genBlocks(uid, eleid, conid, parid) {
 //validate block added to blockchain
 function isValidBlock(newBlock, prevBlock) {
     if (prevBlock.index + 1 !== newBlock.index) {
-        console.log("indexNotMatchError");
+        console.log(chalk.bold.magenta("indexNotMatchError"));
         return false;
     } else if (prevBlock.hash !== newBlock.prevHash) {
-        console.log("prevHashNotMatchError");
+        console.log(chalk.bold.magenta("prevHashNotMatchError"));
         return false;
     } else if (blockHash(newBlock) !== newBlock.hash) {
-        console.log("hashMismatchError");
+        console.log(chalk.bold.magenta("hashMismatchError"));
         return false;
     }
     return true;
@@ -128,10 +129,10 @@ function getChain() {
 function replaceChain(chain) {
     if (isValidChain(chain) && chain.length > blockchain.length) {
         blockchain = chain;
-        console.log("fetchingLongerChain");
+        console.log(chalk.bold.magenta("fetchingLongerChain"));
         broadcast(responseLatestMsg());
     } else {
-        console.log("fetchChainError");
+        console.log(chalk.bold.magenta("fetchChainError"));
     }
 }
 
@@ -187,7 +188,7 @@ function server(ip, ipPort) {
     //var server = new webSocket.Server({ port: ipPort, host: ip });
     var server = new webSocket.Server({ port: ipPort, host: ip, cert: cert, key: key });
     server.on('connection', ws => initConnection(ws));
-    console.log('Your p2p socket is ws://' + ip + ':' + ipPort);
+    console.log(chalk.bold.red('Your p2p socket is ws://' + ip + ':' + ipPort));
 }
 
 //init Connection
@@ -203,7 +204,7 @@ function connectToPeer(newPeer) {
     var ws = new webSocket(newPeer);
     ws.on('open', () => initConnection(ws));
     ws.on('error', () => {
-        console.log('Peer connection failed!');
+        console.log(chalk.bold.yellow('Peer connection failed!'));
     });
 }
 
@@ -221,7 +222,7 @@ function broadcast(msg) {
 function initMessageHandler(ws) {
     ws.on('message', (data) => {
         var msg = JSON.parse(data);
-        console.log('Incoming Message:' + JSON.stringify(msg));
+        console.log(chalk.bold.gray('Incoming Message:' + JSON.stringify(msg)));
         switch (msg.type) {
             case QUERY_LATEST:
                 write(ws, responseLatestMsg());
@@ -245,7 +246,7 @@ function initErrorHandler(ws) {
         } else {
             peer = 'Disconnecting from ' + ws.url;
         }
-        console.log(peer);
+        console.log(chalk.bold.yellow(peer));
         sockets.splice(sockets.indexOf(ws), 1);
     };
     ws.on('close', () => closeConnection(ws));
@@ -258,20 +259,20 @@ function handleBlockchainResponse(message) {
     var latestBlockReceived = receivedBlocks[receivedBlocks.length - 1];
     var latestBlockHeld = getLastBlock();
     if (latestBlockReceived.index > latestBlockHeld.index) {
-        console.log('blockchain possibly behind. We got: ' + latestBlockHeld.index + ' Peer got: ' + latestBlockReceived.index);
+        console.log(chalk.bold.magenta('blockchain possibly behind. We got: ' + latestBlockHeld.index + ' Peer got: ' + latestBlockReceived.index));
         if (latestBlockHeld.hash === latestBlockReceived.previousHash) {
-            console.log("We can append the received block to our chain");
+            console.log(chalk.bold.magenta("We can append the received block to our chain"));
             blockchain.push(latestBlockReceived);
             broadcast(responseLatestMsg());
         } else if (receivedBlocks.length === 1) {
-            console.log("We have to query the chain from our peer");
+            console.log(chalk.bold.magenta("We have to query the chain from our peer"));
             broadcast(queryAllMsg());
         } else {
-            console.log("Received blockchain is longer than current blockchain");
+            console.log(chalk.bold.magenta("Received blockchain is longer than current blockchain"));
             replaceChain(receivedBlocks);
         }
     } else {
-        console.log('received blockchain is not longer than received blockchain. Do nothing');
+        console.log(chalk.bold.magenta('received blockchain is not longer than received blockchain. Do nothing'));
     }
 }
 

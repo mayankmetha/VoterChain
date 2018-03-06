@@ -2,58 +2,48 @@
 var admin = require('./js/admin');
 var client = require('./js/client');
 var os = require('os');
+var inquirer = require('inquirer');
 
 //variables
 var platform = os.platform();
-var browser;
+var choices;
 
 //check OS (Linux||macOS)
-if(platform !== "linux" && platform !== "darwin") {
-    console.log(os.platform()+' not supported...');
+if (platform !== "linux" && platform !== "darwin") {
+    console.log(chalk.bold.red(os.platform() + ' not supported...'));
     process.exit(0);
 }
 
-//select mode (admin||client||help)
-if (process.argv[2] === "admin") {
-    selectBrowser();
-    admin.server(browser);
-    admin.cleanUp();
-} else if (process.argv[2] === "client") {
-    selectBrowser();
-    client.server(browser);
-    client.cleanUp();
-} else if(process.argv[2] === "help" || process.argv[2] === "--help" || process.argv[2] === "-h") {
-    helpMes();
-} else {
-    console.log("Command Usage error...\n");
-    helpMes();
+//generate browser list for OS
+if (platform === "darwin") {
+    choices = ["safari", "google chrome", "firefox"];
+} else if (platform === "linux") {
+    choices = ["google-chrome", "firefox"];
 }
 
-//help message
-function helpMes() {
-    if(platform === "linux") {
-        console.log("USAGE:\tsudo npm start [client|admin] [firefox|chrome]");
-    } else if(platform === "darwin") {
-        console.log("USAGE:\tsudo npm start [client|admin] [safari|firefox|chrome]");
+//menu
+inquirer.prompt([
+    {
+        type: 'list',
+        name: 'mode',
+        message: 'Which mode do you want to run?',
+        choices: [
+            'admin',
+            'user'
+        ]
+    },
+    {
+        type: 'list',
+        name: 'browser',
+        message: 'Which browser do you want to run?',
+        choices: choices
     }
-    console.log("HELP:\tnpm start help");
-    process.exit(0);
-}
-
-//selecting browser(Firefox||Chrome for Linux Firefox||Chrome||Safari for macOS)
-function selectBrowser() {
-    if(process.argv[3] === "chrome") {
-        if(platform === "linux") {
-            browser = "google-chrome";
-        } else {
-            browser = "google chrome"
-        }
-    } else if(process.argv[3] === "firefox") {
-        browser = "firefox";
-    } else if(process.argv[3] === "safari" && platform === "darwin") {
-        browser = "safari";
-    } else {
-        console.log("Command Usage error...\n");
-        helpMes();
+]).then(function (answer) {
+    if (answer.mode === "admin") {
+        admin.server(answer.browser);
+        admin.cleanUp();
+    } else if (answer.mode === "user") {
+        client.server(answer.browser);
+        client.cleanUp();
     }
-}
+});

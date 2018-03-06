@@ -18,3 +18,5 @@ run following bash commands in ssl/
 `openssl req -new -newkey rsa:2048 -nodes -out mydomain.csr -keyout private.key`
 
 `openssl x509 -signkey private.key -in mydomain.csr -req -days 1000 -out private.crt`
+
+`openssl enc -aes-256-cfb -k <your key> -P -md sha256 | tail -2 | head -1 | cut -d"=" -f2 > blockchain.key`

@@ -12,6 +12,7 @@ var https = require('https');
 var ip = require('ip');
 var forceSsl = require('express-force-ssl');
 var wait = require('wait-for-stuff');
+var chalk = require('chalk');
 var firebaseConfig = require('./config');
 var blockchain = require('./blockchain');
 var calculation = require('./calculation');
@@ -139,9 +140,9 @@ function server(browser) {
                     var newBlock = blockchain.genBlocks(req.params.uid, req.params.eleid, req.params.conid, req.body.parid);
                     if (blockchain.addBlock(newBlock)) {
                         blockchain.broadcast(blockchain.responseLatestMsg());
-                        console.log('block added: ' + JSON.stringify(newBlock));
+                        console.log(chalk.bold.cyan('block added: ' + JSON.stringify(newBlock)));
                     } else {
-                        console.log('cannot add illegal block!');
+                        console.log(chalk.bold.magenta('cannot add illegal block!'));
                     }
                     res.redirect('/users/'+req.params.uid);
                 } else {
@@ -234,8 +235,8 @@ function server(browser) {
     //firebaseAuth Login
     app.get('/start', function (req, res) {
         firebase.auth().signInAnonymously().catch(function (error) {
-            console.log(error.code);
-            console.log(error.message);
+            console.log(chalk.bold.magenta(error.code));
+            console.log(chalk.bold.magenta(error.message));
         });
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
@@ -367,7 +368,8 @@ function server(browser) {
     });
     //express settings
     app.listen(80, function () {
-        console.log('Opening VoterChain...\nGoto https://localhost/close to Exit...');
+        console.log(chalk.bold.green('Opening VoterChain...'));
+        console.log(chalk.bold.red('Goto https://localhost/close to exit...'));
         open("https://localhost/start", browser);
     });
 }
@@ -375,12 +377,12 @@ function server(browser) {
 //interupt and exit handler
 function cleanUp() {
     process.on('SIGINT', () => {
-        console.log('Exiting due to SIGINT signal...');
-        console.log('Report uid to admin: ' + uidAnonymous);
+        console.log(chalk.bold.yellow('Exiting due to SIGINT signal...'));
+        console.log(chalk.bold.yellow('Report uid to admin: ') + chalk.bold.blue(uidAnonymous));
         process.exit(0);
     });
     process.on('exit', () => {
-        console.log('Exited...');
+        console.log(chalk.bold.red('Exited...'));
         process.exit(0);
     });
 }

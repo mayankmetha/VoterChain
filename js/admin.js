@@ -6,6 +6,7 @@ var fs = require('fs');
 var https = require('https');
 var forceSsl = require('express-force-ssl');
 var wait = require('wait-for-stuff');
+var chalk = require('chalk');
 
 //express instance
 var app = express();
@@ -77,7 +78,8 @@ function server(browser) {
     });
     //express settings
     app.listen(80, function() {
-        console.log('Opening VoterChain Admin...\nGoto https://localhost/exit to exit...');
+        console.log(chalk.bold.green('Opening VoterChain Admin...'));
+        console.log(chalk.bold.red('Goto https://localhost/exit to exit...'));
         open("https://localhost",browser);    
     });
 }
@@ -85,11 +87,11 @@ function server(browser) {
 //interupt and exit handler
 function cleanUp() {
     process.on('SIGINT', () => {
-        console.log('Exiting due to SIGINT signal...');
+        console.log(chalk.bold.yellow('Exiting due to SIGINT signal...'));
         process.exit(0);
     });
     process.on('exit', () => {
-        console.log('Exited...');
+        console.log(chalk.bold.green('Exited...'));
         process.exit(0);
     });
 }
