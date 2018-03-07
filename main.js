@@ -100,9 +100,9 @@ if (process.argv[2] != null) {
 //help message
 function helpMes() {
     if(platform === "linux") {
-        console.log(chalk.bold.yellow("USAGE:\tsudo npm start [client|admin] [firefox|chrome]"));
+        console.log(chalk.bold.yellow("USAGE:\tsudo npm start [user|admin] [firefox|chrome]"));
     } else if(platform === "darwin") {
-        console.log(chalk.bold.yellow("USAGE:\tsudo npm start [client|admin] [safari|firefox|chrome]"));
+        console.log(chalk.bold.yellow("USAGE:\tsudo npm start [user|admin] [safari|firefox|chrome]"));
     }
     console.log(chalk.bold.yellow("HELP:\tnpm start help"));
     process.exit(0);
