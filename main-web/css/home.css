@@ -48,17 +48,17 @@ input, button {
 
 input[type=text] {
     border: 0px solid white;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #00b6a4;
 }
 
 input[type=password] {
     border: 0px solid white;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid#00b6a4;
 }
 
 button {
     background-color: #00b6a4;
-    border: 0.5px solid black;
+    border: 0.5px solid #00b6a4;
     border-radius: 25em;
     color: white;
 }

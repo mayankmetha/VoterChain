@@ -6,7 +6,7 @@ b83ad69a5df42088467c441037a519a37a6b90ac055fd94fd8901d492c301ebc  ./js/admin.js
 f0f77ecfd241284ce1d357b82188ba4d3f8e4b50072632d0c88d35acfce794fe  ./js/map2json.js
 e15716ed0a9b297f2b1425ffb15df664574034e1a2c7f13bb80cc9d5e196fff4  ./js/calculation.js
 b4a365de1493525fa8fc0746af1fa740024edbcdee7ac89793275e9a1663a059  ./verify.sh
-d0d0edeee8763a0a17c964f1f1c49404abee27e13b6249ec5805f4a0df5248c6  ./package.json
+ce9beb107937d648faad0ef4a387c429c668cc37468d9a25b0d8ff9aa72cfce5  ./package.json
 87083882cc6015984eb0411a99d3981817f5dc5c90ba24f0940420c5548d82de  ./main-web/js/jquery/jquery.min.js
 1a68dd227c070d3b99ae0c56517d93a0c73e3a60d7691640f89e979832d82c4e  ./main-web/js/jquery/jquery.scrollify.js
 378bb90634cb370986ba5e9180ba0448f36a0c555489b56e39884fe20260adec  ./main-web/js/chartjs/chart.bundle.min.js
@@ -16,10 +16,10 @@ f39f7d85bfed57cb7eccaba768c7134d3c996625bd17ac564a1349e2ff35921a  ./main-web/js/
 b4bd40fb4482c84eaa040234cb9f0db7d2385d68f476e1d64e7a1fa40e10a158  ./main-web/js/blocks.js
 a0e68921ad24aa114be39f9efc2fb906e41bd5cbb123f5862bc6a53889bc50f6  ./main-web/js/user.js
 00614df63e42a1ec27e7d6d60213e25bf7874c33b8ff7888349aa61495147bf9  ./main-web/js/results.js
-a48ad436fd021c15c5fd6a715bcf0f9e9485b4b4e758393d77958d7def6f4567  ./main-web/css/home.css
+e5bceb4c7d80b6312413e089486c45db31c5f9f4672825ed2c87cfdc78739233  ./main-web/css/home.css
 4514f0f7547f78ac05bd292e0c7f07566e0b4ed0b07bfa9965b13d7c2b4d2f82  ./main-web/css/user.css
 b552a2d1fa535fd88ea69cacdabf3e80859556b2a0a3bc38280c83863a58ebe2  ./main-web/css/blocks.css
-dca756d3147f219657ee93bd390506db34867719683f38b0e631a9fbad879f79  ./main-web/css/peer.css
+50d6cc05a249beb11cf7b8fb0a5342e959886402aa28a0f3fb6b7c757a3e860d  ./main-web/css/peer.css
 9544a7d0f0ab78c3d8c8cc4d1cc04f82a1701f21cb2ad84722931e69ad0f9e08  ./main-web/css/message.css
 4630ae64e5981491f3331142009dd74d8720f34ee0be303503899d29913c342e  ./main-web/css/results.css
 6b30850314aabf678cfc8026da27c0f52a8c90347585e44212b1204818eccd02  ./main-web/assets/home3.svg
