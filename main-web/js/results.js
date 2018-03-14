@@ -60,7 +60,7 @@ function getElectionData(ele, win) {
     sessionStorage.setItem('ele',ele);
     sessionStorage.setItem('eleWin',win);
     sessionStorage.setItem('type','0');
-    var title = ["ELECTION:"+ele,"WINNER:"+win];
+    var title = ["ELECTION: "+ele,"LEADING: "+win];
     var label = [];
     var value = [];
     var color = [];
@@ -87,7 +87,7 @@ function getConstituencyData(con, win) {
     sessionStorage.setItem('con',con);
     sessionStorage.setItem('conWin',win);
     sessionStorage.setItem('type','1');
-    var title = ["ELECTION:"+sessionStorage.getItem('ele'),"CONSTITUENCY:"+con,"WINNER:"+win];
+    var title = ["ELECTION: "+sessionStorage.getItem('ele'),"CONSTITUENCY: "+con,"LEADING: "+win];
     var label = [];
     var value = [];
     var color = [];
