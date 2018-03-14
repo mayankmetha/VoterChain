@@ -1,5 +1,6 @@
 //on document ready
 $(document).ready(function () {
+    sessionStorage.clear();
     var width = $(window).width();
     var height = $(window).height();
     if (width <= 640) {
