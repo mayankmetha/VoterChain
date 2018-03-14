@@ -12,8 +12,12 @@ $(document).ready(function () {
     }
     getCount();
     getBlock();
+    analysis();
     $("#blocks").click(function () {
         window.location.href = "/blocks";
+    });
+    $("#eleTable").click(function () {
+        window.location.href = "/results";
     });
 });
 
@@ -83,14 +87,14 @@ function getBlock() {
         type: "GET",
         success: function (data) {
             $("#blocks").text("");
-            drawTable(data);
+            drawBlockTable(data);
         }
     });
     setTimeout(getBlock, 1000);
 }
 
 //draw tables
-function drawTable(data) {
+function drawBlockTable(data) {
     var rows = data.length - 1;
     var limit;
     if (rows <= 9) {
@@ -106,4 +110,39 @@ function drawTable(data) {
     }
     str += "</tbody></table>";
     $("#blocks").append(str);
+}
+
+//get election counter
+function analysis() {
+    $.ajax({
+        dataType: "json",
+        url: "/cal/4",
+        type: "GET",
+        success: function (data) {
+            $("#eleSummary").text("");
+            var str = data.length + " elections<br>have been recorded."
+            $("#eleSummary").html(str);
+            $("#eleTable").text("");
+            drawEleTable(data);
+        }
+    });
+    setTimeout(analysis,1000);
+}
+
+//draw election table
+function drawEleTable(data) {
+    var rows = data.length - 1;
+    var limit;
+    if (rows <= 9) {
+        limit = 0;
+    } else {
+        limit = data.length - 10;
+    }
+    var str = "<table><thead><td>ELECTION</td><td>LEADING</td></thead><tbody>";
+    for (var i = rows; i >= limit; i--) {
+        var row = "<tr><td>" + data[i].key + "</td><td>" + data[i].value + "</td></tr>";
+        str += row;
+    }
+    str += "</tbody></table>";
+    $("#eleTable").append(str);
 }
