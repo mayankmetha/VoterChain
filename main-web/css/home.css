@@ -5,6 +5,7 @@ html, body{
     width: 100%;
     margin: 0% 0%;
     padding: 0% 0%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .title {
@@ -12,7 +13,6 @@ html, body{
     top: 40%;
     transform: translateY(-40%);
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 52px;
     font-weight: 300;
     color: white;
@@ -24,7 +24,6 @@ html, body{
     top: 55%;
     transform: translateY(-55%);
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 24px;
     font-weight: 250;
     color: white;
@@ -39,7 +38,6 @@ input, button {
     position: relative;
     width: 250px;
     margin-left: 15px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -75,7 +73,6 @@ button {
 table {
     width: 250px;
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 22px;
     color: white;
 }
@@ -92,7 +89,6 @@ tbody {
 .login {
     position: relative;
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 24px;
     font-weight: 250;
     color: #00b6a4;
@@ -104,14 +100,12 @@ tbody {
 .correct {
     color: green;
     padding-left: 20px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
 }
 
 .incorrect {
     color: red;
     padding-left: 20px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
 }
 
