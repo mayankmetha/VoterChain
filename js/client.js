@@ -382,6 +382,7 @@ function cleanUp() {
         process.exit(0);
     });
     process.on('exit', () => {
+        blockchain.closeSockets();
         console.log(chalk.bold.red('Exited...'));
         process.exit(0);
     });

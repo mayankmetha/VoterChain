@@ -182,6 +182,7 @@ function responseLatestMsg() {
 */
 //variable
 var sockets = [];
+var socketsAddr = [];
 
 //P2P server
 function server(ip, ipPort) {
@@ -193,6 +194,9 @@ function server(ip, ipPort) {
 
 //init Connection
 function initConnection(ws) {
+    var addr = "ws://"+ws._socket.remoteAddress+":"+ws._socket.remotePort;
+    console.log(chalk.bold.yellow("Client "+addr+" connected!"));
+    socketsAddr.push(addr);
     sockets.push(ws);
     initMessageHandler(ws);
     initErrorHandler(ws);
@@ -201,6 +205,7 @@ function initConnection(ws) {
 
 //connecting peers
 function connectToPeer(newPeer) {
+    console.log(chalk.bold.yellow("Connecting to "+newPeer));
     var ws = new webSocket(newPeer);
     ws.on('open', () => initConnection(ws));
     ws.on('error', () => {
@@ -242,11 +247,13 @@ function initErrorHandler(ws) {
     var closeConnection = (ws) => {
         var peer;
         if (ws.url === undefined) {
-            peer = 'Client disconnected';
+            var client = socketsAddr[sockets.indexOf(ws)];
+            peer = 'Client '+client+' disconnected!';
         } else {
             peer = 'Disconnecting from ' + ws.url;
         }
         console.log(chalk.bold.yellow(peer));
+        socketsAddr.splice(socketsAddr.indexOf(ws),1);
         sockets.splice(sockets.indexOf(ws), 1);
     };
     ws.on('close', () => closeConnection(ws));
@@ -276,6 +283,17 @@ function handleBlockchainResponse(message) {
     }
 }
 
+//disconnecting all peers
+function closeSockets() {
+    sockets.forEach(function(s) {
+        var i = sockets.indexOf(s);
+        console.log(chalk.bold.yellow("Disconnecting from "+socketsAddr[i]));
+        s.terminate();
+        socketsAddr.splice(socketsAddr[i],1);
+        sockets.splice(sockets[i], 1);
+    })
+}
+
 //export
 //TODO: cleanup code below
 module.exports = {
@@ -302,5 +320,6 @@ module.exports = {
     broadcast: broadcast,
     initMessageHandler: initMessageHandler,
     initErrorHandler: initErrorHandler,
-    isHashRepeated: isHashRepeated
+    isHashRepeated: isHashRepeated,
+    closeSockets: closeSockets
 };
