@@ -9,6 +9,10 @@ help message
 
 ## Setup
 ### Ubuntu
-bash /setup/Ubuntu/setup.sh
+git clone https://github.com/mayankmetha/VoterChain.git
+
+bash ./VoterChain/setup/Ubuntu/setup.sh
 ### MacOS
-bash /setup/MacOS/setup.sh
+git clone https://github.com/mayankmetha/VoterChain.git
+
+bash ./VoterChain/setup/MacOS/setup.sh
