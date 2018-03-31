@@ -17,7 +17,7 @@ body{
     background-position: top right;
     background-repeat: no-repeat;
     background-size: cover;
-
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .card {
@@ -35,7 +35,6 @@ h1 {
     color: black;
     position: relative;
     text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 48px;
     font-weight: 300;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
@@ -46,7 +45,6 @@ input {
     position: relative;
     width: 250px;
     margin-left: 15px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -60,7 +58,6 @@ button {
     width: 250px;
     margin-left: 15px;
     margin-bottom: 15px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
