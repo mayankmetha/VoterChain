@@ -2,7 +2,7 @@
 cat ../header
 cd ../..
 echo "[+] Check Homebrew"
-brew -v > /dav/null
+brew -v > /dev/null
 if [ $? -ne 0 ]
 then
     echo "[!] Homebrew not found"
