@@ -1,7 +1,5 @@
 af940d7b88ceab2488aea38a1defe74ca51f476cea71c0ef2f9cfddcb38a6c05  ./js/client.js
-f941350fcb4ab75763972ffa7ca652918fff45799c1e4e7e3afcaeb1f3bd5c54  ./js/config.js
 cd94091decb2da54560f9e563bc06329873b21d1c058853c986b02763f935b61  ./js/blockchain.js
-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./js/config.js.temp
 b83ad69a5df42088467c441037a519a37a6b90ac055fd94fd8901d492c301ebc  ./js/admin.js
 f0f77ecfd241284ce1d357b82188ba4d3f8e4b50072632d0c88d35acfce794fe  ./js/map2json.js
 e15716ed0a9b297f2b1425ffb15df664574034e1a2c7f13bb80cc9d5e196fff4  ./js/calculation.js
@@ -38,9 +36,7 @@ a43770010f3f27d8ddf1785acaac900ea25a42cf081cfecfb29f72ac5be7d5d8  ./main-web/htm
 181753ec6033875a9e9f4d08693ad485468cd195767ad327b3ab9a35b5e367da  ./main-web/html/results.html
 c037f01e13dddf0aaf984e84d9e95d36aabb2ea8d1229511d3c64ad742ef9097  ./admin-web/firebaseui/firebaseui.js
 484f2b8690f350cbc2e4021befdee5d2f09faa44f11f5bab2dd5c9d9547d006d  ./admin-web/firebaseui/firebaseui.css
-ea9769dc77d308f965d93c82b5848533836209ff04695cb3cd73bbea04f02ba6  ./admin-web/js/config.js
 9e4c1a5e9dcbdd14d4b15e1781d4717d53ce381bdc448208679968c933a06bd4  ./admin-web/js/login.js
-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./admin-web/js/config.js.temp
 c9de2c0cfc0e0b2e7840e544373177cde010766c94d6d05b27adbd939906c88d  ./admin-web/js/home.js
 1bafb343e11c1b7e32cff643ebf5c9cf960aa282cc55f180ef34b355c9e4edb5  ./admin-web/firebase/firebase.js
 01ca138d986617cc48bb89ad482b58bc109723a510310c09437d4523e987320e  ./admin-web/w3css/w3.css
