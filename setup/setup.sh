@@ -19,7 +19,7 @@ fi
 fi
 if [[ "$OSTYPE" == "darwin"* || "$OSTYPE" == "linux-gnu" ]]
 then
-bash ./setup/common/npmInstall.sh
+bash ./setup/common/npm.sh
 bash ./setup/common/ssl.sh
 bash ./setup/common/aes.sh
 bash ./setup/common/firebase.sh
