@@ -1,4 +1,4 @@
-af940d7b88ceab2488aea38a1defe74ca51f476cea71c0ef2f9cfddcb38a6c05  ./js/client.js
+ba3acc866768c620f46da0b39c245fe8e8281c249bd87895b066a9135ade7ee4  ./js/client.js
 cd94091decb2da54560f9e563bc06329873b21d1c058853c986b02763f935b61  ./js/blockchain.js
 b83ad69a5df42088467c441037a519a37a6b90ac055fd94fd8901d492c301ebc  ./js/admin.js
 f0f77ecfd241284ce1d357b82188ba4d3f8e4b50072632d0c88d35acfce794fe  ./js/map2json.js
@@ -24,6 +24,7 @@ d8fab8ec35d128c2974727bdd9121b3754c4b59b4e3912d38956c2d7ebe65f05  ./main-web/css
 ed5fd52dd0b5655ebf3e83a42c3fc6a1a778930c93e1b75f2dffdeb436450993  ./main-web/assets/cogs.svg
 18ead12e7c8d9acef1d777ce43c8fc3d09a37064e5721f0f573d72085e811e14  ./main-web/assets/home1.svg
 062f846af097ef3531a163650861aaa5b51925de108d6a90141090101fa3f2f1  ./main-web/assets/home2.svg
+a5a1d1f0cac9f8213945f1ce63b3a7108797b6e551583850de5ab36704e87e08  ./main-web/html/404.html
 87c12c6fb1fe37460ae9948b6bb66aee31c2bb2b98bb36a4a2212ab73e128261  ./main-web/html/home.html
 164b9d6fa0e122e2a0fdeb5192f2333dd58970982657a4d9e2b8224dd5a2c35d  ./main-web/html/peer.html
 76f7d3e228e05de3d0e0269942fe16d4ecd8c2c454274d9e52a8d1a19d61feef  ./main-web/html/peerAddDone.html

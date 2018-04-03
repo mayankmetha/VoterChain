@@ -366,6 +366,10 @@ function server(browser) {
     app.get('/blocks.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/blocks.js'));
     });
+    //error 404
+    app.all('*' , function(req,res) {
+        res.sendFile(path.join(__dirname + '/../main-web/html/404.html'));
+    });
     //express settings
     app.listen(80, function () {
         console.log(chalk.bold.green('Opening VoterChain...'));
