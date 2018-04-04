@@ -11,11 +11,38 @@ help message
 Create a project and keep the web setup config ready before setup
 
 ## Setup
-### Ubuntu
+### Clone project
 git clone https://github.com/mayankmetha/VoterChain.git
 
-bash ./VoterChain/setup/Ubuntu/setup.sh
-### MacOS
-git clone https://github.com/mayankmetha/VoterChain.git
+### Goto Setup
+cd VoterChain/setup/
 
-bash ./VoterChain/setup/MacOS/setup.sh
+###Install OS/Distro Specific Node.js
+#### Mac
+bash mac/node.js
+#### Ubuntu/Linux Mint/ElementeryOS/BOSS
+bash ubuntu/node.js
+#### Debian/LmDE
+bash debian/node.js
+
+### Run setup
+./setup.sh
+
+## Supported Browsers
+1) Apple Safari
+2) Mozilla Firefox
+3) Google Chrome
+
+## Supported OS
+1) MacOS/OS X
+2) Linux (Preferable Ubuntu)
+
+## Supported Linux
+1) ArchLinux
+2) Ubuntu
+3) Debian
+4) ElementaryOS
+5) Linux Mint
+6) BOSS
+7) LMDE
+
