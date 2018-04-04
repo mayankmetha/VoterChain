@@ -17,18 +17,6 @@ git clone https://github.com/mayankmetha/VoterChain.git
 ### Goto Setup
 cd VoterChain/setup/
 
-###Install OS/Distro Specific Node.js
-#### MacOS/OS X
-bash mac/node.js
-#### ArchLinux
-bash arch/node.js
-#### Ubuntu/Linux Mint/ElementaryOS/BOSS/Trisquel
-bash ubuntu/node.js
-#### Debian/LMDE
-bash debian/node.js
-#### Solus
-bash solus/node.js
-
 ### Run setup
 ./setup.sh
 
@@ -39,16 +27,4 @@ bash solus/node.js
 
 ## Supported OS
 1) MacOS/OS X
-2) Linux (Preferable Ubuntu)
-
-## Supported Linux
-1) ArchLinux
-2) Ubuntu
-3) ElementaryOS
-4) Linux Mint
-5) BOSS
-6) Trisquel
-7) Debian
-8) LMDE
-9) Solus
-
+2) Ubuntu Linux
