@@ -9,11 +9,11 @@ bash ./setup/mac/node.sh
 elif [[ "$OSTYPE" == "linux-gnu" ]]
 then
 echo "[!] OS Detected: Linux"
-if [[ "`grep ID_LIKE /etc/*-release | cut -d'=' -f2`" == "debian" || "`grep ID_LIKE /etc/*-release | cut -d'=' -f2`" == "ubuntu" ]]
+if [[ "`grep --no-message --quiet ID_LIKE /etc/*-release | cut -d'=' -f2`" == "debian" || "`grep --no-message --quiet ID_LIKE /etc/*-release | cut -d'=' -f2`" == "ubuntu" ]]
 then
 echo "[!] Distro: Ubuntu/Debian/Linux Mint/LMDE/Trisquel/ElementryOS/BOSS"
 bash ./setup/debian/node.sh
-elif [[ "`grep ID_LIKE /etc/*-release | cut -d'=' -f2`" == "archlinux" ]]
+elif [[ "`grep --no-message --quiet ID_LIKE /etc/*-release | cut -d'=' -f2`" == "archlinux" ]]
 then
 echo "[!] Distro: Arch Linux"
 bash ./setup/arch/node.sh
