@@ -1,1 +1,1 @@
-pacman -S nodejs npm
+sudo pacman -S nodejs npm
