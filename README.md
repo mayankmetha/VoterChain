@@ -18,11 +18,13 @@ git clone https://github.com/mayankmetha/VoterChain.git
 cd VoterChain/setup/
 
 ###Install OS/Distro Specific Node.js
-#### Mac
+#### MacOS/OS X
 bash mac/node.js
-#### Ubuntu/Linux Mint/ElementeryOS/BOSS
+#### ArchLinux
+bash arch/node.js
+#### Ubuntu/Linux Mint/ElementaryOS/BOSS
 bash ubuntu/node.js
-#### Debian/LmDE
+#### Debian/LMDE
 bash debian/node.js
 
 ### Run setup
