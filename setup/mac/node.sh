@@ -1,6 +1,5 @@
 echo "[+] Check Homebrew"
-brew -v > /dev/null
-if [ $? -ne 0 ]
+if ! type brew > /dev/null
 then
     echo "[!] Homebrew not found"
     echo "[!] Installing Homebrew"
@@ -9,8 +8,7 @@ else
     echo "[+] Homebrew found"
 fi
 echo "[+] Checking Node.js"
-node -v > /dev/null
-if [ $? -ne 0 ]
+if ! type node > /dev/null
 then
     echo "[!] Node.js not found"
     echo "[!] Installing Node.js"
