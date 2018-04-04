@@ -1,0 +1,1 @@
+pacman -S nodejs npm

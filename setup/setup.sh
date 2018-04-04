@@ -11,8 +11,12 @@ then
 echo "[!] OS Detected: Linux"
 if [[ "`grep ID_LIKE /etc/*-release | cut -d'=' -f2`" == "debian" ]]
 then
-echo "[!] Distro: Ubuntu/Debian/Linux Mint/ElementryOS"
+echo "[!] Distro: Ubuntu/Debian/Linux Mint/LMDE/Trisquel/ElementryOS/BOSS"
 bash ./setup/debian/node.sh
+elif [[ "`grep ID_LIKE /etc/*-release | cut -d'=' -f2`" == "archlinux" ]]
+then
+echo "[!] Distro: Arch Linux"
+bash ./setup/arch/node.sh
 else
 echo "[!] Distro not tested!"
 fi
