@@ -22,10 +22,12 @@ cd VoterChain/setup/
 bash mac/node.js
 #### ArchLinux
 bash arch/node.js
-#### Ubuntu/Linux Mint/ElementaryOS/BOSS
+#### Ubuntu/Linux Mint/ElementaryOS/BOSS/Trisquel
 bash ubuntu/node.js
 #### Debian/LMDE
 bash debian/node.js
+#### Solus
+bash solus/node.js
 
 ### Run setup
 ./setup.sh
@@ -42,9 +44,11 @@ bash debian/node.js
 ## Supported Linux
 1) ArchLinux
 2) Ubuntu
-3) Debian
-4) ElementaryOS
-5) Linux Mint
-6) BOSS
-7) LMDE
+3) ElementaryOS
+4) Linux Mint
+5) BOSS
+6) Trisquel
+7) Debian
+8) LMDE
+9) Solus
 
