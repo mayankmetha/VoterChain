@@ -1,3 +1,4 @@
+//on document ready
 $(document).ready( function() {
     if(sessionStorage.getItem('type') == null) {
         sessionStorage.setItem('type','0');
@@ -5,6 +6,7 @@ $(document).ready( function() {
     getElections();
 });
 
+//get elections list
 function getElections() {
     $.ajax({
         dataType: 'json',
@@ -30,6 +32,7 @@ function getElections() {
     setTimeout(getElections,5000);
 }
 
+//get constituency list for every elections
 function getConstituency(ele, win) {
     $.ajax({
         dataType: 'json',
@@ -56,6 +59,7 @@ function getConstituency(ele, win) {
     });
 }
 
+//get election data
 function getElectionData(ele, win) {
     sessionStorage.setItem('ele',ele);
     sessionStorage.setItem('eleWin',win);
@@ -83,6 +87,7 @@ function getElectionData(ele, win) {
     });
 }
 
+//get constituency data
 function getConstituencyData(con, win) {
     sessionStorage.setItem('con',con);
     sessionStorage.setItem('conWin',win);
@@ -111,6 +116,7 @@ function getConstituencyData(con, win) {
     });
 }
 
+//random color without black and white
 function generateRandColorsWithoutBW() {
     var color;
     do {
@@ -119,6 +125,7 @@ function generateRandColorsWithoutBW() {
     return color;
 }
 
+//random color
 function generateRandColors() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -128,6 +135,7 @@ function generateRandColors() {
     return color;
 }
 
+//graph
 function drawGraph(title, label, value, color) {
     $('#chart').append("<canvas id=graph></canvas>");
     var title = title;

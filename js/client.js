@@ -53,7 +53,7 @@ function server(browser) {
     app.use(bodyParser.urlencoded({ extended: true }));
     //force https only
     app.use(forceSsl);
-    //TODO: test code
+    //results
     app.get('/results', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/html/results.html'));
     });
@@ -63,6 +63,7 @@ function server(browser) {
     app.get('/results.js', function (req, res) {
         res.sendFile(path.join(__dirname + '/../main-web/js/results.js'));
     });
+    //result calculation
     app.get('/cal/:options', function (req, res) {
         var chain = blockchain.getChain();
         switch (req.params.options) {

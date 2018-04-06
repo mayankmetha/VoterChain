@@ -295,31 +295,14 @@ function closeSockets() {
 }
 
 //export
-//TODO: cleanup code below
 module.exports = {
-    block: block,
-    blockData: blockData,
-    blockHash: blockHash,
-    genHash: genHash,
-    setGenBlock: setGenBlock,
-    getLastBlock: getLastBlock,
-    genBlocks: genBlocks,
-    isValidBlock: isValidBlock,
-    addBlock: addBlock,
-    isValidChain: isValidChain,
-    getChain: getChain,
-    replaceChain: replaceChain,
-    queryChainLengthMsg: queryChainLengthMsg,
-    queryAllMsg: queryAllMsg,
-    responseChainMsg: responseChainMsg,
-    responseLatestMsg: responseLatestMsg,
     server: server,
-    initConnection: initConnection,
     connectToPeer: connectToPeer,
-    write: write,
-    broadcast: broadcast,
-    initMessageHandler: initMessageHandler,
-    initErrorHandler: initErrorHandler,
+    closeSockets: closeSockets,
+    getChain: getChain,
+    genBlocks: genBlocks,
     isHashRepeated: isHashRepeated,
-    closeSockets: closeSockets
+    addBlock: addBlock,
+    broadcast: broadcast,
+    responseLatestMsg: responseLatestMsg
 };

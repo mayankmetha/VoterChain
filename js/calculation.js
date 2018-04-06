@@ -1,3 +1,4 @@
+//get eleid
 function genEleMap(chain) {
     var ele = new Map();
     for (var i = 1; i < chain.length; i++) {
@@ -8,6 +9,7 @@ function genEleMap(chain) {
     return ele;
 }
 
+//get conid
 function genConMap(chain) {
     var con = new Map();
     for (var i = 1; i < chain.length; i++) {
@@ -18,6 +20,7 @@ function genConMap(chain) {
     return con;
 }
 
+//get parid
 function genParMap(chain) {
     var par = new Map();
     for (var i = 1; i < chain.length; i++) {
@@ -28,6 +31,7 @@ function genParMap(chain) {
     return par;
 }
 
+//compute no of eleid+conid+parid in map
 function genMap(chain) {
     var eleConParMap = new Map();
     for (var i = 1; i < chain.length; i++) {
@@ -43,6 +47,7 @@ function genMap(chain) {
     return eleConParMap;
 }
 
+//get parid for eleid+conid of max(eleid+conid+parid)
 function computePartyMax(chain) {
     var ele = genEleMap(chain);
     var con = genConMap(chain);
@@ -70,6 +75,7 @@ function computePartyMax(chain) {
     return eleConMap;
 }
 
+//get count of conid for eleid+parid
 function computeNumberOfConstituency(chain) {
     var ele = genEleMap(chain);
     var con = genConMap(chain);
@@ -92,6 +98,7 @@ function computeNumberOfConstituency(chain) {
     return eleParMap;
 }
 
+//get parid of max(conid) for eleid
 function computeConstituencyMax(chain) {
     var ele = genEleMap(chain);
     var con = genConMap(chain);
@@ -116,6 +123,7 @@ function computeConstituencyMax(chain) {
     return eleMap;
 }
 
+//exports
 module.exports = {
     genMap: genMap,
     computePartyMax: computePartyMax,
