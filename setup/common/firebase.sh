@@ -1,4 +1,4 @@
-if [[ ! -f ./js/config.js && ! -f ./admin-web/js/config.js ]]
+if [[ ! -f ./js/config.js || ! -f ./admin-web/js/config.js ]]
 then
 echo "[+] Generating Firebase config"
 read -p "Enter apiKey: " apiKey
