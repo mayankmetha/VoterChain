@@ -1,19 +1,21 @@
 #!/bin/bash
-cd ..
-cat ./setup/common/header
+DIR=`pwd`/`dirname "$0"`
+PDIR="$(dirname "$DIR")"
+echo $PDIR
+cat $DIR/common/header
 if [[ "$OSTYPE" == "darwin"* ]]
 then
-echo "[+] OS: macOS/OS X"
-bash ./setup/mac/node.sh
+echo -e "[\033[1;32m✔\033[0m] OS: macOS/OS X"
+bash $DIR/mac/node.sh
 elif [[ "$OSTYPE" == "linux-gnu" || "`grep Ubuntu /etc/issue.net`" == "Ubuntu" ]]
 then
-echo "[+] OS: Ubuntu Linux"
-bash ./setup/ubuntu/node.sh
+echo -e "[\033[1;32m✔\033[0m] OS: Ubuntu Linux"
+bash $DIR/ubuntu/node.sh
 else
-echo "[+] OS not supported"
+echo -e "[\033[0;31m✘\033[0m] OS: Not Supported"
 exit 0
 fi
-bash ./setup/common/npm.sh
-bash ./setup/common/ssl.sh
-bash ./setup/common/aes.sh
-bash ./setup/common/firebase.sh
+bash $DIR/common/npm.sh $PDIR
+bash $DIR/common/ssl.sh $PDIR
+#bash $LOC/$DIR/common/aes.sh $LOC
+#bash $LOC/$DIR/common/firebase.sh $LOC
