@@ -29,6 +29,7 @@ cd VoterChain/setup/
 
 ### fedora additional tools to be installed first
 1) redhat-lsb
+2) git
 
 ### Run setup
 [sudo ]./setup.sh
