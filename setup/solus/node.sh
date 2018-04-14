@@ -1,0 +1,1 @@
+sudo eopkg install nodejs
