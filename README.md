@@ -24,6 +24,9 @@ cd VoterChain/setup/
 ### Run setup
 ./setup.sh
 
+## Uninstall
+Simply delete the voterchain folder
+
 ## Supported Browsers
 1) Apple Safari
 2) Mozilla Firefox
