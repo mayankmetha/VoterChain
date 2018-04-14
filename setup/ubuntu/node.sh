@@ -11,7 +11,7 @@ then
     echo "deb https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee /etc/apt/sources.list.d/nodesource.list > /dev/null
     echo "deb-src https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a /etc/apt/sources.list.d/nodesource.list > /dev/null
     sudo apt-get update > /dev/null
-    sudo apt-get install nodejs -y > /dev/null
+    sudo apt-get install nodejs -y > /dev/null 2>&1
     echo -ne "\r\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m NodeJS\033[0m\033[1;37m:\033[0m\033[1;36m Installed\033[0m                         \n" 
 else
     echo -ne "\r\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m NodeJS\033[0m\033[1;37m:\033[0m\033[1;36m Installed\033[0m                         \n"  
