@@ -1,1 +1,1 @@
-sudo eopkg install nodejs
+sudo eopkg install nodejs > /dev/null 2>&1
