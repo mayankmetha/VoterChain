@@ -17,6 +17,10 @@ git clone https://github.com/mayankmetha/VoterChain.git
 ### Goto Setup
 cd VoterChain/setup/
 
+### macOS/OSX additional tools to be installed first
+1) XCode from App Store
+2) HomeBrew from https://brew.sh
+
 ### Run setup
 ./setup.sh
 
