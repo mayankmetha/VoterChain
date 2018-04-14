@@ -22,7 +22,7 @@ cd VoterChain/setup/
 2) HomeBrew from https://brew.sh
 
 ### Run setup
-sudo ./setup.sh
+[sudo ]./setup.sh
 
 ## Uninstall
 Simply delete the voterchain folder
@@ -34,4 +34,7 @@ Simply delete the voterchain folder
 
 ## Supported OS
 1) MacOS/OS X
-2) Ubuntu Linux
+2) Linux
+
+## Supported Linux Distros
+1) Ubuntu
