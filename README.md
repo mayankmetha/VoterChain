@@ -21,6 +21,15 @@ cd VoterChain/setup/
 1) XCode from App Store
 2) HomeBrew from https://brew.sh
 
+### ubuntu additional tools to be installed first
+1) git
+
+### solus additional tools to be installed first
+1) git
+
+### fedora additional tools to be installed first
+1) redhat-lsb
+
 ### Run setup
 [sudo ]./setup.sh
 
@@ -38,3 +47,4 @@ Simply delete the voterchain folder
 
 ## Supported Linux Distros
 1) Ubuntu
+2) Solus
