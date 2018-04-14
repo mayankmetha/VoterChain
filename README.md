@@ -22,7 +22,7 @@ cd VoterChain/setup/
 2) HomeBrew from https://brew.sh
 
 ### Run setup
-./setup.sh
+sudo ./setup.sh
 
 ## Uninstall
 Simply delete the voterchain folder
