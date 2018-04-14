@@ -29,7 +29,7 @@ then
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Solus\033[0m"
         bash $DIR/solus/node.sh
-    elif [[ "`cat /etc/*release | grep -i "^NAME" | cut -d"=" -f2`" == "Fedora" ]]
+    elif [[ "`lsb_release -i | cut -d":" -f2 | cut --complement -c1`" == "Fedora" ]]
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Fedora\033[0m"
         bash $DIR/fedora/node.sh
