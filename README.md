@@ -2,7 +2,7 @@
 blockchain based evoting system
 
 ## Commands
-### sudo npm start
+### sudo npm start [user|client] [browser]
 start program
 ### npm start help
 help message
@@ -11,12 +11,6 @@ help message
 Create a project and keep the web setup config ready before setup
 
 ## Setup
-### Clone project
-git clone https://github.com/mayankmetha/VoterChain.git
-
-### Goto Setup
-cd VoterChain/setup/
-
 ### macOS/OSX additional tools to be installed first
 1) XCode from App Store
 2) HomeBrew from https://brew.sh
@@ -31,8 +25,18 @@ cd VoterChain/setup/
 1) redhat-lsb
 2) git
 
+### arch additional tools to be installed first
+1) lsb-release
+2) git
+
 ### openSUSE additional tools to be installed first
 1) git
+
+### Clone project
+git clone https://github.com/mayankmetha/VoterChain.git
+
+### Goto Setup
+cd VoterChain/setup/
 
 ### Run setup
 [sudo ]./setup.sh
