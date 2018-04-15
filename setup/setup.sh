@@ -36,6 +36,11 @@ then
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Elementary\033[0m"
         bash $DIR/mint/node.sh
+    #boss-mint
+    elif [[ "`lsb_release -i | cut -d":" -f2 | cut --complement -c1`" == "BOSS" ]]
+    then
+        echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m BOSS\033[0m"
+        bash $DIR/mint/node.sh
     #debian-debian
     elif [[ "`lsb_release -i | cut -d":" -f2 | cut --complement -c1`" == "Debian" ]]
     then
@@ -69,7 +74,7 @@ then
     #voidLinux-void
     elif [[ "`lsb_release -i | cut -d":" -f2 | cut --complement -c1`" == "VoidLinux" ]]
     then
-        echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Void\033[0m"
+        echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Void Linux\033[0m"
         bash $DIR/void/node.sh
     else
         echo -e "\033[1;37m[\033[0m\033[1;31m✘\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Not Supported\033[0m"

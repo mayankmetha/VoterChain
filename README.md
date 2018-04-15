@@ -18,7 +18,7 @@ Create a project and keep the web setup config ready before setup
 ### ubuntu/solus/openSUSE/LMDE/LinuxMint additional tools to be installed first
 1) git
 
-### debian/elementary/voidLinux additional tools to be installed first
+### debian/elementary/voidLinux/BOSS additional tools to be installed first
 1) git
 2) curl
 
