@@ -15,10 +15,10 @@ Create a project and keep the web setup config ready before setup
 1) XCode from App Store
 2) HomeBrew from https://brew.sh
 
-### ubuntu/solus/openSUSE/LMDE/LinuxMint/elementary additional tools to be installed first
+### ubuntu/solus/openSUSE/LMDE/LinuxMint additional tools to be installed first
 1) git
 
-### debian additional tools to be installed first
+### debian/elementary/voidLinux additional tools to be installed first
 1) git
 2) curl
 
@@ -54,12 +54,14 @@ Simply delete the voterchain folder
 2) Linux [run as sudo or su]
 
 ## Supported Linux Distros
-1) Ubuntu
-2) Solus
-3) Fedora
-4) OpenSUSE
-5) Arch
-6) CentOS
-7) LMDE/LinuxMint
-8) Debian
-9) Elementary
+1)  Ubuntu
+2)  Solus
+3)  Fedora
+4)  OpenSUSE
+5)  Arch
+6)  CentOS
+7)  LMDE/LinuxMint
+8)  Debian
+9)  Elementary
+10) Void
+11) BOSS
