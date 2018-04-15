@@ -15,7 +15,7 @@ Create a project and keep the web setup config ready before setup
 1) XCode from App Store
 2) HomeBrew from https://brew.sh
 
-### ubuntu/solus/openSUSE additional tools to be installed first
+### ubuntu/solus/openSUSE/LMDE/LinuxMint additional tools to be installed first
 1) git
 
 ### fedora/centOS additional tools to be installed first
@@ -26,6 +26,8 @@ Create a project and keep the web setup config ready before setup
 1) lsb-release
 2) git
 
+### LMDE
+
 ### Clone project
 git clone https://github.com/mayankmetha/VoterChain.git
 
@@ -33,7 +35,7 @@ git clone https://github.com/mayankmetha/VoterChain.git
 cd VoterChain/setup/
 
 ### Run setup
-[sudo ]./setup.sh
+./setup.sh
 
 ## Uninstall
 Simply delete the voterchain folder
@@ -45,7 +47,7 @@ Simply delete the voterchain folder
 
 ## Supported OS
 1) MacOS/OS X
-2) Linux
+2) Linux [run as sudo or su]
 
 ## Supported Linux Distros
 1) Ubuntu
@@ -54,3 +56,4 @@ Simply delete the voterchain folder
 4) OpenSUSE
 5) Arch
 6) CentOS
+7) LMDE/LinuxMint

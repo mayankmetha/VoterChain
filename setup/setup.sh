@@ -25,6 +25,10 @@ then
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Ubuntu\033[0m"
         bash $DIR/ubuntu/node.sh
+    elif [[ "`lsb_release -i | cut -d":" -f2 | cut --complement -c1`" == "LinuxMint" ]]
+    then
+        echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m LinuxMint/LMDE\033[0m"
+        bash $DIR/debian/node.sh
     elif [[ "`lsb_release -i | cut -d":" -f2 | cut --complement -c1`" == "Solus" ]]
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Solus\033[0m"
