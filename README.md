@@ -15,22 +15,16 @@ Create a project and keep the web setup config ready before setup
 1) XCode from App Store
 2) HomeBrew from https://brew.sh
 
-### ubuntu additional tools to be installed first
+### ubuntu/solus/openSUSE additional tools to be installed first
 1) git
 
-### solus additional tools to be installed first
-1) git
-
-### fedora additional tools to be installed first
+### fedora/centOS additional tools to be installed first
 1) redhat-lsb
 2) git
 
 ### arch additional tools to be installed first
 1) lsb-release
 2) git
-
-### openSUSE additional tools to be installed first
-1) git
 
 ### Clone project
 git clone https://github.com/mayankmetha/VoterChain.git
@@ -56,3 +50,7 @@ Simply delete the voterchain folder
 ## Supported Linux Distros
 1) Ubuntu
 2) Solus
+3) Fedora
+4) OpenSUSE
+5) Arch
+6) CentOS
