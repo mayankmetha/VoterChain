@@ -33,6 +33,10 @@ then
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Fedora\033[0m"
         bash $DIR/fedora/node.sh
+    elif [[ "`lsb_release -i | cut -d":" -f2 | cut --complement -c1`" == "openSUSE project" ]]
+    then
+        echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m OpenSUSE\033[0m"
+        bash $DIR/fedora/node.sh
     fi
 else
     echo -e "\033[1;37m[\033[0m\033[1;31m✘\033[0m\033[1;37m]\033[0m\033[1;33m OS             \033[0m\033[1;37m:\033[0m\033[1;36m Not Supported\033[0m"

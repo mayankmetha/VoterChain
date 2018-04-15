@@ -31,6 +31,9 @@ cd VoterChain/setup/
 1) redhat-lsb
 2) git
 
+### openSUSE additional tools to be installed first
+1) git
+
 ### Run setup
 [sudo ]./setup.sh
 
