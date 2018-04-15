@@ -62,4 +62,4 @@ Simply delete the voterchain folder
 8)  Debian
 9)  Elementary
 10) Void
-11) BOSS
+11) BOSS (broken)
