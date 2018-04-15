@@ -15,8 +15,12 @@ Create a project and keep the web setup config ready before setup
 1) XCode from App Store
 2) HomeBrew from https://brew.sh
 
-### ubuntu/solus/openSUSE/LMDE/LinuxMint/Debian/elementary additional tools to be installed first
+### ubuntu/solus/openSUSE/LMDE/LinuxMint/elementary additional tools to be installed first
 1) git
+
+### debian additional tools to be installed first
+1) git
+2) curl
 
 ### fedora/centOS additional tools to be installed first
 1) redhat-lsb
