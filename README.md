@@ -30,15 +30,13 @@ Create a project and keep the web setup config ready before setup
 1) lsb-release
 2) git
 
-### LMDE
-
 ### Clone project
 git clone https://github.com/mayankmetha/VoterChain.git
 
 ### Goto Setup
 cd VoterChain/setup/
 
-### Run setup
+### Run setup (as su or sudo on Linux)
 ./setup.sh
 
 ## Uninstall
