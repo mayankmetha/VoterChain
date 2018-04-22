@@ -1,1 +1,1 @@
-sudo apt remove nodejs -v
+sudo apt remove nodejs -y

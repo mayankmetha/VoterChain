@@ -5,9 +5,11 @@ var path = require('path');
 var fs = require('fs');
 var chalk = require('chalk');
 
+//ssl
 var key = fs.readFileSync(path.join(__dirname + '/../ssl/private.key'));
 var cert = fs.readFileSync(path.join(__dirname + '/../ssl/private.crt'));
 
+//aes-mac
 var macKey = fs.readFileSync(path.join(__dirname + '/../ssl/blockchain.key')).toString();
 
 /*
