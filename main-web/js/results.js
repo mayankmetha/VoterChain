@@ -29,7 +29,6 @@ function getElections() {
             }
         }
     });
-    setTimeout(getElections,5000);
 }
 
 //get constituency list for every elections
@@ -137,6 +136,7 @@ function generateRandColors() {
 
 //graph
 function drawGraph(title, label, value, color) {
+    setTimeout(getElections,5000);
     $('#chart').append("<canvas id=graph></canvas>");
     var title = title;
     var chart = new Chart(document.getElementById('graph').getContext('2d'), {
