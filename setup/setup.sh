@@ -36,11 +36,11 @@ then
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m Elementary\033[0m"
         bash $DIR/mint/node.sh
-    #boss-mint
+    #boss-debian
     elif [[ "`lsb_release -i | cut -f2`" == "BOSS" ]]
     then
         echo -e "\033[1;37m[\033[0m\033[1;32m✔\033[0m\033[1;37m]\033[0m\033[1;33m Distro         \033[0m\033[1;37m:\033[0m\033[1;36m BOSS\033[0m"
-        #bash $DIR/mint/node.sh
+        bash $DIR/debian/node.sh
     #debian-debian
     elif [[ "`lsb_release -i | cut -f2`" == "Debian" ]]
     then

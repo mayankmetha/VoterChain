@@ -36,7 +36,7 @@ git clone https://github.com/mayankmetha/VoterChain.git
 ### Goto Setup
 cd VoterChain/setup/
 
-### Run setup (as su or sudo on Linux)
+### Run setup (as su Linux)
 ./setup.sh
 
 ## Uninstall
@@ -49,7 +49,7 @@ Simply delete the voterchain folder
 
 ## Supported OS
 1) MacOS/OS X
-2) Linux [run as sudo or su]
+2) Linux [sudo or su]
 
 ## Supported Linux Distros
 1)  Ubuntu
@@ -62,4 +62,4 @@ Simply delete the voterchain folder
 8)  Debian
 9)  Elementary
 10) Void
-11) BOSS (broken)
+11) BOSS
