@@ -85,6 +85,6 @@ else
     exit 0
 fi
 bash $DIR/common/ssl.sh $PDIR
-bash $LOC/$DIR/common/aes.sh $PDIR
-bash $LOC/$DIR/common/firebase.sh $PDIR
+bash $DIR/common/aes.sh $PDIR
+bash $DIR/common/firebase.sh $PDIR
 bash $DIR/common/npm.sh $PDIR
