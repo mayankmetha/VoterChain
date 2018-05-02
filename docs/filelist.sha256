@@ -10,7 +10,7 @@ b847100391477f68aa0aa11088f3745919c7617dff98e97358a2b1cf2f90b4aa  ./verify.sh
 378bb90634cb370986ba5e9180ba0448f36a0c555489b56e39884fe20260adec  ./main-web/js/chartjs/chart.bundle.min.js
 eeed8563aaf0bbac30fc9c764e13fb58063ff485c853a1c52a778fbe42f3a300  ./main-web/js/fontawesome/fontawesome-all.js
 5eaf0c9d8ad4baecf8e2035204b1d5e4e79fa40652e86a58adb802fc9373bdcc  ./main-web/js/login.js
-a076bd7959017d21abd5b7fc3692f85ac262b5c3bc92c848c3e59e75ea44db2e  ./main-web/js/home.js
+6364d011f4a19fbbd42c7827940f79ea9cb699639c55c249adee400fe79d058e  ./main-web/js/home.js
 b4bd40fb4482c84eaa040234cb9f0db7d2385d68f476e1d64e7a1fa40e10a158  ./main-web/js/blocks.js
 a0e68921ad24aa114be39f9efc2fb906e41bd5cbb123f5862bc6a53889bc50f6  ./main-web/js/user.js
 5bee072c1fcc4907c762190fc422835858d44c7401da8d9b3a13b5fd055a2d75  ./main-web/js/results.js
@@ -25,14 +25,14 @@ ed5fd52dd0b5655ebf3e83a42c3fc6a1a778930c93e1b75f2dffdeb436450993  ./main-web/ass
 18ead12e7c8d9acef1d777ce43c8fc3d09a37064e5721f0f573d72085e811e14  ./main-web/assets/home1.svg
 062f846af097ef3531a163650861aaa5b51925de108d6a90141090101fa3f2f1  ./main-web/assets/home2.svg
 123b9286c60749e473443714fdbbddb8ebe113266291611b6b6f80439eb0835c  ./main-web/html/404.html
-87c12c6fb1fe37460ae9948b6bb66aee31c2bb2b98bb36a4a2212ab73e128261  ./main-web/html/home.html
+7cf257c42391753a67213a6ec0029b44e8e14e05bb8d7e58047918503ccf5c58  ./main-web/html/home.html
 164b9d6fa0e122e2a0fdeb5192f2333dd58970982657a4d9e2b8224dd5a2c35d  ./main-web/html/peer.html
 76f7d3e228e05de3d0e0269942fe16d4ecd8c2c454274d9e52a8d1a19d61feef  ./main-web/html/peerAddDone.html
 a43770010f3f27d8ddf1785acaac900ea25a42cf081cfecfb29f72ac5be7d5d8  ./main-web/html/user.html
 2bb62064b392b8c5e5fcdba015511f077509e6fc0ff300f6ff7328e8fb702aea  ./main-web/html/close.html
 32b0c4214d463a2259384299cdbea2ade6129ef6df794321588e3007cc23dffe  ./main-web/html/userBlocked.html
 196205c2864c28e238e95831a50a6bf749576dea9295b1654a9a35f6b2cd1919  ./main-web/html/blocks.html
-03ea6f38de0802ae3093cca982114c9948b031852e0b0d670d798347386c42de  ./main-web/html/homeInvalidLogin.html
+cd7cc158cccf868ae36858602cf9a36921169e42ddd6b3a8a75e6d21efb234e5  ./main-web/html/homeInvalidLogin.html
 9a93b61387d2971fd67d603e6246a0c62dcae78b7da2c8ae580b17d338f331fb  ./main-web/html/blkError.html
 9b1c647e6806d4fea4f2fedf020d0a2afef1e04d7e267686451cba6417d25eb2  ./main-web/html/results.html
 c037f01e13dddf0aaf984e84d9e95d36aabb2ea8d1229511d3c64ad742ef9097  ./admin-web/firebaseui/firebaseui.js

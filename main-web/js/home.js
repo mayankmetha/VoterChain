@@ -72,7 +72,8 @@ function getCount() {
         url: "/countHome",
         type: "GET",
         success: function (data) {
-            var str = "Block count<br />" + data;
+            var des = "Technology that was first<br />used by Bitcoin which<br />is a public ledger of<br />transactions.";
+            var str = des + "<br /><br/>Block count<br />" + data;
             $("#counter").html(str);
         }
     });
@@ -120,7 +121,8 @@ function analysis() {
         type: "GET",
         success: function (data) {
             $("#eleSummary").text("");
-            var str = data.length + " elections<br>have been recorded."
+            var des = "Get the live results<br />as and when votes<br />are casted.<br /><br />";
+            var str = des + data.length + " elections<br>have been recorded."
             $("#eleSummary").html(str);
             $("#eleTable").text("");
             drawEleTable(data);
