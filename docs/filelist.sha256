@@ -25,14 +25,14 @@ ed5fd52dd0b5655ebf3e83a42c3fc6a1a778930c93e1b75f2dffdeb436450993  ./main-web/ass
 18ead12e7c8d9acef1d777ce43c8fc3d09a37064e5721f0f573d72085e811e14  ./main-web/assets/home1.svg
 062f846af097ef3531a163650861aaa5b51925de108d6a90141090101fa3f2f1  ./main-web/assets/home2.svg
 123b9286c60749e473443714fdbbddb8ebe113266291611b6b6f80439eb0835c  ./main-web/html/404.html
-7cf257c42391753a67213a6ec0029b44e8e14e05bb8d7e58047918503ccf5c58  ./main-web/html/home.html
+f36c1c3495409abc90bc78b09826be416e9d8935485908e69f291d08d60a6201  ./main-web/html/home.html
 164b9d6fa0e122e2a0fdeb5192f2333dd58970982657a4d9e2b8224dd5a2c35d  ./main-web/html/peer.html
 76f7d3e228e05de3d0e0269942fe16d4ecd8c2c454274d9e52a8d1a19d61feef  ./main-web/html/peerAddDone.html
 a43770010f3f27d8ddf1785acaac900ea25a42cf081cfecfb29f72ac5be7d5d8  ./main-web/html/user.html
 2bb62064b392b8c5e5fcdba015511f077509e6fc0ff300f6ff7328e8fb702aea  ./main-web/html/close.html
 32b0c4214d463a2259384299cdbea2ade6129ef6df794321588e3007cc23dffe  ./main-web/html/userBlocked.html
 196205c2864c28e238e95831a50a6bf749576dea9295b1654a9a35f6b2cd1919  ./main-web/html/blocks.html
-cd7cc158cccf868ae36858602cf9a36921169e42ddd6b3a8a75e6d21efb234e5  ./main-web/html/homeInvalidLogin.html
+6d139e7d6199a2f8b49f582a2d966321919c55827bf1eb47f3e7c763ccc30629  ./main-web/html/homeInvalidLogin.html
 9a93b61387d2971fd67d603e6246a0c62dcae78b7da2c8ae580b17d338f331fb  ./main-web/html/blkError.html
 9b1c647e6806d4fea4f2fedf020d0a2afef1e04d7e267686451cba6417d25eb2  ./main-web/html/results.html
 c037f01e13dddf0aaf984e84d9e95d36aabb2ea8d1229511d3c64ad742ef9097  ./admin-web/firebaseui/firebaseui.js
